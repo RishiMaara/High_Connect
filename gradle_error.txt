@@ -1,0 +1,1943 @@
+﻿> Task :gradle:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :gradle:compileKotlin UP-TO-DATE
+> Task :gradle:compileJava NO-SOURCE
+> Task :gradle:compileGroovy NO-SOURCE
+> Task :gradle:pluginDescriptors UP-TO-DATE
+> Task :gradle:processResources UP-TO-DATE
+> Task :gradle:classes UP-TO-DATE
+> Task :gradle:jar UP-TO-DATE
+
+> Configure project :app
+WARNING: The option 'android.enableR8' is deprecated.
+It was removed in version 7.0 of the Android Gradle plugin.
+Please remove it from `gradle.properties`.
+WARNING: [CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+[CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+WARNING: [CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+[CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+WARNING: [CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+[CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+WARNING: [CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+[CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+WARNING: [CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+[CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+WARNING: [CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+[CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+WARNING: [CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+[CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+WARNING: [CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+[CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+WARNING: [CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+[CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+WARNING: [CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+[CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+WARNING: [CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+[CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+WARNING: [CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+[CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+WARNING: [CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+[CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+WARNING: [CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+[CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+WARNING: [CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+[CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+WARNING: [CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+[CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+WARNING: [CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+[CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+WARNING: [CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+[CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+WARNING: [CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+[CXX5106] NDK was located by using ndk.dir property. This method is deprecated and will be removed in a future release. Please delete ndk.dir from local.properties and set android.ndkVersion to [29.0.14206865] in all native modules in the project. https://developer.android.com/r/studio-ui/ndk-dir
+Observed package id 'platform-tools' in inconsistent location 'D:\Android\platform-tools-2' (Expected 'D:\Android\platform-tools')
+
+> Task :app:ReleaseMinSdkCheck
+> Task :app:compileFlutterBuildRelease
+> Task :app:packJniLibsflutterBuildRelease UP-TO-DATE
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preReleaseBuild UP-TO-DATE
+> Task :app:configureCMakeRelWithDebInfo[arm64-v8a]
+> Task :app:buildCMakeRelWithDebInfo[arm64-v8a]
+> Task :app:configureCMakeRelWithDebInfo[armeabi-v7a]
+> Task :app:buildCMakeRelWithDebInfo[armeabi-v7a]
+> Task :app:configureCMakeRelWithDebInfo[x86]
+> Task :app:buildCMakeRelWithDebInfo[x86]
+> Task :app:configureCMakeRelWithDebInfo[x86_64]
+> Task :app:buildCMakeRelWithDebInfo[x86_64]
+> Task :app:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :cloud_firestore:preBuild UP-TO-DATE
+> Task :cloud_firestore:preReleaseBuild UP-TO-DATE
+> Task :cloud_firestore:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :cloud_firestore:mergeReleaseNativeLibs NO-SOURCE
+> Task :cloud_firestore:copyReleaseJniLibsProjectOnly UP-TO-DATE
+> Task :file_picker:preBuild UP-TO-DATE
+> Task :file_picker:preReleaseBuild UP-TO-DATE
+> Task :file_picker:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :file_picker:mergeReleaseNativeLibs NO-SOURCE
+> Task :file_picker:copyReleaseJniLibsProjectOnly UP-TO-DATE
+> Task :firebase_auth:preBuild UP-TO-DATE
+> Task :firebase_auth:preReleaseBuild UP-TO-DATE
+> Task :firebase_auth:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :firebase_auth:mergeReleaseNativeLibs NO-SOURCE
+> Task :firebase_auth:copyReleaseJniLibsProjectOnly UP-TO-DATE
+> Task :firebase_core:preBuild UP-TO-DATE
+> Task :firebase_core:preReleaseBuild UP-TO-DATE
+> Task :firebase_core:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :firebase_core:mergeReleaseNativeLibs NO-SOURCE
+> Task :firebase_core:copyReleaseJniLibsProjectOnly UP-TO-DATE
+> Task :firebase_crashlytics:preBuild UP-TO-DATE
+> Task :firebase_crashlytics:preReleaseBuild UP-TO-DATE
+> Task :firebase_crashlytics:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :firebase_crashlytics:mergeReleaseNativeLibs NO-SOURCE
+> Task :firebase_crashlytics:copyReleaseJniLibsProjectOnly UP-TO-DATE
+> Task :firebase_messaging:preBuild UP-TO-DATE
+> Task :firebase_messaging:preReleaseBuild UP-TO-DATE
+> Task :firebase_messaging:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :firebase_messaging:mergeReleaseNativeLibs NO-SOURCE
+> Task :firebase_messaging:copyReleaseJniLibsProjectOnly UP-TO-DATE
+> Task :firebase_storage:preBuild UP-TO-DATE
+> Task :firebase_storage:preReleaseBuild UP-TO-DATE
+> Task :firebase_storage:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :firebase_storage:mergeReleaseNativeLibs NO-SOURCE
+> Task :firebase_storage:copyReleaseJniLibsProjectOnly UP-TO-DATE
+> Task :flutter_local_notifications:preBuild UP-TO-DATE
+> Task :flutter_local_notifications:preReleaseBuild UP-TO-DATE
+> Task :flutter_local_notifications:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :flutter_local_notifications:mergeReleaseNativeLibs NO-SOURCE
+> Task :flutter_local_notifications:copyReleaseJniLibsProjectOnly UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:preBuild UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:preReleaseBuild UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:mergeReleaseNativeLibs NO-SOURCE
+> Task :flutter_plugin_android_lifecycle:copyReleaseJniLibsProjectOnly UP-TO-DATE
+> Task :geolocator_android:preBuild UP-TO-DATE
+> Task :geolocator_android:preReleaseBuild UP-TO-DATE
+> Task :geolocator_android:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :geolocator_android:mergeReleaseNativeLibs NO-SOURCE
+> Task :geolocator_android:copyReleaseJniLibsProjectOnly UP-TO-DATE
+> Task :google_maps_flutter_android:preBuild UP-TO-DATE
+> Task :google_maps_flutter_android:preReleaseBuild UP-TO-DATE
+> Task :google_maps_flutter_android:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :google_maps_flutter_android:mergeReleaseNativeLibs NO-SOURCE
+> Task :google_maps_flutter_android:copyReleaseJniLibsProjectOnly UP-TO-DATE
+> Task :google_sign_in_android:preBuild UP-TO-DATE
+> Task :google_sign_in_android:preReleaseBuild UP-TO-DATE
+> Task :google_sign_in_android:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :google_sign_in_android:mergeReleaseNativeLibs NO-SOURCE
+> Task :google_sign_in_android:copyReleaseJniLibsProjectOnly UP-TO-DATE
+> Task :image_picker_android:preBuild UP-TO-DATE
+> Task :image_picker_android:preReleaseBuild UP-TO-DATE
+> Task :image_picker_android:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :image_picker_android:mergeReleaseNativeLibs NO-SOURCE
+> Task :image_picker_android:copyReleaseJniLibsProjectOnly UP-TO-DATE
+> Task :path_provider_android:preBuild UP-TO-DATE
+> Task :path_provider_android:preReleaseBuild UP-TO-DATE
+> Task :path_provider_android:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :path_provider_android:mergeReleaseNativeLibs NO-SOURCE
+> Task :path_provider_android:copyReleaseJniLibsProjectOnly UP-TO-DATE
+> Task :share_plus:preBuild UP-TO-DATE
+> Task :share_plus:preReleaseBuild UP-TO-DATE
+> Task :share_plus:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :share_plus:mergeReleaseNativeLibs NO-SOURCE
+> Task :share_plus:copyReleaseJniLibsProjectOnly UP-TO-DATE
+> Task :shared_preferences_android:preBuild UP-TO-DATE
+> Task :shared_preferences_android:preReleaseBuild UP-TO-DATE
+> Task :shared_preferences_android:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :shared_preferences_android:mergeReleaseNativeLibs NO-SOURCE
+> Task :shared_preferences_android:copyReleaseJniLibsProjectOnly UP-TO-DATE
+> Task :sign_in_with_apple:preBuild UP-TO-DATE
+> Task :sign_in_with_apple:preReleaseBuild UP-TO-DATE
+> Task :sign_in_with_apple:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :sign_in_with_apple:mergeReleaseNativeLibs NO-SOURCE
+> Task :sign_in_with_apple:copyReleaseJniLibsProjectOnly UP-TO-DATE
+> Task :sqflite:preBuild UP-TO-DATE
+> Task :sqflite:preReleaseBuild UP-TO-DATE
+> Task :sqflite:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :sqflite:mergeReleaseNativeLibs NO-SOURCE
+> Task :sqflite:copyReleaseJniLibsProjectOnly UP-TO-DATE
+> Task :url_launcher_android:preBuild UP-TO-DATE
+> Task :url_launcher_android:preReleaseBuild UP-TO-DATE
+> Task :url_launcher_android:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :url_launcher_android:mergeReleaseNativeLibs NO-SOURCE
+> Task :url_launcher_android:copyReleaseJniLibsProjectOnly UP-TO-DATE
+> Task :video_player_android:preBuild UP-TO-DATE
+> Task :video_player_android:preReleaseBuild UP-TO-DATE
+> Task :video_player_android:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :video_player_android:mergeReleaseNativeLibs NO-SOURCE
+> Task :video_player_android:copyReleaseJniLibsProjectOnly UP-TO-DATE
+> Task :app:mergeReleaseNativeLibs UP-TO-DATE
+> Task :app:stripReleaseDebugSymbols UP-TO-DATE
+> Task :app:extractReleaseNativeSymbolTables UP-TO-DATE
+> Task :app:mergeReleaseNativeDebugMetadata UP-TO-DATE
+> Task :cloud_firestore:prepareReleaseArtProfile UP-TO-DATE
+> Task :file_picker:prepareReleaseArtProfile UP-TO-DATE
+> Task :firebase_auth:prepareReleaseArtProfile UP-TO-DATE
+> Task :firebase_core:prepareReleaseArtProfile UP-TO-DATE
+> Task :firebase_crashlytics:prepareReleaseArtProfile UP-TO-DATE
+> Task :firebase_messaging:prepareReleaseArtProfile UP-TO-DATE
+> Task :firebase_storage:prepareReleaseArtProfile UP-TO-DATE
+> Task :flutter_local_notifications:prepareReleaseArtProfile UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:prepareReleaseArtProfile UP-TO-DATE
+> Task :geolocator_android:prepareReleaseArtProfile UP-TO-DATE
+> Task :google_maps_flutter_android:prepareReleaseArtProfile UP-TO-DATE
+> Task :google_sign_in_android:prepareReleaseArtProfile UP-TO-DATE
+> Task :image_picker_android:prepareReleaseArtProfile UP-TO-DATE
+> Task :path_provider_android:prepareReleaseArtProfile UP-TO-DATE
+> Task :share_plus:prepareReleaseArtProfile UP-TO-DATE
+> Task :shared_preferences_android:prepareReleaseArtProfile UP-TO-DATE
+> Task :sign_in_with_apple:prepareReleaseArtProfile UP-TO-DATE
+> Task :sqflite:prepareReleaseArtProfile UP-TO-DATE
+> Task :url_launcher_android:prepareReleaseArtProfile UP-TO-DATE
+> Task :video_player_android:prepareReleaseArtProfile UP-TO-DATE
+> Task :app:mergeReleaseArtProfile UP-TO-DATE
+> Task :app:expandReleaseL8ArtProfileWildcards UP-TO-DATE
+> Task :cloud_firestore:generateReleaseBuildConfig UP-TO-DATE
+> Task :cloud_firestore:generateReleaseResValues UP-TO-DATE
+> Task :cloud_firestore:generateReleaseResources UP-TO-DATE
+> Task :cloud_firestore:packageReleaseResources UP-TO-DATE
+> Task :cloud_firestore:parseReleaseLocalResources UP-TO-DATE
+> Task :cloud_firestore:generateReleaseRFile UP-TO-DATE
+> Task :cloud_firestore:javaPreCompileRelease UP-TO-DATE
+> Task :firebase_core:generateReleaseBuildConfig UP-TO-DATE
+> Task :firebase_core:generateReleaseResValues UP-TO-DATE
+> Task :firebase_core:generateReleaseResources UP-TO-DATE
+> Task :firebase_core:packageReleaseResources UP-TO-DATE
+> Task :firebase_core:parseReleaseLocalResources UP-TO-DATE
+> Task :firebase_core:generateReleaseRFile UP-TO-DATE
+> Task :firebase_core:javaPreCompileRelease UP-TO-DATE
+> Task :firebase_core:compileReleaseJavaWithJavac UP-TO-DATE
+> Task :firebase_core:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :cloud_firestore:compileReleaseJavaWithJavac UP-TO-DATE
+> Task :cloud_firestore:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :cloud_firestore:exportReleaseConsumerProguardFiles UP-TO-DATE
+> Task :file_picker:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :file_picker:generateReleaseResValues UP-TO-DATE
+> Task :file_picker:generateReleaseResources UP-TO-DATE
+> Task :file_picker:packageReleaseResources UP-TO-DATE
+> Task :file_picker:parseReleaseLocalResources UP-TO-DATE
+> Task :file_picker:generateReleaseRFile UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:generateReleaseResValues UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:generateReleaseResources UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:packageReleaseResources UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:parseReleaseLocalResources UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:generateReleaseRFile UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:javaPreCompileRelease UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:compileReleaseJavaWithJavac UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :file_picker:compileReleaseKotlin UP-TO-DATE
+> Task :file_picker:javaPreCompileRelease UP-TO-DATE
+> Task :file_picker:compileReleaseJavaWithJavac NO-SOURCE
+> Task :file_picker:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :file_picker:exportReleaseConsumerProguardFiles UP-TO-DATE
+> Task :firebase_auth:generateReleaseBuildConfig UP-TO-DATE
+> Task :firebase_auth:generateReleaseResValues UP-TO-DATE
+> Task :firebase_auth:generateReleaseResources UP-TO-DATE
+> Task :firebase_auth:packageReleaseResources UP-TO-DATE
+> Task :firebase_auth:parseReleaseLocalResources UP-TO-DATE
+> Task :firebase_auth:generateReleaseRFile UP-TO-DATE
+> Task :firebase_auth:javaPreCompileRelease UP-TO-DATE
+> Task :firebase_auth:compileReleaseJavaWithJavac UP-TO-DATE
+> Task :firebase_auth:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :firebase_auth:exportReleaseConsumerProguardFiles UP-TO-DATE
+> Task :firebase_crashlytics:generateReleaseBuildConfig UP-TO-DATE
+> Task :firebase_crashlytics:generateReleaseResValues UP-TO-DATE
+> Task :firebase_crashlytics:generateReleaseResources UP-TO-DATE
+> Task :firebase_crashlytics:packageReleaseResources UP-TO-DATE
+> Task :firebase_crashlytics:parseReleaseLocalResources UP-TO-DATE
+> Task :firebase_crashlytics:generateReleaseRFile UP-TO-DATE
+> Task :firebase_crashlytics:javaPreCompileRelease UP-TO-DATE
+> Task :firebase_crashlytics:compileReleaseJavaWithJavac UP-TO-DATE
+> Task :firebase_crashlytics:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :firebase_crashlytics:exportReleaseConsumerProguardFiles UP-TO-DATE
+> Task :firebase_messaging:generateReleaseBuildConfig UP-TO-DATE
+> Task :firebase_messaging:generateReleaseResValues UP-TO-DATE
+> Task :firebase_messaging:generateReleaseResources UP-TO-DATE
+> Task :firebase_messaging:packageReleaseResources UP-TO-DATE
+> Task :firebase_messaging:parseReleaseLocalResources UP-TO-DATE
+> Task :firebase_messaging:generateReleaseRFile UP-TO-DATE
+> Task :firebase_messaging:javaPreCompileRelease UP-TO-DATE
+> Task :firebase_messaging:compileReleaseJavaWithJavac UP-TO-DATE
+> Task :firebase_messaging:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :firebase_messaging:exportReleaseConsumerProguardFiles UP-TO-DATE
+> Task :firebase_storage:generateReleaseBuildConfig UP-TO-DATE
+> Task :firebase_storage:generateReleaseResValues UP-TO-DATE
+> Task :firebase_storage:generateReleaseResources UP-TO-DATE
+> Task :firebase_storage:packageReleaseResources UP-TO-DATE
+> Task :firebase_storage:parseReleaseLocalResources UP-TO-DATE
+> Task :firebase_storage:generateReleaseRFile UP-TO-DATE
+> Task :firebase_storage:javaPreCompileRelease UP-TO-DATE
+> Task :firebase_storage:compileReleaseJavaWithJavac UP-TO-DATE
+> Task :firebase_storage:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :firebase_storage:exportReleaseConsumerProguardFiles UP-TO-DATE
+> Task :firebase_core:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :firebase_core:exportReleaseConsumerProguardFiles UP-TO-DATE
+> Task :flutter_local_notifications:generateReleaseResValues UP-TO-DATE
+> Task :flutter_local_notifications:generateReleaseResources UP-TO-DATE
+> Task :flutter_local_notifications:packageReleaseResources UP-TO-DATE
+> Task :flutter_local_notifications:parseReleaseLocalResources UP-TO-DATE
+> Task :flutter_local_notifications:generateReleaseRFile UP-TO-DATE
+> Task :flutter_local_notifications:javaPreCompileRelease UP-TO-DATE
+> Task :flutter_local_notifications:compileReleaseJavaWithJavac UP-TO-DATE
+> Task :flutter_local_notifications:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :flutter_local_notifications:exportReleaseConsumerProguardFiles UP-TO-DATE
+> Task :google_maps_flutter_android:generateReleaseResValues UP-TO-DATE
+> Task :google_maps_flutter_android:generateReleaseResources UP-TO-DATE
+> Task :google_maps_flutter_android:packageReleaseResources UP-TO-DATE
+> Task :google_maps_flutter_android:parseReleaseLocalResources UP-TO-DATE
+> Task :google_maps_flutter_android:generateReleaseRFile UP-TO-DATE
+> Task :google_maps_flutter_android:javaPreCompileRelease UP-TO-DATE
+> Task :google_maps_flutter_android:compileReleaseJavaWithJavac UP-TO-DATE
+> Task :google_maps_flutter_android:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :google_maps_flutter_android:exportReleaseConsumerProguardFiles UP-TO-DATE
+> Task :image_picker_android:generateReleaseResValues UP-TO-DATE
+> Task :image_picker_android:generateReleaseResources UP-TO-DATE
+> Task :image_picker_android:packageReleaseResources UP-TO-DATE
+> Task :image_picker_android:parseReleaseLocalResources UP-TO-DATE
+> Task :image_picker_android:generateReleaseRFile UP-TO-DATE
+> Task :image_picker_android:javaPreCompileRelease UP-TO-DATE
+> Task :image_picker_android:compileReleaseJavaWithJavac UP-TO-DATE
+> Task :image_picker_android:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :image_picker_android:exportReleaseConsumerProguardFiles UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:exportReleaseConsumerProguardFiles UP-TO-DATE
+> Task :geolocator_android:generateReleaseResValues UP-TO-DATE
+> Task :geolocator_android:generateReleaseResources UP-TO-DATE
+> Task :geolocator_android:packageReleaseResources UP-TO-DATE
+> Task :geolocator_android:parseReleaseLocalResources UP-TO-DATE
+> Task :geolocator_android:generateReleaseRFile UP-TO-DATE
+> Task :geolocator_android:javaPreCompileRelease UP-TO-DATE
+> Task :geolocator_android:compileReleaseJavaWithJavac UP-TO-DATE
+> Task :geolocator_android:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :geolocator_android:exportReleaseConsumerProguardFiles UP-TO-DATE
+> Task :google_sign_in_android:generateReleaseResValues UP-TO-DATE
+> Task :google_sign_in_android:generateReleaseResources UP-TO-DATE
+> Task :google_sign_in_android:packageReleaseResources UP-TO-DATE
+> Task :google_sign_in_android:parseReleaseLocalResources UP-TO-DATE
+> Task :google_sign_in_android:generateReleaseRFile UP-TO-DATE
+> Task :google_sign_in_android:javaPreCompileRelease UP-TO-DATE
+> Task :google_sign_in_android:compileReleaseJavaWithJavac UP-TO-DATE
+> Task :google_sign_in_android:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :google_sign_in_android:exportReleaseConsumerProguardFiles UP-TO-DATE
+> Task :path_provider_android:generateReleaseResValues UP-TO-DATE
+> Task :path_provider_android:generateReleaseResources UP-TO-DATE
+> Task :path_provider_android:packageReleaseResources UP-TO-DATE
+> Task :path_provider_android:parseReleaseLocalResources UP-TO-DATE
+> Task :path_provider_android:generateReleaseRFile UP-TO-DATE
+> Task :path_provider_android:javaPreCompileRelease UP-TO-DATE
+> Task :path_provider_android:compileReleaseJavaWithJavac UP-TO-DATE
+> Task :path_provider_android:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :path_provider_android:exportReleaseConsumerProguardFiles UP-TO-DATE
+> Task :share_plus:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :share_plus:generateReleaseResValues UP-TO-DATE
+> Task :share_plus:generateReleaseResources UP-TO-DATE
+> Task :share_plus:packageReleaseResources UP-TO-DATE
+> Task :share_plus:parseReleaseLocalResources UP-TO-DATE
+> Task :share_plus:generateReleaseRFile UP-TO-DATE
+> Task :share_plus:compileReleaseKotlin UP-TO-DATE
+> Task :share_plus:javaPreCompileRelease UP-TO-DATE
+> Task :share_plus:compileReleaseJavaWithJavac NO-SOURCE
+> Task :share_plus:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :share_plus:exportReleaseConsumerProguardFiles UP-TO-DATE
+> Task :shared_preferences_android:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared_preferences_android:generateReleaseResValues UP-TO-DATE
+> Task :shared_preferences_android:generateReleaseResources UP-TO-DATE
+> Task :shared_preferences_android:packageReleaseResources UP-TO-DATE
+> Task :shared_preferences_android:parseReleaseLocalResources UP-TO-DATE
+> Task :shared_preferences_android:generateReleaseRFile UP-TO-DATE
+> Task :shared_preferences_android:compileReleaseKotlin UP-TO-DATE
+> Task :shared_preferences_android:javaPreCompileRelease UP-TO-DATE
+> Task :shared_preferences_android:compileReleaseJavaWithJavac UP-TO-DATE
+> Task :shared_preferences_android:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :shared_preferences_android:exportReleaseConsumerProguardFiles UP-TO-DATE
+> Task :sign_in_with_apple:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :sign_in_with_apple:generateReleaseResValues UP-TO-DATE
+> Task :sign_in_with_apple:generateReleaseResources UP-TO-DATE
+> Task :sign_in_with_apple:packageReleaseResources UP-TO-DATE
+> Task :sign_in_with_apple:parseReleaseLocalResources UP-TO-DATE
+> Task :sign_in_with_apple:generateReleaseRFile UP-TO-DATE
+> Task :sign_in_with_apple:compileReleaseKotlin UP-TO-DATE
+> Task :sign_in_with_apple:javaPreCompileRelease UP-TO-DATE
+> Task :sign_in_with_apple:compileReleaseJavaWithJavac NO-SOURCE
+> Task :sign_in_with_apple:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :sign_in_with_apple:exportReleaseConsumerProguardFiles UP-TO-DATE
+> Task :sqflite:generateReleaseResValues UP-TO-DATE
+> Task :sqflite:generateReleaseResources UP-TO-DATE
+> Task :sqflite:packageReleaseResources UP-TO-DATE
+> Task :sqflite:parseReleaseLocalResources UP-TO-DATE
+> Task :sqflite:generateReleaseRFile UP-TO-DATE
+> Task :sqflite:javaPreCompileRelease UP-TO-DATE
+> Task :sqflite:compileReleaseJavaWithJavac UP-TO-DATE
+> Task :sqflite:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :sqflite:exportReleaseConsumerProguardFiles UP-TO-DATE
+> Task :url_launcher_android:generateReleaseBuildConfig UP-TO-DATE
+> Task :url_launcher_android:generateReleaseResValues UP-TO-DATE
+> Task :url_launcher_android:generateReleaseResources UP-TO-DATE
+> Task :url_launcher_android:packageReleaseResources UP-TO-DATE
+> Task :url_launcher_android:parseReleaseLocalResources UP-TO-DATE
+> Task :url_launcher_android:generateReleaseRFile UP-TO-DATE
+> Task :url_launcher_android:javaPreCompileRelease UP-TO-DATE
+> Task :url_launcher_android:compileReleaseJavaWithJavac UP-TO-DATE
+> Task :url_launcher_android:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :url_launcher_android:exportReleaseConsumerProguardFiles UP-TO-DATE
+> Task :video_player_android:generateReleaseResValues UP-TO-DATE
+> Task :video_player_android:generateReleaseResources UP-TO-DATE
+> Task :video_player_android:packageReleaseResources UP-TO-DATE
+> Task :video_player_android:parseReleaseLocalResources UP-TO-DATE
+> Task :video_player_android:generateReleaseRFile UP-TO-DATE
+> Task :video_player_android:javaPreCompileRelease UP-TO-DATE
+> Task :video_player_android:compileReleaseJavaWithJavac UP-TO-DATE
+> Task :video_player_android:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :video_player_android:exportReleaseConsumerProguardFiles UP-TO-DATE
+> Task :app:buildKotlinToolingMetadata UP-TO-DATE
+> Task :app:checkReleaseDuplicateClasses UP-TO-DATE
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :cloud_firestore:writeReleaseAarMetadata UP-TO-DATE
+> Task :file_picker:writeReleaseAarMetadata UP-TO-DATE
+> Task :firebase_auth:writeReleaseAarMetadata UP-TO-DATE
+> Task :firebase_core:writeReleaseAarMetadata UP-TO-DATE
+> Task :firebase_crashlytics:writeReleaseAarMetadata UP-TO-DATE
+> Task :firebase_messaging:writeReleaseAarMetadata UP-TO-DATE
+> Task :firebase_storage:writeReleaseAarMetadata UP-TO-DATE
+> Task :flutter_local_notifications:writeReleaseAarMetadata UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:writeReleaseAarMetadata UP-TO-DATE
+> Task :geolocator_android:writeReleaseAarMetadata UP-TO-DATE
+> Task :google_maps_flutter_android:writeReleaseAarMetadata UP-TO-DATE
+> Task :google_sign_in_android:writeReleaseAarMetadata UP-TO-DATE
+> Task :image_picker_android:writeReleaseAarMetadata UP-TO-DATE
+> Task :path_provider_android:writeReleaseAarMetadata UP-TO-DATE
+> Task :share_plus:writeReleaseAarMetadata UP-TO-DATE
+> Task :shared_preferences_android:writeReleaseAarMetadata UP-TO-DATE
+> Task :sign_in_with_apple:writeReleaseAarMetadata UP-TO-DATE
+> Task :sqflite:writeReleaseAarMetadata UP-TO-DATE
+> Task :url_launcher_android:writeReleaseAarMetadata UP-TO-DATE
+> Task :video_player_android:writeReleaseAarMetadata UP-TO-DATE
+> Task :app:checkReleaseAarMetadata UP-TO-DATE
+> Task :app:cleanMergeReleaseAssets
+> Task :app:mergeReleaseShaders UP-TO-DATE
+> Task :app:compileReleaseShaders NO-SOURCE
+> Task :app:generateReleaseAssets UP-TO-DATE
+> Task :cloud_firestore:mergeReleaseShaders UP-TO-DATE
+> Task :cloud_firestore:compileReleaseShaders NO-SOURCE
+> Task :cloud_firestore:generateReleaseAssets UP-TO-DATE
+> Task :cloud_firestore:packageReleaseAssets UP-TO-DATE
+> Task :file_picker:mergeReleaseShaders UP-TO-DATE
+> Task :file_picker:compileReleaseShaders NO-SOURCE
+> Task :file_picker:generateReleaseAssets UP-TO-DATE
+> Task :file_picker:packageReleaseAssets UP-TO-DATE
+> Task :firebase_auth:mergeReleaseShaders UP-TO-DATE
+> Task :firebase_auth:compileReleaseShaders NO-SOURCE
+> Task :firebase_auth:generateReleaseAssets UP-TO-DATE
+> Task :firebase_auth:packageReleaseAssets UP-TO-DATE
+> Task :firebase_core:mergeReleaseShaders UP-TO-DATE
+> Task :firebase_core:compileReleaseShaders NO-SOURCE
+> Task :firebase_core:generateReleaseAssets UP-TO-DATE
+> Task :firebase_core:packageReleaseAssets UP-TO-DATE
+> Task :firebase_crashlytics:mergeReleaseShaders UP-TO-DATE
+> Task :firebase_crashlytics:compileReleaseShaders NO-SOURCE
+> Task :firebase_crashlytics:generateReleaseAssets UP-TO-DATE
+> Task :firebase_crashlytics:packageReleaseAssets UP-TO-DATE
+> Task :firebase_messaging:mergeReleaseShaders UP-TO-DATE
+> Task :firebase_messaging:compileReleaseShaders NO-SOURCE
+> Task :firebase_messaging:generateReleaseAssets UP-TO-DATE
+> Task :firebase_messaging:packageReleaseAssets UP-TO-DATE
+> Task :firebase_storage:mergeReleaseShaders UP-TO-DATE
+> Task :firebase_storage:compileReleaseShaders NO-SOURCE
+> Task :firebase_storage:generateReleaseAssets UP-TO-DATE
+> Task :firebase_storage:packageReleaseAssets UP-TO-DATE
+> Task :flutter_local_notifications:mergeReleaseShaders UP-TO-DATE
+> Task :flutter_local_notifications:compileReleaseShaders NO-SOURCE
+> Task :flutter_local_notifications:generateReleaseAssets UP-TO-DATE
+> Task :flutter_local_notifications:packageReleaseAssets UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:mergeReleaseShaders UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:compileReleaseShaders NO-SOURCE
+> Task :flutter_plugin_android_lifecycle:generateReleaseAssets UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:packageReleaseAssets UP-TO-DATE
+> Task :geolocator_android:mergeReleaseShaders UP-TO-DATE
+> Task :geolocator_android:compileReleaseShaders NO-SOURCE
+> Task :geolocator_android:generateReleaseAssets UP-TO-DATE
+> Task :geolocator_android:packageReleaseAssets UP-TO-DATE
+> Task :google_maps_flutter_android:mergeReleaseShaders UP-TO-DATE
+> Task :google_maps_flutter_android:compileReleaseShaders NO-SOURCE
+> Task :google_maps_flutter_android:generateReleaseAssets UP-TO-DATE
+> Task :google_maps_flutter_android:packageReleaseAssets UP-TO-DATE
+> Task :google_sign_in_android:mergeReleaseShaders UP-TO-DATE
+> Task :google_sign_in_android:compileReleaseShaders NO-SOURCE
+> Task :google_sign_in_android:generateReleaseAssets UP-TO-DATE
+> Task :google_sign_in_android:packageReleaseAssets UP-TO-DATE
+> Task :image_picker_android:mergeReleaseShaders UP-TO-DATE
+> Task :image_picker_android:compileReleaseShaders NO-SOURCE
+> Task :image_picker_android:generateReleaseAssets UP-TO-DATE
+> Task :image_picker_android:packageReleaseAssets UP-TO-DATE
+> Task :path_provider_android:mergeReleaseShaders UP-TO-DATE
+> Task :path_provider_android:compileReleaseShaders NO-SOURCE
+> Task :path_provider_android:generateReleaseAssets UP-TO-DATE
+> Task :path_provider_android:packageReleaseAssets UP-TO-DATE
+> Task :share_plus:mergeReleaseShaders UP-TO-DATE
+> Task :share_plus:compileReleaseShaders NO-SOURCE
+> Task :share_plus:generateReleaseAssets UP-TO-DATE
+> Task :share_plus:packageReleaseAssets UP-TO-DATE
+> Task :shared_preferences_android:mergeReleaseShaders UP-TO-DATE
+> Task :shared_preferences_android:compileReleaseShaders NO-SOURCE
+> Task :shared_preferences_android:generateReleaseAssets UP-TO-DATE
+> Task :shared_preferences_android:packageReleaseAssets UP-TO-DATE
+> Task :sign_in_with_apple:mergeReleaseShaders UP-TO-DATE
+> Task :sign_in_with_apple:compileReleaseShaders NO-SOURCE
+> Task :sign_in_with_apple:generateReleaseAssets UP-TO-DATE
+> Task :sign_in_with_apple:packageReleaseAssets UP-TO-DATE
+> Task :sqflite:mergeReleaseShaders UP-TO-DATE
+> Task :sqflite:compileReleaseShaders NO-SOURCE
+> Task :sqflite:generateReleaseAssets UP-TO-DATE
+> Task :sqflite:packageReleaseAssets UP-TO-DATE
+> Task :url_launcher_android:mergeReleaseShaders UP-TO-DATE
+> Task :url_launcher_android:compileReleaseShaders NO-SOURCE
+> Task :url_launcher_android:generateReleaseAssets UP-TO-DATE
+> Task :url_launcher_android:packageReleaseAssets UP-TO-DATE
+> Task :video_player_android:mergeReleaseShaders UP-TO-DATE
+> Task :video_player_android:compileReleaseShaders NO-SOURCE
+> Task :video_player_android:generateReleaseAssets UP-TO-DATE
+> Task :video_player_android:packageReleaseAssets UP-TO-DATE
+> Task :app:mergeReleaseAssets
+> Task :app:copyFlutterAssetsRelease
+> Task :app:generateReleaseResValues UP-TO-DATE
+> Task :app:injectCrashlyticsMappingFileIdRelease
+> Task :app:processReleaseGoogleServices UP-TO-DATE
+> Task :app:mapReleaseSourceSetPaths UP-TO-DATE
+> Task :app:generateReleaseResources UP-TO-DATE
+> Task :app:packageReleaseResources
+> Task :app:createReleaseCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksRelease UP-TO-DATE
+> Task :cloud_firestore:extractDeepLinksRelease UP-TO-DATE
+> Task :cloud_firestore:processReleaseManifest UP-TO-DATE
+> Task :file_picker:extractDeepLinksRelease UP-TO-DATE
+> Task :file_picker:processReleaseManifest UP-TO-DATE
+> Task :app:parseReleaseLocalResources
+> Task :firebase_auth:extractDeepLinksRelease UP-TO-DATE
+> Task :firebase_auth:processReleaseManifest UP-TO-DATE
+> Task :firebase_core:extractDeepLinksRelease UP-TO-DATE
+> Task :firebase_core:processReleaseManifest UP-TO-DATE
+> Task :firebase_crashlytics:extractDeepLinksRelease UP-TO-DATE
+> Task :firebase_crashlytics:processReleaseManifest UP-TO-DATE
+> Task :firebase_messaging:extractDeepLinksRelease UP-TO-DATE
+> Task :firebase_messaging:processReleaseManifest UP-TO-DATE
+> Task :firebase_storage:extractDeepLinksRelease UP-TO-DATE
+> Task :firebase_storage:processReleaseManifest UP-TO-DATE
+> Task :flutter_local_notifications:extractDeepLinksRelease UP-TO-DATE
+> Task :flutter_local_notifications:processReleaseManifest UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:extractDeepLinksRelease UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:processReleaseManifest UP-TO-DATE
+> Task :geolocator_android:extractDeepLinksRelease UP-TO-DATE
+> Task :geolocator_android:processReleaseManifest UP-TO-DATE
+> Task :google_maps_flutter_android:extractDeepLinksRelease UP-TO-DATE
+> Task :google_maps_flutter_android:processReleaseManifest UP-TO-DATE
+> Task :google_sign_in_android:extractDeepLinksRelease UP-TO-DATE
+> Task :google_sign_in_android:processReleaseManifest UP-TO-DATE
+> Task :image_picker_android:extractDeepLinksRelease UP-TO-DATE
+> Task :image_picker_android:processReleaseManifest UP-TO-DATE
+> Task :path_provider_android:extractDeepLinksRelease UP-TO-DATE
+> Task :path_provider_android:processReleaseManifest UP-TO-DATE
+> Task :share_plus:extractDeepLinksRelease UP-TO-DATE
+> Task :share_plus:processReleaseManifest UP-TO-DATE
+> Task :shared_preferences_android:extractDeepLinksRelease UP-TO-DATE
+> Task :shared_preferences_android:processReleaseManifest UP-TO-DATE
+> Task :sign_in_with_apple:extractDeepLinksRelease UP-TO-DATE
+> Task :sign_in_with_apple:processReleaseManifest UP-TO-DATE
+> Task :sqflite:extractDeepLinksRelease UP-TO-DATE
+> Task :sqflite:processReleaseManifest UP-TO-DATE
+> Task :url_launcher_android:extractDeepLinksRelease UP-TO-DATE
+> Task :url_launcher_android:processReleaseManifest UP-TO-DATE
+> Task :video_player_android:extractDeepLinksRelease UP-TO-DATE
+> Task :video_player_android:processReleaseManifest UP-TO-DATE
+> Task :app:processReleaseMainManifest UP-TO-DATE
+> Task :app:processReleaseManifest UP-TO-DATE
+> Task :app:processReleaseManifestForPackage UP-TO-DATE
+> Task :cloud_firestore:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :file_picker:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :firebase_auth:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :firebase_crashlytics:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :firebase_messaging:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :firebase_storage:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :flutter_local_notifications:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :geolocator_android:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :google_maps_flutter_android:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :google_sign_in_android:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :image_picker_android:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :path_provider_android:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :share_plus:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :shared_preferences_android:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :sign_in_with_apple:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :sqflite:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :url_launcher_android:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :video_player_android:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :app:javaPreCompileRelease UP-TO-DATE
+> Task :cloud_firestore:bundleLibRuntimeToJarRelease UP-TO-DATE
+> Task :file_picker:bundleLibRuntimeToJarRelease UP-TO-DATE
+> Task :firebase_auth:bundleLibRuntimeToJarRelease UP-TO-DATE
+> Task :firebase_core:bundleLibRuntimeToJarRelease UP-TO-DATE
+> Task :firebase_crashlytics:bundleLibRuntimeToJarRelease UP-TO-DATE
+> Task :firebase_messaging:bundleLibRuntimeToJarRelease UP-TO-DATE
+> Task :firebase_storage:bundleLibRuntimeToJarRelease UP-TO-DATE
+> Task :flutter_local_notifications:bundleLibRuntimeToJarRelease UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:bundleLibRuntimeToJarRelease UP-TO-DATE
+> Task :geolocator_android:bundleLibRuntimeToJarRelease UP-TO-DATE
+> Task :google_maps_flutter_android:bundleLibRuntimeToJarRelease UP-TO-DATE
+> Task :google_sign_in_android:bundleLibRuntimeToJarRelease UP-TO-DATE
+> Task :image_picker_android:bundleLibRuntimeToJarRelease UP-TO-DATE
+> Task :path_provider_android:bundleLibRuntimeToJarRelease UP-TO-DATE
+> Task :share_plus:bundleLibRuntimeToJarRelease UP-TO-DATE
+> Task :shared_preferences_android:bundleLibRuntimeToJarRelease UP-TO-DATE
+> Task :sign_in_with_apple:bundleLibRuntimeToJarRelease UP-TO-DATE
+> Task :sqflite:bundleLibRuntimeToJarRelease UP-TO-DATE
+> Task :url_launcher_android:bundleLibRuntimeToJarRelease UP-TO-DATE
+> Task :video_player_android:bundleLibRuntimeToJarRelease UP-TO-DATE
+> Task :app:extractProguardFiles UP-TO-DATE
+> Task :cloud_firestore:processReleaseJavaRes NO-SOURCE
+> Task :file_picker:processReleaseJavaRes UP-TO-DATE
+> Task :firebase_auth:processReleaseJavaRes NO-SOURCE
+> Task :firebase_core:processReleaseJavaRes NO-SOURCE
+> Task :firebase_crashlytics:processReleaseJavaRes NO-SOURCE
+> Task :firebase_messaging:processReleaseJavaRes NO-SOURCE
+> Task :firebase_storage:processReleaseJavaRes NO-SOURCE
+> Task :flutter_local_notifications:processReleaseJavaRes NO-SOURCE
+> Task :flutter_plugin_android_lifecycle:processReleaseJavaRes NO-SOURCE
+> Task :geolocator_android:processReleaseJavaRes NO-SOURCE
+> Task :google_maps_flutter_android:processReleaseJavaRes NO-SOURCE
+> Task :google_sign_in_android:processReleaseJavaRes NO-SOURCE
+> Task :image_picker_android:processReleaseJavaRes NO-SOURCE
+> Task :path_provider_android:processReleaseJavaRes NO-SOURCE
+> Task :share_plus:processReleaseJavaRes UP-TO-DATE
+> Task :shared_preferences_android:processReleaseJavaRes UP-TO-DATE
+> Task :sign_in_with_apple:processReleaseJavaRes UP-TO-DATE
+> Task :sqflite:processReleaseJavaRes NO-SOURCE
+> Task :url_launcher_android:processReleaseJavaRes NO-SOURCE
+> Task :video_player_android:processReleaseJavaRes NO-SOURCE
+> Task :app:mergeReleaseStartupProfile UP-TO-DATE
+> Task :app:compressReleaseAssets UP-TO-DATE
+> Task :app:extractReleaseVersionControlInfo UP-TO-DATE
+> Task :app:collectReleaseDependencies UP-TO-DATE
+> Task :app:sdkReleaseDependencyData UP-TO-DATE
+> Task :app:validateSigningRelease UP-TO-DATE
+> Task :app:writeReleaseAppMetadata UP-TO-DATE
+> Task :app:writeReleaseSigningConfigVersions UP-TO-DATE
+> Task :cloud_firestore:stripReleaseDebugSymbols NO-SOURCE
+> Task :cloud_firestore:copyReleaseJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :cloud_firestore:extractDeepLinksForAarRelease UP-TO-DATE
+> Task :cloud_firestore:extractReleaseAnnotations UP-TO-DATE
+> Task :cloud_firestore:mergeReleaseConsumerProguardFiles UP-TO-DATE
+> Task :cloud_firestore:prepareLintJarForPublish UP-TO-DATE
+> Task :cloud_firestore:mergeReleaseJavaResource UP-TO-DATE
+> Task :cloud_firestore:syncReleaseLibJars UP-TO-DATE
+> Task :cloud_firestore:bundleReleaseAar UP-TO-DATE
+> Task :cloud_firestore:mapReleaseSourceSetPaths UP-TO-DATE
+> Task :cloud_firestore:mergeReleaseResources UP-TO-DATE
+> Task :firebase_core:compileReleaseLibraryResources UP-TO-DATE
+> Task :cloud_firestore:verifyReleaseResources UP-TO-DATE
+> Task :cloud_firestore:assembleRelease UP-TO-DATE
+> Task :file_picker:stripReleaseDebugSymbols NO-SOURCE
+> Task :file_picker:copyReleaseJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :file_picker:extractDeepLinksForAarRelease UP-TO-DATE
+> Task :file_picker:extractReleaseAnnotations UP-TO-DATE
+> Task :file_picker:mergeReleaseConsumerProguardFiles UP-TO-DATE
+> Task :file_picker:prepareLintJarForPublish UP-TO-DATE
+> Task :file_picker:mergeReleaseJavaResource UP-TO-DATE
+> Task :file_picker:syncReleaseLibJars UP-TO-DATE
+> Task :file_picker:bundleReleaseAar UP-TO-DATE
+> Task :file_picker:mapReleaseSourceSetPaths UP-TO-DATE
+> Task :file_picker:mergeReleaseResources UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:compileReleaseLibraryResources UP-TO-DATE
+> Task :file_picker:verifyReleaseResources UP-TO-DATE
+> Task :file_picker:assembleRelease UP-TO-DATE
+> Task :firebase_auth:stripReleaseDebugSymbols NO-SOURCE
+> Task :firebase_auth:copyReleaseJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :firebase_auth:extractDeepLinksForAarRelease UP-TO-DATE
+> Task :firebase_auth:extractReleaseAnnotations UP-TO-DATE
+> Task :firebase_auth:mergeReleaseConsumerProguardFiles UP-TO-DATE
+> Task :firebase_auth:prepareLintJarForPublish UP-TO-DATE
+> Task :firebase_auth:mergeReleaseJavaResource UP-TO-DATE
+> Task :firebase_auth:syncReleaseLibJars UP-TO-DATE
+> Task :firebase_auth:bundleReleaseAar UP-TO-DATE
+> Task :firebase_auth:mapReleaseSourceSetPaths UP-TO-DATE
+> Task :firebase_auth:mergeReleaseResources UP-TO-DATE
+> Task :firebase_auth:verifyReleaseResources UP-TO-DATE
+> Task :firebase_auth:assembleRelease UP-TO-DATE
+> Task :firebase_core:stripReleaseDebugSymbols NO-SOURCE
+> Task :firebase_core:copyReleaseJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :firebase_core:extractDeepLinksForAarRelease UP-TO-DATE
+> Task :firebase_core:extractReleaseAnnotations UP-TO-DATE
+> Task :firebase_core:mergeReleaseConsumerProguardFiles UP-TO-DATE
+> Task :firebase_core:prepareLintJarForPublish UP-TO-DATE
+> Task :firebase_core:mergeReleaseJavaResource UP-TO-DATE
+> Task :firebase_core:syncReleaseLibJars UP-TO-DATE
+> Task :firebase_core:bundleReleaseAar UP-TO-DATE
+> Task :firebase_core:mapReleaseSourceSetPaths UP-TO-DATE
+> Task :firebase_core:mergeReleaseResources UP-TO-DATE
+> Task :firebase_core:verifyReleaseResources UP-TO-DATE
+> Task :firebase_core:assembleRelease UP-TO-DATE
+> Task :firebase_crashlytics:stripReleaseDebugSymbols NO-SOURCE
+> Task :firebase_crashlytics:copyReleaseJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :firebase_crashlytics:extractDeepLinksForAarRelease UP-TO-DATE
+> Task :firebase_crashlytics:extractReleaseAnnotations UP-TO-DATE
+> Task :firebase_crashlytics:mergeReleaseConsumerProguardFiles UP-TO-DATE
+> Task :firebase_crashlytics:prepareLintJarForPublish UP-TO-DATE
+> Task :firebase_crashlytics:mergeReleaseJavaResource UP-TO-DATE
+> Task :firebase_crashlytics:syncReleaseLibJars UP-TO-DATE
+> Task :firebase_crashlytics:bundleReleaseAar UP-TO-DATE
+> Task :firebase_crashlytics:mapReleaseSourceSetPaths UP-TO-DATE
+> Task :firebase_crashlytics:mergeReleaseResources UP-TO-DATE
+> Task :firebase_crashlytics:verifyReleaseResources UP-TO-DATE
+> Task :firebase_crashlytics:assembleRelease UP-TO-DATE
+> Task :firebase_messaging:stripReleaseDebugSymbols NO-SOURCE
+> Task :firebase_messaging:copyReleaseJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :firebase_messaging:extractDeepLinksForAarRelease UP-TO-DATE
+> Task :firebase_messaging:extractReleaseAnnotations UP-TO-DATE
+> Task :firebase_messaging:mergeReleaseConsumerProguardFiles UP-TO-DATE
+> Task :firebase_messaging:prepareLintJarForPublish UP-TO-DATE
+> Task :firebase_messaging:mergeReleaseJavaResource UP-TO-DATE
+> Task :firebase_messaging:syncReleaseLibJars UP-TO-DATE
+> Task :firebase_messaging:bundleReleaseAar UP-TO-DATE
+> Task :firebase_messaging:mapReleaseSourceSetPaths UP-TO-DATE
+> Task :firebase_messaging:mergeReleaseResources UP-TO-DATE
+> Task :firebase_messaging:verifyReleaseResources UP-TO-DATE
+> Task :firebase_messaging:assembleRelease UP-TO-DATE
+> Task :firebase_storage:stripReleaseDebugSymbols NO-SOURCE
+> Task :firebase_storage:copyReleaseJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :firebase_storage:extractDeepLinksForAarRelease UP-TO-DATE
+> Task :firebase_storage:extractReleaseAnnotations UP-TO-DATE
+> Task :firebase_storage:mergeReleaseConsumerProguardFiles UP-TO-DATE
+> Task :firebase_storage:prepareLintJarForPublish UP-TO-DATE
+> Task :firebase_storage:mergeReleaseJavaResource UP-TO-DATE
+> Task :firebase_storage:syncReleaseLibJars UP-TO-DATE
+> Task :firebase_storage:bundleReleaseAar UP-TO-DATE
+> Task :firebase_storage:mapReleaseSourceSetPaths UP-TO-DATE
+> Task :firebase_storage:mergeReleaseResources UP-TO-DATE
+> Task :firebase_storage:verifyReleaseResources UP-TO-DATE
+> Task :firebase_storage:assembleRelease UP-TO-DATE
+> Task :flutter_local_notifications:stripReleaseDebugSymbols NO-SOURCE
+> Task :flutter_local_notifications:copyReleaseJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :flutter_local_notifications:extractDeepLinksForAarRelease UP-TO-DATE
+> Task :flutter_local_notifications:extractReleaseAnnotations UP-TO-DATE
+> Task :flutter_local_notifications:mergeReleaseConsumerProguardFiles UP-TO-DATE
+> Task :app:mergeReleaseResources
+> Task :flutter_local_notifications:prepareLintJarForPublish UP-TO-DATE
+> Task :flutter_local_notifications:mergeReleaseJavaResource UP-TO-DATE
+> Task :flutter_local_notifications:syncReleaseLibJars UP-TO-DATE
+> Task :flutter_local_notifications:bundleReleaseAar UP-TO-DATE
+> Task :flutter_local_notifications:mapReleaseSourceSetPaths UP-TO-DATE
+> Task :flutter_local_notifications:mergeReleaseResources UP-TO-DATE
+> Task :flutter_local_notifications:verifyReleaseResources UP-TO-DATE
+> Task :flutter_local_notifications:assembleRelease UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:stripReleaseDebugSymbols NO-SOURCE
+> Task :flutter_plugin_android_lifecycle:copyReleaseJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:extractDeepLinksForAarRelease UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:extractReleaseAnnotations UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:mergeReleaseConsumerProguardFiles UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:prepareLintJarForPublish UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:mergeReleaseJavaResource UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:syncReleaseLibJars UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:bundleReleaseAar UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:mapReleaseSourceSetPaths UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:mergeReleaseResources UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:verifyReleaseResources UP-TO-DATE
+> Task :flutter_plugin_android_lifecycle:assembleRelease UP-TO-DATE
+> Task :geolocator_android:stripReleaseDebugSymbols NO-SOURCE
+> Task :geolocator_android:copyReleaseJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :geolocator_android:extractDeepLinksForAarRelease UP-TO-DATE
+> Task :geolocator_android:extractReleaseAnnotations UP-TO-DATE
+> Task :geolocator_android:mergeReleaseConsumerProguardFiles UP-TO-DATE
+> Task :geolocator_android:prepareLintJarForPublish UP-TO-DATE
+> Task :geolocator_android:mergeReleaseJavaResource UP-TO-DATE
+> Task :geolocator_android:syncReleaseLibJars UP-TO-DATE
+> Task :geolocator_android:bundleReleaseAar
+> Task :geolocator_android:mapReleaseSourceSetPaths UP-TO-DATE
+> Task :app:processReleaseResources
+> Task :geolocator_android:mergeReleaseResources
+> Task :app:compileReleaseKotlin UP-TO-DATE
+> Task :app:compileReleaseJavaWithJavac UP-TO-DATE
+> Task :app:expandReleaseArtProfileWildcards UP-TO-DATE
+> Task :app:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :app:processReleaseJavaRes UP-TO-DATE
+> Task :app:mergeReleaseJavaResource UP-TO-DATE
+> Task :google_maps_flutter_android:stripReleaseDebugSymbols NO-SOURCE
+> Task :google_maps_flutter_android:copyReleaseJniLibsProjectAndLocalJars
+> Task :google_maps_flutter_android:extractDeepLinksForAarRelease
+> Task :google_maps_flutter_android:extractReleaseAnnotations
+> Task :google_maps_flutter_android:mergeReleaseConsumerProguardFiles
+> Task :google_maps_flutter_android:prepareLintJarForPublish
+> Task :google_maps_flutter_android:mergeReleaseJavaResource
+> Task :google_maps_flutter_android:mapReleaseSourceSetPaths
+> Task :google_maps_flutter_android:syncReleaseLibJars
+> Task :google_maps_flutter_android:bundleReleaseAar
+> Task :geolocator_android:verifyReleaseResources
+> Task :google_maps_flutter_android:mergeReleaseResources
+> Task :geolocator_android:assembleRelease
+> Task :google_sign_in_android:stripReleaseDebugSymbols NO-SOURCE
+> Task :google_sign_in_android:copyReleaseJniLibsProjectAndLocalJars
+> Task :google_sign_in_android:extractDeepLinksForAarRelease
+> Task :google_sign_in_android:extractReleaseAnnotations
+> Task :google_sign_in_android:mergeReleaseConsumerProguardFiles
+> Task :google_sign_in_android:prepareLintJarForPublish
+> Task :google_sign_in_android:mergeReleaseJavaResource
+> Task :google_sign_in_android:mapReleaseSourceSetPaths
+> Task :google_sign_in_android:syncReleaseLibJars
+> Task :google_sign_in_android:bundleReleaseAar
+> Task :google_maps_flutter_android:verifyReleaseResources
+> Task :google_sign_in_android:mergeReleaseResources
+> Task :google_maps_flutter_android:assembleRelease
+> Task :image_picker_android:stripReleaseDebugSymbols NO-SOURCE
+> Task :image_picker_android:copyReleaseJniLibsProjectAndLocalJars
+> Task :image_picker_android:extractDeepLinksForAarRelease
+> Task :image_picker_android:extractReleaseAnnotations
+> Task :image_picker_android:mergeReleaseConsumerProguardFiles
+> Task :image_picker_android:prepareLintJarForPublish
+> Task :image_picker_android:mergeReleaseJavaResource
+> Task :image_picker_android:mapReleaseSourceSetPaths
+> Task :image_picker_android:syncReleaseLibJars
+> Task :image_picker_android:bundleReleaseAar
+> Task :image_picker_android:mergeReleaseResources
+> Task :path_provider_android:stripReleaseDebugSymbols NO-SOURCE
+> Task :app:convertLinkedResourcesToProtoRelease
+> Task :path_provider_android:extractDeepLinksForAarRelease
+> Task :path_provider_android:copyReleaseJniLibsProjectAndLocalJars
+> Task :path_provider_android:extractReleaseAnnotations
+> Task :path_provider_android:mergeReleaseConsumerProguardFiles
+> Task :path_provider_android:prepareLintJarForPublish
+> Task :path_provider_android:mergeReleaseJavaResource
+> Task :path_provider_android:mapReleaseSourceSetPaths
+> Task :path_provider_android:syncReleaseLibJars
+> Task :google_sign_in_android:verifyReleaseResources
+> Task :path_provider_android:bundleReleaseAar
+> Task :google_sign_in_android:assembleRelease
+> Task :image_picker_android:verifyReleaseResources
+> Task :path_provider_android:mergeReleaseResources
+> Task :image_picker_android:assembleRelease
+> Task :share_plus:stripReleaseDebugSymbols NO-SOURCE
+> Task :share_plus:copyReleaseJniLibsProjectAndLocalJars
+> Task :share_plus:extractDeepLinksForAarRelease
+> Task :share_plus:extractReleaseAnnotations
+> Task :share_plus:mergeReleaseConsumerProguardFiles
+> Task :share_plus:prepareLintJarForPublish
+> Task :share_plus:mapReleaseSourceSetPaths
+> Task :share_plus:mergeReleaseJavaResource
+
+> Task :app:minifyReleaseWithR8
+.\gradlew.bat : ERROR: Missing classes 
+detected while running R8. Please add 
+the missing classes or apply additional 
+keep rules that are generated in E:\planb
+2\planb-flutterflow\build\app\outputs\map
+ping\release\missing_rules.txt.
+At line:1 char:65
++ ... tion android; .\gradlew.bat 
+assembleRelease --stacktrace 2>&1 | 
+Out-F ...
++                   ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecifi 
+   ed: (ERROR: Missing ...sing_rules.tx  
+  t.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeComm 
+   andError
+ 
+ERROR: R8: Missing class com.google.andro
+id.play.core.splitcompat.SplitCompatAppli
+cation (referenced from: void io.flutter.
+embedding.android.FlutterPlayStoreSplitAp
+plication.<init>() and 2 other contexts)
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallException 
+(referenced from: void io.flutter.embeddi
+ng.engine.deferredcomponents.PlayStoreDef
+erredComponentManager.lambda$installDefer
+redComponent$1(int, java.lang.String, 
+java.lang.Exception))
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallManager 
+(referenced from: com.google.android.play
+.core.splitinstall.SplitInstallManager io
+.flutter.embedding.engine.deferredcompone
+nts.PlayStoreDeferredComponentManager.spl
+itInstallManager and 5 other contexts)
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallManagerFactory
+ (referenced from: void io.flutter.embedd
+ing.engine.deferredcomponents.PlayStoreDe
+ferredComponentManager.<init>(android.con
+tent.Context, 
+io.flutter.embedding.engine.FlutterJNI))
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallRequest$Builde
+r (referenced from: void io.flutter.embed
+ding.engine.deferredcomponents.PlayStoreD
+eferredComponentManager.installDeferredCo
+mponent(int, java.lang.String))
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallRequest 
+(referenced from: void io.flutter.embeddi
+ng.engine.deferredcomponents.PlayStoreDef
+erredComponentManager.installDeferredComp
+onent(int, java.lang.String))
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallSessionState 
+(referenced from: void io.flutter.embeddi
+ng.engine.deferredcomponents.PlayStoreDef
+erredComponentManager$FeatureInstallState
+UpdatedListener.onStateUpdate(com.google.
+android.play.core.splitinstall.SplitInsta
+llSessionState) and 1 other context)
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallStateUpdatedLi
+stener (referenced from: void io.flutter.
+embedding.engine.deferredcomponents.PlayS
+toreDeferredComponentManager.<init>(andro
+id.content.Context, 
+io.flutter.embedding.engine.FlutterJNI) 
+and 2 other contexts)
+Missing class com.google.android.play.cor
+e.tasks.OnFailureListener (referenced 
+from: void io.flutter.embedding.engine.de
+ferredcomponents.PlayStoreDeferredCompone
+ntManager.installDeferredComponent(int, 
+java.lang.String))
+Missing class com.google.android.play.cor
+e.tasks.OnSuccessListener (referenced 
+from: void io.flutter.embedding.engine.de
+ferredcomponents.PlayStoreDeferredCompone
+ntManager.installDeferredComponent(int, 
+java.lang.String))
+Missing class 
+com.google.android.play.core.tasks.Task 
+(referenced from: void io.flutter.embeddi
+ng.engine.deferredcomponents.PlayStoreDef
+erredComponentManager.installDeferredComp
+onent(int, java.lang.String) and 1 other 
+context)
+
+> Task :app:minifyReleaseWithR8 FAILED
+> Task :path_provider_android:verifyReleaseResources
+> Task :share_plus:mergeReleaseResources
+
+[Incubating] Problems report is available at: file:///E:/planb2/planb-flutterflow/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task 
+':app:minifyReleaseWithR8'.
+> A failure occurred while executing com.
+android.build.gradle.internal.tasks.R8Tas
+k$R8Runnable
+   > Compilation failed to complete
+
+* Try:
+> Run with --info or --debug option to 
+get more log output.
+> Run with --scan to get full insights.
+> Get more help at 
+https://help.gradle.org.
+
+* Exception is:
+org.gradle.api.tasks.TaskExecutionExcepti
+on: Execution failed for task 
+':app:minifyReleaseWithR8'.
+	at org.gradle.api.internal.tasks.executi
+on.ExecuteActionsTaskExecuter.lambda$exec
+uteIfValid$1(ExecuteActionsTaskExecuter.j
+ava:130)
+	at org.gradle.internal.Try$Failure.ifSuc
+cessfulOrElse(Try.java:293)
+	at org.gradle.api.internal.tasks.executi
+on.ExecuteActionsTaskExecuter.executeIfVa
+lid(ExecuteActionsTaskExecuter.java:128)
+	at org.gradle.api.internal.tasks.executi
+on.ExecuteActionsTaskExecuter.execute(Exe
+cuteActionsTaskExecuter.java:116)
+	at org.gradle.api.internal.tasks.executi
+on.ProblemsTaskPathTrackingTaskExecuter.e
+xecute(ProblemsTaskPathTrackingTaskExecut
+er.java:40)
+	at org.gradle.api.internal.tasks.executi
+on.FinalizePropertiesTaskExecuter.execute
+(FinalizePropertiesTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.executi
+on.ResolveTaskExecutionModeExecuter.execu
+te(ResolveTaskExecutionModeExecuter.java:
+51)
+	at org.gradle.api.internal.tasks.executi
+on.SkipTaskWithNoActionsExecuter.execute(
+SkipTaskWithNoActionsExecuter.java:57)
+	at org.gradle.api.internal.tasks.executi
+on.SkipOnlyIfTaskExecuter.execute(SkipOnl
+yIfTaskExecuter.java:74)
+	at org.gradle.api.internal.tasks.executi
+on.CatchExceptionTaskExecuter.execute(Cat
+chExceptionTaskExecuter.java:36)
+	at org.gradle.api.internal.tasks.executi
+on.EventFiringTaskExecuter$1.executeTask(
+EventFiringTaskExecuter.java:77)
+	at org.gradle.api.internal.tasks.executi
+on.EventFiringTaskExecuter$1.call(EventFi
+ringTaskExecuter.java:55)
+	at org.gradle.api.internal.tasks.executi
+on.EventFiringTaskExecuter$1.call(EventFi
+ringTaskExecuter.java:52)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner$CallableBuildOperat
+ionWorker.execute(DefaultBuildOperationRu
+nner.java:209)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner$CallableBuildOperat
+ionWorker.execute(DefaultBuildOperationRu
+nner.java:204)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner$2.execute(DefaultBu
+ildOperationRunner.java:66)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner$2.execute(DefaultBu
+ildOperationRunner.java:59)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner.execute(DefaultBuil
+dOperationRunner.java:166)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner.execute(DefaultBuil
+dOperationRunner.java:59)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner.call(DefaultBuildOp
+erationRunner.java:53)
+	at org.gradle.api.internal.tasks.executi
+on.EventFiringTaskExecuter.execute(EventF
+iringTaskExecuter.java:52)
+	at org.gradle.execution.plan.LocalTaskNo
+deExecutor.execute(LocalTaskNodeExecutor.
+java:42)
+	at org.gradle.execution.taskgraph.Defaul
+tTaskExecutionGraph$InvokeNodeExecutorsAc
+tion.execute(DefaultTaskExecutionGraph.ja
+va:331)
+	at org.gradle.execution.taskgraph.Defaul
+tTaskExecutionGraph$InvokeNodeExecutorsAc
+tion.execute(DefaultTaskExecutionGraph.ja
+va:318)
+	at org.gradle.execution.taskgraph.Defaul
+tTaskExecutionGraph$BuildOperationAwareEx
+ecutionAction.lambda$execute$0(DefaultTas
+kExecutionGraph.java:314)
+	at org.gradle.internal.operations.Curren
+tBuildOperationRef.with(CurrentBuildOpera
+tionRef.java:85)
+	at org.gradle.execution.taskgraph.Defaul
+tTaskExecutionGraph$BuildOperationAwareEx
+ecutionAction.execute(DefaultTaskExecutio
+nGraph.java:314)
+	at org.gradle.execution.taskgraph.Defaul
+tTaskExecutionGraph$BuildOperationAwareEx
+ecutionAction.execute(DefaultTaskExecutio
+nGraph.java:303)
+	at org.gradle.execution.plan.DefaultPlan
+Executor$ExecutorWorker.execute(DefaultPl
+anExecutor.java:459)
+	at org.gradle.execution.plan.DefaultPlan
+Executor$ExecutorWorker.run(DefaultPlanEx
+ecutor.java:376)
+	at org.gradle.internal.concurrent.Execut
+orPolicy$CatchAndRecordFailures.onExecute
+(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.Abstra
+ctManagedExecutor$1.run(AbstractManagedEx
+ecutor.java:48)
+Caused by: org.gradle.workers.internal.De
+faultWorkerExecutor$WorkExecutionExceptio
+n: A failure occurred while executing com
+.android.build.gradle.internal.tasks.R8Ta
+sk$R8Runnable
+	at org.gradle.workers.internal.DefaultWo
+rkerExecutor$WorkItemExecution.waitForCom
+pletion(DefaultWorkerExecutor.java:287)
+	at org.gradle.internal.work.DefaultAsync
+WorkTracker.lambda$waitForItemsAndGatherF
+ailures$2(DefaultAsyncWorkTracker.java:13
+0)
+	at org.gradle.internal.Factories$1.creat
+e(Factories.java:31)
+	at org.gradle.internal.work.DefaultWorke
+rLeaseService.withoutLocks(DefaultWorkerL
+easeService.java:335)
+	at org.gradle.internal.work.DefaultWorke
+rLeaseService.withoutLocks(DefaultWorkerL
+easeService.java:318)
+	at org.gradle.internal.work.DefaultWorke
+rLeaseService.withoutLock(DefaultWorkerLe
+aseService.java:323)
+	at org.gradle.internal.work.DefaultAsync
+WorkTracker.waitForItemsAndGatherFailures
+(DefaultAsyncWorkTracker.java:126)
+	at org.gradle.internal.work.DefaultAsync
+WorkTracker.waitForItemsAndGatherFailures
+(DefaultAsyncWorkTracker.java:92)
+	at org.gradle.internal.work.DefaultAsync
+WorkTracker.waitForAll(DefaultAsyncWorkTr
+acker.java:78)
+	at org.gradle.internal.work.DefaultAsync
+WorkTracker.waitForCompletion(DefaultAsyn
+cWorkTracker.java:66)
+	at org.gradle.api.internal.tasks.executi
+on.TaskExecution$3.run(TaskExecution.java
+:252)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner$1.execute(DefaultBu
+ildOperationRunner.java:29)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner$1.execute(DefaultBu
+ildOperationRunner.java:26)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner$2.execute(DefaultBu
+ildOperationRunner.java:66)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner$2.execute(DefaultBu
+ildOperationRunner.java:59)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner.execute(DefaultBuil
+dOperationRunner.java:166)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner.execute(DefaultBuil
+dOperationRunner.java:59)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner.run(DefaultBuildOpe
+rationRunner.java:47)
+	at org.gradle.api.internal.tasks.executi
+on.TaskExecution.executeAction(TaskExecut
+ion.java:229)
+	at org.gradle.api.internal.tasks.executi
+on.TaskExecution.executeActions(TaskExecu
+tion.java:212)
+	at org.gradle.api.internal.tasks.executi
+on.TaskExecution.executeWithPreviousOutpu
+tFiles(TaskExecution.java:195)
+	at org.gradle.api.internal.tasks.executi
+on.TaskExecution.execute(TaskExecution.ja
+va:162)
+	at org.gradle.internal.execution.steps.E
+xecuteStep.executeInternal(ExecuteStep.ja
+va:105)
+	at org.gradle.internal.execution.steps.E
+xecuteStep.access$000(ExecuteStep.java:44
+)
+	at org.gradle.internal.execution.steps.E
+xecuteStep$1.call(ExecuteStep.java:59)
+	at org.gradle.internal.execution.steps.E
+xecuteStep$1.call(ExecuteStep.java:56)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner$CallableBuildOperat
+ionWorker.execute(DefaultBuildOperationRu
+nner.java:209)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner$CallableBuildOperat
+ionWorker.execute(DefaultBuildOperationRu
+nner.java:204)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner$2.execute(DefaultBu
+ildOperationRunner.java:66)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner$2.execute(DefaultBu
+ildOperationRunner.java:59)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner.execute(DefaultBuil
+dOperationRunner.java:166)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner.execute(DefaultBuil
+dOperationRunner.java:59)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner.call(DefaultBuildOp
+erationRunner.java:53)
+	at org.gradle.internal.execution.steps.E
+xecuteStep.execute(ExecuteStep.java:56)
+	at org.gradle.internal.execution.steps.E
+xecuteStep.execute(ExecuteStep.java:44)
+	at org.gradle.internal.execution.steps.C
+ancelExecutionStep.execute(CancelExecutio
+nStep.java:42)
+	at org.gradle.internal.execution.steps.T
+imeoutStep.executeWithoutTimeout(TimeoutS
+tep.java:75)
+	at org.gradle.internal.execution.steps.T
+imeoutStep.execute(TimeoutStep.java:55)
+	at org.gradle.internal.execution.steps.P
+reCreateOutputParentsStep.execute(PreCrea
+teOutputParentsStep.java:50)
+	at org.gradle.internal.execution.steps.P
+reCreateOutputParentsStep.execute(PreCrea
+teOutputParentsStep.java:28)
+	at org.gradle.internal.execution.steps.R
+emovePreviousOutputsStep.execute(RemovePr
+eviousOutputsStep.java:67)
+	at org.gradle.internal.execution.steps.R
+emovePreviousOutputsStep.execute(RemovePr
+eviousOutputsStep.java:37)
+	at org.gradle.internal.execution.steps.B
+roadcastChangingOutputsStep.execute(Broad
+castChangingOutputsStep.java:61)
+	at org.gradle.internal.execution.steps.B
+roadcastChangingOutputsStep.execute(Broad
+castChangingOutputsStep.java:26)
+	at org.gradle.internal.execution.steps.C
+aptureOutputsAfterExecutionStep.execute(C
+aptureOutputsAfterExecutionStep.java:69)
+	at org.gradle.internal.execution.steps.C
+aptureOutputsAfterExecutionStep.execute(C
+aptureOutputsAfterExecutionStep.java:46)
+	at org.gradle.internal.execution.steps.R
+esolveInputChangesStep.execute(ResolveInp
+utChangesStep.java:40)
+	at org.gradle.internal.execution.steps.R
+esolveInputChangesStep.execute(ResolveInp
+utChangesStep.java:29)
+	at org.gradle.internal.execution.steps.B
+uildCacheStep.executeWithoutCache(BuildCa
+cheStep.java:189)
+	at org.gradle.internal.execution.steps.B
+uildCacheStep.lambda$execute$1(BuildCache
+Step.java:75)
+	at org.gradle.internal.Either$Right.fold
+(Either.java:175)
+	at org.gradle.internal.execution.caching
+.CachingState.fold(CachingState.java:62)
+	at org.gradle.internal.execution.steps.B
+uildCacheStep.execute(BuildCacheStep.java
+:73)
+	at org.gradle.internal.execution.steps.B
+uildCacheStep.execute(BuildCacheStep.java
+:48)
+	at org.gradle.internal.execution.steps.S
+toreExecutionStateStep.execute(StoreExecu
+tionStateStep.java:46)
+	at org.gradle.internal.execution.steps.S
+toreExecutionStateStep.execute(StoreExecu
+tionStateStep.java:35)
+	at org.gradle.internal.execution.steps.S
+kipUpToDateStep.executeBecause(SkipUpToDa
+teStep.java:75)
+	at org.gradle.internal.execution.steps.S
+kipUpToDateStep.lambda$execute$2(SkipUpTo
+DateStep.java:53)
+	at org.gradle.internal.execution.steps.S
+kipUpToDateStep.execute(SkipUpToDateStep.
+java:53)
+	at org.gradle.internal.execution.steps.S
+kipUpToDateStep.execute(SkipUpToDateStep.
+java:35)
+	at org.gradle.internal.execution.steps.l
+egacy.MarkSnapshottingInputsFinishedStep.
+execute(MarkSnapshottingInputsFinishedSte
+p.java:37)
+	at org.gradle.internal.execution.steps.l
+egacy.MarkSnapshottingInputsFinishedStep.
+execute(MarkSnapshottingInputsFinishedSte
+p.java:27)
+	at org.gradle.internal.execution.steps.R
+esolveIncrementalCachingStateStep.execute
+Delegate(ResolveIncrementalCachingStateSt
+ep.java:49)
+	at org.gradle.internal.execution.steps.R
+esolveIncrementalCachingStateStep.execute
+Delegate(ResolveIncrementalCachingStateSt
+ep.java:27)
+	at org.gradle.internal.execution.steps.A
+bstractResolveCachingStateStep.execute(Ab
+stractResolveCachingStateStep.java:71)
+	at org.gradle.internal.execution.steps.A
+bstractResolveCachingStateStep.execute(Ab
+stractResolveCachingStateStep.java:39)
+	at org.gradle.internal.execution.steps.R
+esolveChangesStep.execute(ResolveChangesS
+tep.java:65)
+	at org.gradle.internal.execution.steps.R
+esolveChangesStep.execute(ResolveChangesS
+tep.java:36)
+	at org.gradle.internal.execution.steps.V
+alidateStep.execute(ValidateStep.java:107
+)
+	at org.gradle.internal.execution.steps.V
+alidateStep.execute(ValidateStep.java:56)
+	at org.gradle.internal.execution.steps.A
+bstractCaptureStateBeforeExecutionStep.ex
+ecute(AbstractCaptureStateBeforeExecution
+Step.java:64)
+	at org.gradle.internal.execution.steps.A
+bstractCaptureStateBeforeExecutionStep.ex
+ecute(AbstractCaptureStateBeforeExecution
+Step.java:43)
+	at org.gradle.internal.execution.steps.A
+bstractSkipEmptyWorkStep.executeWithNonEm
+ptySources(AbstractSkipEmptyWorkStep.java
+:125)
+	at org.gradle.internal.execution.steps.A
+bstractSkipEmptyWorkStep.execute(Abstract
+SkipEmptyWorkStep.java:56)
+	at org.gradle.internal.execution.steps.A
+bstractSkipEmptyWorkStep.execute(Abstract
+SkipEmptyWorkStep.java:36)
+	at org.gradle.internal.execution.steps.l
+egacy.MarkSnapshottingInputsStartedStep.e
+xecute(MarkSnapshottingInputsStartedStep.
+java:38)
+	at org.gradle.internal.execution.steps.L
+oadPreviousExecutionStateStep.execute(Loa
+dPreviousExecutionStateStep.java:36)
+	at org.gradle.internal.execution.steps.L
+oadPreviousExecutionStateStep.execute(Loa
+dPreviousExecutionStateStep.java:23)
+	at org.gradle.internal.execution.steps.H
+andleStaleOutputsStep.execute(HandleStale
+OutputsStep.java:75)
+	at org.gradle.internal.execution.steps.H
+andleStaleOutputsStep.execute(HandleStale
+OutputsStep.java:41)
+	at org.gradle.internal.execution.steps.A
+ssignMutableWorkspaceStep.lambda$execute$
+0(AssignMutableWorkspaceStep.java:35)
+	at org.gradle.api.internal.tasks.executi
+on.TaskExecution$4.withWorkspace(TaskExec
+ution.java:289)
+	at org.gradle.internal.execution.steps.A
+ssignMutableWorkspaceStep.execute(AssignM
+utableWorkspaceStep.java:31)
+	at org.gradle.internal.execution.steps.A
+ssignMutableWorkspaceStep.execute(AssignM
+utableWorkspaceStep.java:22)
+	at org.gradle.internal.execution.steps.C
+hoosePipelineStep.execute(ChoosePipelineS
+tep.java:40)
+	at org.gradle.internal.execution.steps.C
+hoosePipelineStep.execute(ChoosePipelineS
+tep.java:23)
+	at org.gradle.internal.execution.steps.E
+xecuteWorkBuildOperationFiringStep.lambda
+$execute$2(ExecuteWorkBuildOperationFirin
+gStep.java:67)
+	at org.gradle.internal.execution.steps.E
+xecuteWorkBuildOperationFiringStep.execut
+e(ExecuteWorkBuildOperationFiringStep.jav
+a:67)
+	at org.gradle.internal.execution.steps.E
+xecuteWorkBuildOperationFiringStep.execut
+e(ExecuteWorkBuildOperationFiringStep.jav
+a:39)
+	at org.gradle.internal.execution.steps.I
+dentityCacheStep.execute(IdentityCacheSte
+p.java:46)
+	at org.gradle.internal.execution.steps.I
+dentityCacheStep.execute(IdentityCacheSte
+p.java:34)
+	at org.gradle.internal.execution.steps.I
+dentifyStep.execute(IdentifyStep.java:48)
+	at org.gradle.internal.execution.steps.I
+dentifyStep.execute(IdentifyStep.java:35)
+	at org.gradle.internal.execution.impl.De
+faultExecutionEngine$1.execute(DefaultExe
+cutionEngine.java:61)
+	at org.gradle.api.internal.tasks.executi
+on.ExecuteActionsTaskExecuter.executeIfVa
+lid(ExecuteActionsTaskExecuter.java:127)
+	at org.gradle.api.internal.tasks.executi
+on.ExecuteActionsTaskExecuter.execute(Exe
+cuteActionsTaskExecuter.java:116)
+	at org.gradle.api.internal.tasks.executi
+on.ProblemsTaskPathTrackingTaskExecuter.e
+xecute(ProblemsTaskPathTrackingTaskExecut
+er.java:40)
+	at org.gradle.api.internal.tasks.executi
+on.FinalizePropertiesTaskExecuter.execute
+(FinalizePropertiesTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.executi
+on.ResolveTaskExecutionModeExecuter.execu
+te(ResolveTaskExecutionModeExecuter.java:
+51)
+	at org.gradle.api.internal.tasks.executi
+on.SkipTaskWithNoActionsExecuter.execute(
+SkipTaskWithNoActionsExecuter.java:57)
+	at org.gradle.api.internal.tasks.executi
+on.SkipOnlyIfTaskExecuter.execute(SkipOnl
+yIfTaskExecuter.java:74)
+	at org.gradle.api.internal.tasks.executi
+on.CatchExceptionTaskExecuter.execute(Cat
+chExceptionTaskExecuter.java:36)
+	at org.gradle.api.internal.tasks.executi
+on.EventFiringTaskExecuter$1.executeTask(
+EventFiringTaskExecuter.java:77)
+	at org.gradle.api.internal.tasks.executi
+on.EventFiringTaskExecuter$1.call(EventFi
+ringTaskExecuter.java:55)
+	at org.gradle.api.internal.tasks.executi
+on.EventFiringTaskExecuter$1.call(EventFi
+ringTaskExecuter.java:52)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner$CallableBuildOperat
+ionWorker.execute(DefaultBuildOperationRu
+nner.java:209)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner$CallableBuildOperat
+ionWorker.execute(DefaultBuildOperationRu
+nner.java:204)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner$2.execute(DefaultBu
+ildOperationRunner.java:66)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner$2.execute(DefaultBu
+ildOperationRunner.java:59)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner.execute(DefaultBuil
+dOperationRunner.java:166)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner.execute(DefaultBuil
+dOperationRunner.java:59)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner.call(DefaultBuildOp
+erationRunner.java:53)
+	at org.gradle.api.internal.tasks.executi
+on.EventFiringTaskExecuter.execute(EventF
+iringTaskExecuter.java:52)
+	at org.gradle.execution.plan.LocalTaskNo
+deExecutor.execute(LocalTaskNodeExecutor.
+java:42)
+	at org.gradle.execution.taskgraph.Defaul
+tTaskExecutionGraph$InvokeNodeExecutorsAc
+tion.execute(DefaultTaskExecutionGraph.ja
+va:331)
+	at org.gradle.execution.taskgraph.Defaul
+tTaskExecutionGraph$InvokeNodeExecutorsAc
+tion.execute(DefaultTaskExecutionGraph.ja
+va:318)
+	at org.gradle.execution.taskgraph.Defaul
+tTaskExecutionGraph$BuildOperationAwareEx
+ecutionAction.lambda$execute$0(DefaultTas
+kExecutionGraph.java:314)
+	at org.gradle.internal.operations.Curren
+tBuildOperationRef.with(CurrentBuildOpera
+tionRef.java:85)
+	at org.gradle.execution.taskgraph.Defaul
+tTaskExecutionGraph$BuildOperationAwareEx
+ecutionAction.execute(DefaultTaskExecutio
+nGraph.java:314)
+	at org.gradle.execution.taskgraph.Defaul
+tTaskExecutionGraph$BuildOperationAwareEx
+ecutionAction.execute(DefaultTaskExecutio
+nGraph.java:303)
+	at org.gradle.execution.plan.DefaultPlan
+Executor$ExecutorWorker.execute(DefaultPl
+anExecutor.java:459)
+	at org.gradle.execution.plan.DefaultPlan
+Executor$ExecutorWorker.run(DefaultPlanEx
+ecutor.java:376)
+	at org.gradle.internal.concurrent.Execut
+orPolicy$CatchAndRecordFailures.onExecute
+(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.Abstra
+ctManagedExecutor$1.run(AbstractManagedEx
+ecutor.java:48)
+Caused by: com.android.tools.r8.Compilati
+onFailedException: Compilation failed to 
+complete
+	at Version.fakeStackEntry(Version_8.7.18
+.java:0)
+	at com.android.tools.r8.T.a(R8_8.7.18_f8
+bee6d6fb926b7ebb3b15bf98f726f9d57471456ea
+20fce6d17d9a020197688:5)
+	at com.android.tools.r8.internal.yu.a(R8
+_8.7.18_f8bee6d6fb926b7ebb3b15bf98f726f9d
+57471456ea20fce6d17d9a020197688:82)
+	at com.android.tools.r8.internal.yu.a(R8
+_8.7.18_f8bee6d6fb926b7ebb3b15bf98f726f9d
+57471456ea20fce6d17d9a020197688:32)
+	at com.android.tools.r8.internal.yu.a(R8
+_8.7.18_f8bee6d6fb926b7ebb3b15bf98f726f9d
+57471456ea20fce6d17d9a020197688:31)
+	at com.android.tools.r8.R8.a(R8_8.7.18_f
+8bee6d6fb926b7ebb3b15bf98f726f9d57471456e
+a20fce6d17d9a020197688:86)
+	at com.android.tools.r8.R8.run(R8_8.7.18
+_f8bee6d6fb926b7ebb3b15bf98f726f9d5747145
+6ea20fce6d17d9a020197688:3)
+	at com.android.builder.dexing.R8Tool.run
+R8(r8Tool.kt:337)
+	at com.android.build.gradle.internal.tas
+ks.R8Task$Companion.shrink(R8Task.kt:796)
+	at com.android.build.gradle.internal.tas
+ks.R8Task$R8Runnable.execute(R8Task.kt:87
+2)
+	at org.gradle.workers.internal.DefaultWo
+rkerServer.execute(DefaultWorkerServer.ja
+va:63)
+	at org.gradle.workers.internal.NoIsolati
+onWorkerFactory$1$1.create(NoIsolationWor
+kerFactory.java:66)
+	at org.gradle.workers.internal.NoIsolati
+onWorkerFactory$1$1.create(NoIsolationWor
+kerFactory.java:62)
+	at org.gradle.internal.classloader.Class
+LoaderUtils.executeInClassloader(ClassLoa
+derUtils.java:100)
+	at org.gradle.workers.internal.NoIsolati
+onWorkerFactory$1.lambda$execute$0(NoIsol
+ationWorkerFactory.java:62)
+	at org.gradle.workers.internal.AbstractW
+orker$1.call(AbstractWorker.java:44)
+	at org.gradle.workers.internal.AbstractW
+orker$1.call(AbstractWorker.java:41)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner$CallableBuildOperat
+ionWorker.execute(DefaultBuildOperationRu
+nner.java:209)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner$CallableBuildOperat
+ionWorker.execute(DefaultBuildOperationRu
+nner.java:204)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner$2.execute(DefaultBu
+ildOperationRunner.java:66)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner$2.execute(DefaultBu
+ildOperationRunner.java:59)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner.execute(DefaultBuil
+dOperationRunner.java:166)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner.execute(DefaultBuil
+dOperationRunner.java:59)
+	at org.gradle.internal.operations.Defaul
+tBuildOperationRunner.call(DefaultBuildOp
+erationRunner.java:53)
+	at org.gradle.workers.internal.AbstractW
+orker.executeWrappedInBuildOperation(Abst
+ractWorker.java:41)
+	at org.gradle.workers.internal.NoIsolati
+onWorkerFactory$1.execute(NoIsolationWork
+erFactory.java:59)
+	at org.gradle.workers.internal.DefaultWo
+rkerExecutor.lambda$submitWork$0(DefaultW
+orkerExecutor.java:174)
+	at org.gradle.internal.work.DefaultCondi
+tionalExecutionQueue$ExecutionRunner.runE
+xecution(DefaultConditionalExecutionQueue
+.java:194)
+	at org.gradle.internal.work.DefaultCondi
+tionalExecutionQueue$ExecutionRunner.acce
+ss$700(DefaultConditionalExecutionQueue.j
+ava:127)
+	at org.gradle.internal.work.DefaultCondi
+tionalExecutionQueue$ExecutionRunner$1.ru
+n(DefaultConditionalExecutionQueue.java:1
+69)
+	at org.gradle.internal.Factories$1.creat
+e(Factories.java:31)
+	at org.gradle.internal.work.DefaultWorke
+rLeaseService.withLocks(DefaultWorkerLeas
+eService.java:263)
+	at org.gradle.internal.work.DefaultWorke
+rLeaseService.runAsWorkerThread(DefaultWo
+rkerLeaseService.java:127)
+	at org.gradle.internal.work.DefaultWorke
+rLeaseService.runAsWorkerThread(DefaultWo
+rkerLeaseService.java:132)
+	at org.gradle.internal.work.DefaultCondi
+tionalExecutionQueue$ExecutionRunner.runB
+atch(DefaultConditionalExecutionQueue.jav
+a:164)
+	at org.gradle.internal.work.DefaultCondi
+tionalExecutionQueue$ExecutionRunner.run(
+DefaultConditionalExecutionQueue.java:133
+)
+	... 2 more
+Caused by: 
+com.android.tools.r8.internal.g: Missing 
+class com.google.android.play.core.splitc
+ompat.SplitCompatApplication (referenced 
+from: void io.flutter.embedding.android.F
+lutterPlayStoreSplitApplication.<init>() 
+and 2 other contexts)
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallException 
+(referenced from: void io.flutter.embeddi
+ng.engine.deferredcomponents.PlayStoreDef
+erredComponentManager.lambda$installDefer
+redComponent$1(int, java.lang.String, 
+java.lang.Exception))
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallManager 
+(referenced from: com.google.android.play
+.core.splitinstall.SplitInstallManager io
+.flutter.embedding.engine.deferredcompone
+nts.PlayStoreDeferredComponentManager.spl
+itInstallManager and 5 other contexts)
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallManagerFactory
+ (referenced from: void io.flutter.embedd
+ing.engine.deferredcomponents.PlayStoreDe
+ferredComponentManager.<init>(android.con
+tent.Context, 
+io.flutter.embedding.engine.FlutterJNI))
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallRequest$Builde
+r (referenced from: void io.flutter.embed
+ding.engine.deferredcomponents.PlayStoreD
+eferredComponentManager.installDeferredCo
+mponent(int, java.lang.String))
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallRequest 
+(referenced from: void io.flutter.embeddi
+ng.engine.deferredcomponents.PlayStoreDef
+erredComponentManager.installDeferredComp
+onent(int, java.lang.String))
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallSessionState 
+(referenced from: void io.flutter.embeddi
+ng.engine.deferredcomponents.PlayStoreDef
+erredComponentManager$FeatureInstallState
+UpdatedListener.onStateUpdate(com.google.
+android.play.core.splitinstall.SplitInsta
+llSessionState) and 1 other context)
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallStateUpdatedLi
+stener (referenced from: void io.flutter.
+embedding.engine.deferredcomponents.PlayS
+toreDeferredComponentManager.<init>(andro
+id.content.Context, 
+io.flutter.embedding.engine.FlutterJNI) 
+and 2 other contexts)
+Missing class com.google.android.play.cor
+e.tasks.OnFailureListener (referenced 
+from: void io.flutter.embedding.engine.de
+ferredcomponents.PlayStoreDeferredCompone
+ntManager.installDeferredComponent(int, 
+java.lang.String))
+Missing class com.google.android.play.cor
+e.tasks.OnSuccessListener (referenced 
+from: void io.flutter.embedding.engine.de
+ferredcomponents.PlayStoreDeferredCompone
+ntManager.installDeferredComponent(int, 
+java.lang.String))
+Missing class 
+com.google.android.play.core.tasks.Task 
+(referenced from: void io.flutter.embeddi
+ng.engine.deferredcomponents.PlayStoreDef
+erredComponentManager.installDeferredComp
+onent(int, java.lang.String) and 1 other 
+context)
+	at com.android.tools.r8.internal.bd0.a(R
+8_8.7.18_f8bee6d6fb926b7ebb3b15bf98f726f9
+d57471456ea20fce6d17d9a020197688:21)
+	at com.android.tools.r8.internal.bd0.err
+or(R8_8.7.18_f8bee6d6fb926b7ebb3b15bf98f7
+26f9d57471456ea20fce6d17d9a020197688:1)
+	at com.android.tools.r8.shaking.M.a(R8_8
+.7.18_f8bee6d6fb926b7ebb3b15bf98f726f9d57
+471456ea20fce6d17d9a020197688:1948)
+	at com.android.tools.r8.shaking.M.a(R8_8
+.7.18_f8bee6d6fb926b7ebb3b15bf98f726f9d57
+471456ea20fce6d17d9a020197688:1634)
+	at com.android.tools.r8.R8.a(R8_8.7.18_f
+8bee6d6fb926b7ebb3b15bf98f726f9d57471456e
+a20fce6d17d9a020197688:1508)
+	at com.android.tools.r8.R8.a(R8_8.7.18_f
+8bee6d6fb926b7ebb3b15bf98f726f9d57471456e
+a20fce6d17d9a020197688:242)
+	at com.android.tools.r8.R8.b(R8_8.7.18_f
+8bee6d6fb926b7ebb3b15bf98f726f9d57471456e
+a20fce6d17d9a020197688:1)
+	at com.android.tools.r8.internal.yu.a(R8
+_8.7.18_f8bee6d6fb926b7ebb3b15bf98f726f9d
+57471456ea20fce6d17d9a020197688:28)
+	... 33 more
+	Suppressed: java.lang.RuntimeException: 
+com.android.tools.r8.internal.g: Missing 
+class com.google.android.play.core.splitc
+ompat.SplitCompatApplication (referenced 
+from: void io.flutter.embedding.android.F
+lutterPlayStoreSplitApplication.<init>() 
+and 2 other contexts)
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallException 
+(referenced from: void io.flutter.embeddi
+ng.engine.deferredcomponents.PlayStoreDef
+erredComponentManager.lambda$installDefer
+redComponent$1(int, java.lang.String, 
+java.lang.Exception))
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallManager 
+(referenced from: com.google.android.play
+.core.splitinstall.SplitInstallManager io
+.flutter.embedding.engine.deferredcompone
+nts.PlayStoreDeferredComponentManager.spl
+itInstallManager and 5 other contexts)
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallManagerFactory
+ (referenced from: void io.flutter.embedd
+ing.engine.deferredcomponents.PlayStoreDe
+ferredComponentManager.<init>(android.con
+tent.Context, 
+io.flutter.embedding.engine.FlutterJNI))
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallRequest$Builde
+r (referenced from: void io.flutter.embed
+ding.engine.deferredcomponents.PlayStoreD
+eferredComponentManager.installDeferredCo
+mponent(int, java.lang.String))
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallRequest 
+(referenced from: void io.flutter.embeddi
+ng.engine.deferredcomponents.PlayStoreDef
+erredComponentManager.installDeferredComp
+onent(int, java.lang.String))
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallSessionState 
+(referenced from: void io.flutter.embeddi
+ng.engine.deferredcomponents.PlayStoreDef
+erredComponentManager$FeatureInstallState
+UpdatedListener.onStateUpdate(com.google.
+android.play.core.splitinstall.SplitInsta
+llSessionState) and 1 other context)
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallStateUpdatedLi
+stener (referenced from: void io.flutter.
+embedding.engine.deferredcomponents.PlayS
+toreDeferredComponentManager.<init>(andro
+id.content.Context, 
+io.flutter.embedding.engine.FlutterJNI) 
+and 2 other contexts)
+Missing class com.google.android.play.cor
+e.tasks.OnFailureListener (referenced 
+from: void io.flutter.embedding.engine.de
+ferredcomponents.PlayStoreDeferredCompone
+ntManager.installDeferredComponent(int, 
+java.lang.String))
+Missing class com.google.android.play.cor
+e.tasks.OnSuccessListener (referenced 
+from: void io.flutter.embedding.engine.de
+ferredcomponents.PlayStoreDeferredCompone
+ntManager.installDeferredComponent(int, 
+java.lang.String))
+Missing class 
+com.google.android.play.core.tasks.Task 
+(referenced from: void io.flutter.embeddi
+ng.engine.deferredcomponents.PlayStoreDef
+erredComponentManager.installDeferredComp
+onent(int, java.lang.String) and 1 other 
+context)
+		at com.android.tools.r8.internal.bd0.a(
+R8_8.7.18_f8bee6d6fb926b7ebb3b15bf98f726f
+9d57471456ea20fce6d17d9a020197688:29)
+		at com.android.tools.r8.shaking.M.a(R8_
+8.7.18_f8bee6d6fb926b7ebb3b15bf98f726f9d5
+7471456ea20fce6d17d9a020197688:1950)
+		at com.android.tools.r8.shaking.M.a(R8_
+8.7.18_f8bee6d6fb926b7ebb3b15bf98f726f9d5
+7471456ea20fce6d17d9a020197688:1634)
+		at com.android.tools.r8.R8.a(R8_8.7.18_
+f8bee6d6fb926b7ebb3b15bf98f726f9d57471456
+ea20fce6d17d9a020197688:1508)
+		at com.android.tools.r8.R8.a(R8_8.7.18_
+f8bee6d6fb926b7ebb3b15bf98f726f9d57471456
+ea20fce6d17d9a020197688:242)
+		at com.android.tools.r8.R8.b(R8_8.7.18_
+f8bee6d6fb926b7ebb3b15bf98f726f9d57471456
+ea20fce6d17d9a020197688:1)
+		at com.android.tools.r8.internal.yu.a(R
+8_8.7.18_f8bee6d6fb926b7ebb3b15bf98f726f9
+d57471456ea20fce6d17d9a020197688:28)
+		at com.android.tools.r8.R8.a(R8_8.7.18_
+f8bee6d6fb926b7ebb3b15bf98f726f9d57471456
+ea20fce6d17d9a020197688:86)
+		at com.android.tools.r8.R8.run(R8_8.7.1
+8_f8bee6d6fb926b7ebb3b15bf98f726f9d574714
+56ea20fce6d17d9a020197688:3)
+		at com.android.builder.dexing.R8Tool.ru
+nR8(r8Tool.kt:337)
+		at com.android.build.gradle.internal.ta
+sks.R8Task$Companion.shrink(R8Task.kt:796
+)
+		at com.android.build.gradle.internal.ta
+sks.R8Task$R8Runnable.execute(R8Task.kt:8
+72)
+		at org.gradle.workers.internal.DefaultW
+orkerServer.execute(DefaultWorkerServer.j
+ava:63)
+		at org.gradle.workers.internal.NoIsolat
+ionWorkerFactory$1$1.create(NoIsolationWo
+rkerFactory.java:66)
+		at org.gradle.workers.internal.NoIsolat
+ionWorkerFactory$1$1.create(NoIsolationWo
+rkerFactory.java:62)
+		at org.gradle.internal.classloader.Clas
+sLoaderUtils.executeInClassloader(ClassLo
+aderUtils.java:100)
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.12/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+617 actionable tasks: 75 executed, 542 up-to-date
+		at org.gradle.workers.internal.NoIsolat
+ionWorkerFactory$1.lambda$execute$0(NoIso
+lationWorkerFactory.java:62)
+		at org.gradle.workers.internal.Abstract
+Worker$1.call(AbstractWorker.java:44)
+		at org.gradle.workers.internal.Abstract
+Worker$1.call(AbstractWorker.java:41)
+		at org.gradle.internal.operations.Defau
+ltBuildOperationRunner$CallableBuildOpera
+tionWorker.execute(DefaultBuildOperationR
+unner.java:209)
+		at org.gradle.internal.operations.Defau
+ltBuildOperationRunner$CallableBuildOpera
+tionWorker.execute(DefaultBuildOperationR
+unner.java:204)
+		at org.gradle.internal.operations.Defau
+ltBuildOperationRunner$2.execute(DefaultB
+uildOperationRunner.java:66)
+		at org.gradle.internal.operations.Defau
+ltBuildOperationRunner$2.execute(DefaultB
+uildOperationRunner.java:59)
+		at org.gradle.internal.operations.Defau
+ltBuildOperationRunner.execute(DefaultBui
+ldOperationRunner.java:166)
+		at org.gradle.internal.operations.Defau
+ltBuildOperationRunner.execute(DefaultBui
+ldOperationRunner.java:59)
+		at org.gradle.internal.operations.Defau
+ltBuildOperationRunner.call(DefaultBuildO
+perationRunner.java:53)
+		at org.gradle.workers.internal.Abstract
+Worker.executeWrappedInBuildOperation(Abs
+tractWorker.java:41)
+		at org.gradle.workers.internal.NoIsolat
+ionWorkerFactory$1.execute(NoIsolationWor
+kerFactory.java:59)
+		at org.gradle.workers.internal.DefaultW
+orkerExecutor.lambda$submitWork$0(Default
+WorkerExecutor.java:174)
+		at java.base/java.util.concurrent.Futur
+eTask.run(Unknown Source)
+		at org.gradle.internal.work.DefaultCond
+itionalExecutionQueue$ExecutionRunner.run
+Execution(DefaultConditionalExecutionQueu
+e.java:194)
+		at org.gradle.internal.work.DefaultCond
+itionalExecutionQueue$ExecutionRunner.acc
+ess$700(DefaultConditionalExecutionQueue.
+java:127)
+		at org.gradle.internal.work.DefaultCond
+itionalExecutionQueue$ExecutionRunner$1.r
+un(DefaultConditionalExecutionQueue.java:
+169)
+		at org.gradle.internal.Factories$1.crea
+te(Factories.java:31)
+		at org.gradle.internal.work.DefaultWork
+erLeaseService.withLocks(DefaultWorkerLea
+seService.java:263)
+		at org.gradle.internal.work.DefaultWork
+erLeaseService.runAsWorkerThread(DefaultW
+orkerLeaseService.java:127)
+		at org.gradle.internal.work.DefaultWork
+erLeaseService.runAsWorkerThread(DefaultW
+orkerLeaseService.java:132)
+		at org.gradle.internal.work.DefaultCond
+itionalExecutionQueue$ExecutionRunner.run
+Batch(DefaultConditionalExecutionQueue.ja
+va:164)
+		at org.gradle.internal.work.DefaultCond
+itionalExecutionQueue$ExecutionRunner.run
+(DefaultConditionalExecutionQueue.java:13
+3)
+		at java.base/java.util.concurrent.Execu
+tors$RunnableAdapter.call(Unknown Source)
+		at java.base/java.util.concurrent.Futur
+eTask.run(Unknown Source)
+		at org.gradle.internal.concurrent.Execu
+torPolicy$CatchAndRecordFailures.onExecut
+e(ExecutorPolicy.java:64)
+		at org.gradle.internal.concurrent.Abstr
+actManagedExecutor$1.run(AbstractManagedE
+xecutor.java:48)
+		at java.base/java.util.concurrent.Threa
+dPoolExecutor.runWorker(Unknown Source)
+		at java.base/java.util.concurrent.Threa
+dPoolExecutor$Worker.run(Unknown Source)
+		at 
+java.base/java.lang.Thread.run(Unknown 
+Source)
+	Caused by: [CIRCULAR REFERENCE: 
+com.android.tools.r8.internal.g: Missing 
+class com.google.android.play.core.splitc
+ompat.SplitCompatApplication (referenced 
+from: void io.flutter.embedding.android.F
+lutterPlayStoreSplitApplication.<init>() 
+and 2 other contexts)
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallException 
+(referenced from: void io.flutter.embeddi
+ng.engine.deferredcomponents.PlayStoreDef
+erredComponentManager.lambda$installDefer
+redComponent$1(int, java.lang.String, 
+java.lang.Exception))
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallManager 
+(referenced from: com.google.android.play
+.core.splitinstall.SplitInstallManager io
+.flutter.embedding.engine.deferredcompone
+nts.PlayStoreDeferredComponentManager.spl
+itInstallManager and 5 other contexts)
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallManagerFactory
+ (referenced from: void io.flutter.embedd
+ing.engine.deferredcomponents.PlayStoreDe
+ferredComponentManager.<init>(android.con
+tent.Context, 
+io.flutter.embedding.engine.FlutterJNI))
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallRequest$Builde
+r (referenced from: void io.flutter.embed
+ding.engine.deferredcomponents.PlayStoreD
+eferredComponentManager.installDeferredCo
+mponent(int, java.lang.String))
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallRequest 
+(referenced from: void io.flutter.embeddi
+ng.engine.deferredcomponents.PlayStoreDef
+erredComponentManager.installDeferredComp
+onent(int, java.lang.String))
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallSessionState 
+(referenced from: void io.flutter.embeddi
+ng.engine.deferredcomponents.PlayStoreDef
+erredComponentManager$FeatureInstallState
+UpdatedListener.onStateUpdate(com.google.
+android.play.core.splitinstall.SplitInsta
+llSessionState) and 1 other context)
+Missing class com.google.android.play.cor
+e.splitinstall.SplitInstallStateUpdatedLi
+stener (referenced from: void io.flutter.
+embedding.engine.deferredcomponents.PlayS
+toreDeferredComponentManager.<init>(andro
+id.content.Context, 
+io.flutter.embedding.engine.FlutterJNI) 
+and 2 other contexts)
+Missing class com.google.android.play.cor
+e.tasks.OnFailureListener (referenced 
+from: void io.flutter.embedding.engine.de
+ferredcomponents.PlayStoreDeferredCompone
+ntManager.installDeferredComponent(int, 
+java.lang.String))
+Missing class com.google.android.play.cor
+e.tasks.OnSuccessListener (referenced 
+from: void io.flutter.embedding.engine.de
+ferredcomponents.PlayStoreDeferredCompone
+ntManager.installDeferredComponent(int, 
+java.lang.String))
+Missing class 
+com.google.android.play.core.tasks.Task 
+(referenced from: void io.flutter.embeddi
+ng.engine.deferredcomponents.PlayStoreDef
+erredComponentManager.installDeferredComp
+onent(int, java.lang.String) and 1 other 
+context)]
+
+
+BUILD FAILED in 2m 52s

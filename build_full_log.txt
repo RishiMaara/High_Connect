@@ -1,0 +1,69 @@
+﻿.\gradlew.bat : WARNING: A restricted 
+method in java.lang.System has been 
+called
+At line:1 char:23
++ ... t-Location android; .\gradlew.bat 
+assembleRelease --info 2>&1 | Out-F ...
++                         
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecifi 
+   ed: (WARNING: A rest...has been call  
+  ed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeComm 
+   andError
+ 
+WARNING: java.lang.System::load has been 
+called by net.rubygrapefruit.platform.int
+ernal.NativeLibraryLoader in an unnamed 
+module (file:/C:/Users/Rishi/.gradle/wrap
+per/dists/gradle-8.12-all/ejduaidbjup3bmm
+khw3rie4zb/gradle-8.12/lib/native-platfor
+m-0.22-milestone-27.jar)
+WARNING: Use 
+--enable-native-access=ALL-UNNAMED to 
+avoid a warning for callers in this 
+module
+WARNING: Restricted methods will be 
+blocked in a future release unless 
+native access is enabled
+
+Initialized native services in: C:\Users\Rishi\.gradle\native
+Initialized jansi services in: C:\Users\Rishi\.gradle\native
+Found daemon DaemonInfo{pid=13116, address=[4be25f71-78ae-40ad-8de5-072af0f2c50c port:51268, addresses:[/127.0.0.1]], state=Idle, lastBusy=1766215039293, context=DefaultDaemonContext[uid=18346e7a-b167-4043-b578-cd43cfa794eb,javaHome=C:\Users\Rishi\.vscode\extensions\redhat.java-1.50.0-win32-x64\jre\21.0.9-win32-x86_64,javaVersion=21,javaVendor=Eclipse Adoptium,daemonRegistryDir=C:\Users\Rishi\.gradle\daemon,pid=13116,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=-Xmx6144m,-Dfile.encoding=UTF-8,-Duser.country=US,-Duser.language=en,-Duser.variant]} however its context does not match the desired criteria.
+JVM is incompatible.
+Wanted: DaemonRequestContext{jvmCriteria=D:\JDK25 (no JDK specified, using current Java home), daemonOpts=[-Xmx6144m, -Dfile.encoding=UTF-8, -Duser.country=US, -Duser.language=en, -Duser.variant], applyInstrumentationAgent=true, nativeServicesMode=ENABLED, priority=NORMAL}
+Actual: DefaultDaemonContext[uid=18346e7a-b167-4043-b578-cd43cfa794eb,javaHome=C:\Users\Rishi\.vscode\extensions\redhat.java-1.50.0-win32-x64\jre\21.0.9-win32-x86_64,javaVersion=21,javaVendor=Eclipse Adoptium,daemonRegistryDir=C:\Users\Rishi\.gradle\daemon,pid=13116,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=-Xmx6144m,-Dfile.encoding=UTF-8,-Duser.country=US,-Duser.language=en,-Duser.variant]
+
+  Looking for a different daemon...
+Found daemon DaemonInfo{pid=27240, address=[f6aab70e-1349-4301-910d-05116b5f7a83 port:61272, addresses:[/127.0.0.1]], state=Idle, lastBusy=1766462032611, context=DefaultDaemonContext[uid=8a2f52dd-5454-4dbd-879a-c53b1503499e,javaHome=D:\Andriod studio\jbr,javaVersion=21,javaVendor=JetBrains s.r.o.,daemonRegistryDir=C:\Users\Rishi\.gradle\daemon,pid=27240,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=-Xmx6144m,-Dfile.encoding=UTF-8,-Duser.country=US,-Duser.language=en,-Duser.variant]} however its context does not match the desired criteria.
+JVM is incompatible.
+Wanted: DaemonRequestContext{jvmCriteria=D:\JDK25 (no JDK specified, using current Java home), daemonOpts=[-Xmx6144m, -Dfile.encoding=UTF-8, -Duser.country=US, -Duser.language=en, -Duser.variant], applyInstrumentationAgent=true, nativeServicesMode=ENABLED, priority=NORMAL}
+Actual: DefaultDaemonContext[uid=8a2f52dd-5454-4dbd-879a-c53b1503499e,javaHome=D:\Andriod studio\jbr,javaVersion=21,javaVendor=JetBrains s.r.o.,daemonRegistryDir=C:\Users\Rishi\.gradle\daemon,pid=27240,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=-Xmx6144m,-Dfile.encoding=UTF-8,-Duser.country=US,-Duser.language=en,-Duser.variant]
+
+  Looking for a different daemon...
+The client will now receive all logging from the daemon (pid: 16476). The daemon log file: C:\Users\Rishi\.gradle\daemon\8.12\daemon-16476.out.log
+Starting 3rd build in daemon [uptime: 1 mins 3.053 secs, performance: 99%, GC rate: 0.00/s, heap usage: 0% of 6 GiB]
+Using 12 worker leases.
+Now considering [E:\planb2\planb-flutterflow\android] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Caching disabled for Kotlin DSL script compilation (Settings/TopLevel/stage1) because:
+  Build cache is disabled
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+25.0.1
+
+* Try:
+> Run with --stacktrace option to get 
+the stack trace.
+> Run with --debug option to get more 
+log output.
+> Run with --scan to get full insights.
+> Get more help at 
+https://help.gradle.org.
+
+BUILD FAILED in 1s
+Watched directory hierarchies: []

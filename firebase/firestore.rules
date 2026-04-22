@@ -1,0 +1,239 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper function to check if user is authenticated
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // Helper to get user document reference path
+    function userRef(uid) {
+      return /databases/$(database)/documents/users/$(uid);
+    }
+
+    // Helper to check if current user is in usersRef array
+    function isMemberFromUsersRef(usersRef) {
+      return isSignedIn() && (userRef(request.auth.uid) in usersRef);
+    }
+
+    // Helper to check if current user is a member of a chat
+    function isChatMember(chatId) {
+      return isSignedIn() &&
+          isMemberFromUsersRef(
+            get(/databases/$(database)/documents/chats/$(chatId)).data.users_ref
+          );
+    }
+
+    // ==================== USERS ====================
+    match /users/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && request.auth.uid == document;
+      allow delete: if request.auth != null && request.auth.uid == document;
+    }
+
+    // ==================== MAIL (OTP Emails) ====================
+    match /mail/{document} {
+      allow create: if true;
+      allow read: if false;
+      allow update: if false;
+      allow delete: if false;
+    }
+
+    // ==================== SERVICES ====================
+    match /services/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    // ==================== CHATS ====================
+    match /chats/{chatId} {
+      allow create: if request.auth != null &&
+          (userRef(request.auth.uid) in request.resource.data.users_ref);
+      allow read: if request.auth != null && isMemberFromUsersRef(resource.data.users_ref);
+      allow update: if request.auth != null && isMemberFromUsersRef(resource.data.users_ref) &&
+          request.resource.data.users_ref == resource.data.users_ref &&
+          request.resource.data.start_date == resource.data.start_date;
+      allow delete: if false;
+    }
+
+    match /chats/{chatId}/chat_messages/{messageId} {
+      allow create: if isChatMember(chatId) &&
+          request.resource.data.sender == userRef(request.auth.uid);
+      allow read: if isChatMember(chatId);
+      allow update: if isChatMember(chatId);
+      allow delete: if false;
+    }
+
+    // Block collection group queries for chat_messages (security)
+    match /{path=**}/chat_messages/{document} {
+      allow read: if false;
+    }
+
+    // ==================== SUPPORT ====================
+    match /support/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /support/{parent}/support_messages/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /{path=**}/support_messages/{document} {
+      allow read: if request.auth != null;
+    }
+
+    // ==================== BOOKINGS ====================
+    match /users/{parent}/my_bookings/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow update: if request.auth != null;
+      allow delete: if false;
+    }
+
+    match /{path=**}/my_bookings/{document} {
+      allow read: if request.auth != null;
+      allow update: if request.auth != null;
+    }
+
+    // ==================== PAYMENT METHODS ====================
+    match /users/{parent}/payment_methods/{document} {
+      allow create: if request.auth != null && request.auth.uid == parent;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && request.auth.uid == parent;
+      allow delete: if request.auth != null && request.auth.uid == parent;
+    }
+
+    match /{path=**}/payment_methods/{document} {
+      allow read: if request.auth != null;
+    }
+
+    // ==================== NOTIFICATIONS ====================
+    // User's own notifications subcollection
+    match /users/{parent}/notifications/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow update: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    // Collection group query for notifications (needed for aggregation/count queries)
+    // This allows COUNT queries across all notification subcollections
+    match /{path=**}/notifications/{document} {
+      allow read: if request.auth != null;
+    }
+
+    // Top-level notifications collection (for aggregate queries)
+    match /notifications/{document} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null;
+      allow update: if request.auth != null;
+      allow delete: if false;
+    }
+
+    // ==================== CALLS ====================
+    match /calls/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if false;
+    }
+
+    // ==================== REPORTS ====================
+    match /report/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    // ==================== CATEGORIES ====================
+    match /categories/{document} {
+      allow create: if false;
+      allow read: if request.auth != null;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    // ==================== ADDRESSES ====================
+    match /users/{parent}/addresses/{document} {
+      allow create: if request.auth != null && request.auth.uid == parent;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && request.auth.uid == parent;
+      allow delete: if request.auth != null && request.auth.uid == parent;
+    }
+
+    match /{path=**}/addresses/{document} {
+      allow read: if request.auth != null;
+    }
+
+    // ==================== USER REVIEWS ====================
+    match /users/{parent}/user_reviews/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow update: if request.auth != null;
+      allow delete: if false;
+    }
+
+    match /{path=**}/user_reviews/{document} {
+      allow read: if request.auth != null;
+    }
+
+    // ==================== SERVICE REVIEWS ====================
+    match /services/{parent}/service_review/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow update: if request.auth != null;
+      allow delete: if false;
+    }
+
+    match /{path=**}/service_review/{document} {
+      allow read: if request.auth != null;
+    }
+
+    // ==================== FEEDBACK ====================
+    match /users/{parent}/feedback/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if false;
+    }
+
+    match /{path=**}/feedback/{document} {
+      allow read: if request.auth != null;
+    }
+
+    // ==================== SERVICE ADDRESS ====================
+    match /services/{parent}/service_address/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /{path=**}/service_address/{document} {
+      allow read: if request.auth != null;
+    }
+
+    // ==================== SERVICE PAYMENT ====================
+    match /services/{parent}/service_payment/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /{path=**}/service_payment/{document} {
+      allow read: if request.auth != null;
+    }
+
+  }
+}

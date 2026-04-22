@@ -1,0 +1,78 @@
+{
+  "project_info": {
+    "project_number": "312816055234",
+    "project_id": "high-connect-3",
+    "storage_bucket": "high-connect-3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:312816055234:android:a546292355002270f25c5b",
+        "android_client_info": {
+          "package_name": "com.myhigh.connect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "312816055234-aisvnr1me9kcsh9clucbsf70sufppqno.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.myhigh.connect",
+            "certificate_hash": "875176966fab092cfb4e126f8806b368e5f36be4"
+          }
+        },
+        {
+          "client_id": "312816055234-iqjnmbmjh36c8t201qclo6rc6ilk77v8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.myhigh.connect",
+            "certificate_hash": "d9c8bd30fb4c1583423e191cc54b8e45af0009d2"
+          }
+        },
+        {
+          "client_id": "312816055234-j8bptpls88g6sh6u1rhg7iqqa1rfhaf9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.myhigh.connect",
+            "certificate_hash": "0572a3cd4740ffa948c7b67c37b11792f4113398"
+          }
+        },
+        {
+          "client_id": "312816055234-r1igs9l1bj81qvrp4os1brj0bbua2o7q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.myhigh.connect",
+            "certificate_hash": "a4a55dd5fe8bd01da7a0af0b8458c48fc24ee5f2"
+          }
+        },
+        {
+          "client_id": "312816055234-v5chh7gmatdeponaje1hbi3jitt0bue8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPe7ikUtMoCTVldm5h_7JdCobjRD5FMtc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "312816055234-v5chh7gmatdeponaje1hbi3jitt0bue8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "312816055234-0r72hqsra7bjgmt7m80q5pb86j6um65l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.myhigh.connect"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
