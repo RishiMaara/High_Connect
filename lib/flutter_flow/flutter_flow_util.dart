@@ -418,7 +418,7 @@ Future<LatLng> getCurrentUserLocation(
 }
 
 Future<LatLng?> queryCurrentUserLocation() async {
-  final serviceEnabled = await Geolocator.isLocationServiceEnabled();
+  final serviceEnabled = kIsWeb || await Geolocator.isLocationServiceEnabled();
   if (!serviceEnabled) {
     return Future.error('Location services are disabled.');
   }

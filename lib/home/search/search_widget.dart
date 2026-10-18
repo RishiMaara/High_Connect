@@ -154,7 +154,8 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                       TextSearchItem.fromTerms(
                                                           record, [
                                                     record.category,
-                                                    record.title
+                                                    record.title,
+                                                    record.description,
                                                   ]))
                                                   .toList(),
                                             ).search(_model.textController.text).map((r) => r.object).where((r) => r.provider != currentUserReference).toList(),
@@ -251,7 +252,8 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                     (record) => TextSearchItem
                                                         .fromTerms(record, [
                                                       record.category,
-                                                      record.title
+                                                      record.title,
+                                                      record.description,
                                                     ]),
                                                   )
                                                   .toList(),

@@ -13,8 +13,15 @@
     "rules": "storage.rules"
   },
   "hosting": {
+    "site": "high-connect-3",
     "public": "public",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
   },
   "emulators": {
     "auth": {

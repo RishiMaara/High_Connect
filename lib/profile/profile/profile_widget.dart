@@ -8,14 +8,14 @@ import '/home/components/z_nawbar/z_nawbar_widget.dart';
 import '/loading/l_bookingdetails_copy/l_bookingdetails_copy_widget.dart';
 import '/profile/components/z_continue_as_provider/z_continue_as_provider_widget.dart';
 import '/profile/components/z_logout/z_logout_widget.dart';
-import '/profile/z_feedback/z_feedback_widget.dart';
-import '/profile/z_rate_app/z_rate_app_widget.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import 'profile_model.dart';
 export 'profile_model.dart';
 
@@ -512,43 +512,6 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                         ),
                                       ),
                                   ),
-                                  InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        context.pushNamed(
-                                          SeviceAvailabilityWidget.routeName,
-                                          queryParameters: {
-                                            'serviceDoc': serializeParam(
-                                              columnServicesRecord,
-                                              ParamType.Document,
-                                            ),
-                                          }.withoutNulls,
-                                          extra: <String, dynamic>{
-                                            'serviceDoc': columnServicesRecord,
-                                          },
-                                        );
-                                      },
-                                      child: wrapWithModel(
-                                        model: _model.availabilityModel,
-                                        updateCallback: () =>
-                                            safeSetState(() {}),
-                                        child: SettingsButtonWidget(
-                                          title: 'Availability',
-                                          description: 'Adjust your work hours',
-                                          icon: Icon(
-                                            FFIcons.kcalendarEvent,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            size: 24.0,
-                                          ),
-                                          showDivider: true,
-                                        ),
-                                      ),
-
-                                  ),
 
                                 ],
                               );
@@ -699,142 +662,113 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: EdgeInsets.all(15.0),
-                                child: Builder(
-                                  builder: (context) {
-                                    if (currentUserDocument?.service != null) {
-                                      return wrapWithModel(
-                                        model: _model.zContinueAsProviderModel,
-                                        updateCallback: () =>
-                                            safeSetState(() {}),
-                                        child: ZContinueAsProviderWidget(),
-                                      );
-                                    } else {
-                                      return InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          context.pushNamed(
-                                              BecomeProviderWidget.routeName);
-                                        },
-                                        child: Container(
-                                          width: double.infinity,
-                                          height: 120.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .optionalColor,
-                                            image: DecorationImage(
-                                              fit: BoxFit.cover,
-                                              image: Image.asset(
-                                                'assets/images/323525436.png',
-                                              ).image,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(10.0),
-                                          ),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    15.0, 15.0, 90.0, 15.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Expanded(
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        'Become a Provider',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .headlineMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .headlineMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .info,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                      ),
-                                                      Text(
-                                                        'Join now and start getting \nbookings!',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleSmall
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleSmall
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleSmall
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .info,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .fontStyle,
-                                                                  lineHeight:
-                                                                      1.5,
-                                                                ),
-                                                      ),
-                                                    ].divide(
-                                                        SizedBox(height: 8.0)),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                  },
+                              if (currentUserDocument?.service != null)
+                                Padding(
+                                  padding: EdgeInsets.all(15.0),
+                                  child: wrapWithModel(
+                                    model: _model.zContinueAsProviderModel,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: ZContinueAsProviderWidget(),
+                                  ),
                                 ),
-                              ),
+                              if (currentUserDocument?.service == null)
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed(BecomeProviderWidget.routeName);
+                                    },
+                                    child: Container(
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            FlutterFlowTheme.of(context).primary,
+                                            FlutterFlowTheme.of(context).primary.withValues(alpha: 0.75),
+                                          ],
+                                          begin: Alignment.topLeft,
+                                          end: Alignment.bottomRight,
+                                        ),
+                                        borderRadius: BorderRadius.circular(16.0),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 12.0,
+                                            color: FlutterFlowTheme.of(context).primary.withValues(alpha: 0.30),
+                                            offset: Offset(0.0, 4.0),
+                                          ),
+                                        ],
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.all(16.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Container(
+                                              width: 52.0,
+                                              height: 52.0,
+                                              decoration: BoxDecoration(
+                                                color: Colors.white.withValues(alpha: 0.18),
+                                                shape: BoxShape.circle,
+                                              ),
+                                              child: Icon(
+                                                Icons.handshake_rounded,
+                                                color: Colors.white,
+                                                size: 28.0,
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional.fromSTEB(14.0, 0.0, 0.0, 0.0),
+                                                child: Column(
+                                                  mainAxisSize: MainAxisSize.min,
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      'Become a Provider',
+                                                      style: GoogleFonts.inter(
+                                                        fontSize: 16.0,
+                                                        fontWeight: FontWeight.w700,
+                                                        color: Colors.white,
+                                                        height: 1.3,
+                                                      ),
+                                                    ),
+                                                    SizedBox(height: 4.0),
+                                                    Text(
+                                                      'Join our network & start earning',
+                                                      style: GoogleFonts.inter(
+                                                        fontSize: 13.0,
+                                                        fontWeight: FontWeight.w400,
+                                                        color: Colors.white.withValues(alpha: 0.85),
+                                                        height: 1.4,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 32.0,
+                                              height: 32.0,
+                                              decoration: BoxDecoration(
+                                                color: Colors.white.withValues(alpha: 0.18),
+                                                shape: BoxShape.circle,
+                                              ),
+                                              child: Icon(
+                                                Icons.arrow_forward_ios_rounded,
+                                                color: Colors.white,
+                                                size: 16.0,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     15.0, 15.0, 15.0, 0.0),
@@ -1167,29 +1101,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                       endIndent: 15.0,
                       color: FlutterFlowTheme.of(context).optionalColor,
                     ),
-                      InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          context.pushNamed(SecurityWidget.routeName);
-                        },
-                        child: wrapWithModel(
-                          model: _model.appSecurityModel,
-                          updateCallback: () => safeSetState(() {}),
-                          child: SettingsButtonWidget(
-                            title: 'Security',
-                            description: 'Password, authentication, etc',
-                            icon: Icon(
-                              FFIcons.kshield01,
-                              color: FlutterFlowTheme.of(context).primary,
-                              size: 24.0,
-                            ),
-                            showDivider: true,
-                          ),
-                        ),
-                      ),
+
                       InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -1282,7 +1194,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             await Share.share(
-                              'Hello World',
+                              '🏗️ HIGH Connect - Your Dream Project Made Easy!\n\nCan\'t find the right engineer for your dream project? 🤔\nStop wasting time searching and calling! ⏰\n\n✨ HIGH Connect is here!\n\nConnect with your perfect Engineer within seconds! 🚀\n\n📋 100+ Categories Available:\n• Civil Engineers\n• Construction Experts\n• Building Plan Approval Specialists\n• Structural Engineers\n• Promoters & Builders\n• Skilled Labours\n...and many more!\n\n🎯 Everything in ONE Platform!\nFrom land selection to final painting - all specialists are here!\n\n💰 Best Part: Completely FREE for users!\n\n📍 Find engineers in YOUR area\n🤝 Connect directly with them\n\n🎁 SPECIAL OFFER:\nFirst 500 engineers get FREE registration!\n\n⏱️ Save Time • Save Effort • Perfect Work!\n\nDownload NOW:\nhttps://play.google.com/store/apps/details?id=com.myhigh.connect\n\nHIGH Connect — Your Perfect Project Partner! 🏡✨',
                               sharePositionOrigin:
                                   getWidgetBoundingBox(context),
                             );
@@ -1303,45 +1215,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                           ),
                         ),
                       ),
-                      InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          await showModalBottomSheet(
-                            isScrollControlled: true,
-                            backgroundColor: Colors.transparent,
-                            context: context,
-                            builder: (context) {
-                              return GestureDetector(
-                                onTap: () {
-                                  FocusScope.of(context).unfocus();
-                                  FocusManager.instance.primaryFocus?.unfocus();
-                                },
-                                child: Padding(
-                                  padding: MediaQuery.viewInsetsOf(context),
-                                  child: ZFeedbackWidget(),
-                                ),
-                              );
-                            },
-                          ).then((value) => safeSetState(() {}));
-                        },
-                        child: wrapWithModel(
-                          model: _model.notificationsModel3,
-                          updateCallback: () => safeSetState(() {}),
-                          child: SettingsButtonWidget(
-                            title: 'Feedback',
-                            description: 'Share your feedback with us',
-                            icon: Icon(
-                              FFIcons.kmessageAlertSquare,
-                              color: FlutterFlowTheme.of(context).primary,
-                              size: 24.0,
-                            ),
-                            showDivider: true,
-                          ),
-                        ),
-                      ),
+
                       Builder(
                         builder: (context) => InkWell(
                           splashColor: Colors.transparent,
@@ -1349,27 +1223,9 @@ class _ProfileWidgetState extends State<ProfileWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            await showDialog(
-                              barrierColor:
-                                  FlutterFlowTheme.of(context).barrier,
-                              context: context,
-                              builder: (dialogContext) {
-                                return Dialog(
-                                  elevation: 0,
-                                  insetPadding: EdgeInsets.zero,
-                                  backgroundColor: Colors.transparent,
-                                  alignment: AlignmentDirectional(0.0, 0.0)
-                                      .resolve(Directionality.of(context)),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      FocusScope.of(dialogContext).unfocus();
-                                      FocusManager.instance.primaryFocus
-                                          ?.unfocus();
-                                    },
-                                    child: ZRateAppWidget(),
-                                  ),
-                                );
-                              },
+                            launchUrl(
+                              Uri.parse('https://play.google.com/store/apps/details?id=com.myhigh.connect'),
+                              mode: LaunchMode.externalApplication,
                             );
                           },
                           child: wrapWithModel(
@@ -1377,7 +1233,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                             updateCallback: () => safeSetState(() {}),
                             child: SettingsButtonWidget(
                               title: 'Rate the app',
-                              description: 'Give us your feedback',
+                              description: 'Rate us on the Play Store',
                               icon: Icon(
                                 FFIcons.kstar01,
                                 color: FlutterFlowTheme.of(context).primary,

@@ -1,99 +1,87 @@
-import 'dart:math';
-import 'package:mailer/mailer.dart';
-import 'package:mailer/smtp_server.dart';
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
-/// Service for handling real email OTP verification directly from the app
-/// Bypasses Firestore completely to avoid "Permission Denied" errors!
+/// Email OTP via Firebase Functions (Gen 1 HTTP): `sendEmailOtpV2` / `verifyEmailOtpV2`.
+/// Matches [firebase/functions/index.js] and avoids embedding SMTP credentials in the app.
 class EmailOtpService {
-  // Store OTPs locally in memory while the app is running
-  static final Map<String, String> _otpCache = {};
-  
-  // ========================================================
-  // 🚨 IMPORTANT: CONFIGURE YOUR GMAIL APP PASSWORD HERE 🚨
-  // ========================================================
-  static const String _smtpEmail = 'mr.stacksmith@gmail.com'; 
-  static const String _smtpPassword = 'xzfebokxpuinrjnb'; 
+  EmailOtpService._();
 
-  /// Send real OTP Email via SMTP (Or Simulated on Web)
+  static const String _functionsBaseUrl =
+      'https://us-central1-high-connect-3.cloudfunctions.net';
+
   static Future<bool> sendOtp(String email) async {
+    final trimmed = email.trim();
+    if (trimmed.isEmpty || !trimmed.contains('@')) {
+      throw Exception('Invalid email address.');
+    }
+
+    final uri = Uri.parse('$_functionsBaseUrl/sendEmailOtpV2');
     try {
-      final String code = (100000 + Random().nextInt(900000)).toString();
-      final String cleanEmail = email.trim().toLowerCase();
-      
-      // Store in memory for verification
-      _otpCache[cleanEmail] = code;
+      final resp = await http.post(
+        uri,
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({'email': trimmed}),
+      );
 
-      // 🚨 CRITICAL BROWSER LIMITATION 🚨
-      // Web browsers fiercely block raw TCP Sockets for security reasons.
-      // Therefore, the direct SMTP 'mailer' package CANNOT work when running in Chrome.
-      // It WILL work perfectly when you compile this to an Android/APK or iOS app!
-      if (kIsWeb) {
-        Fluttertoast.showToast(
-          msg: "TEST OTP: $code\n(Web blocks raw emails. Native app will send real email!)",
-          toastLength: Toast.LENGTH_LONG,
-          gravity: ToastGravity.TOP,
-          backgroundColor: Colors.orange,
-          textColor: Colors.white,
-          fontSize: 16.0,
-        );
-        debugPrint('Web Mode: Real Emails bypassed due to TCP block. OTP is: $code');
-        return true;
+      Map<String, dynamic>? json;
+      if (resp.body.isNotEmpty) {
+        try {
+          json = jsonDecode(resp.body) as Map<String, dynamic>?;
+        } catch (_) {}
       }
 
-      // 📱 NATIVE MOBILE EXECUTION (Where Raw Sockets are allowed!)
-      final smtpServer = gmail(_smtpEmail, _smtpPassword);
+      final ok = resp.statusCode >= 200 &&
+          resp.statusCode < 300 &&
+          json?['success'] == true;
+      if (ok) return true;
 
-      final message = Message()
-        ..from = Address(_smtpEmail, 'HIGH Connect')
-        ..recipients.add(cleanEmail)
-        ..subject = 'Your HIGH Connect Verification Code'
-        ..html = '''
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-            <h2 style="color: #2563eb; text-align: center;">HIGH Connect</h2>
-            <p style="font-size: 16px;">Your verification code is:</p>
-            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 25px; border-radius: 12px; text-align: center; margin: 25px 0;">
-              <span style="font-size: 36px; font-weight: bold; letter-spacing: 10px; color: white;">$code</span>
-            </div>
-            <p style="color: #6b7280;">This code is valid for your current session.</p>
-          </div>
-        ''';
-
-      debugPrint('Sending real email via SMTP to $cleanEmail...');
-      await send(message, smtpServer);
-      debugPrint('✅ Email successfully sent!');
-      
-      return true;
-    } catch (e) {
-      if (e is MailerException) {
-         for (var p in e.problems) {
-            debugPrint('SMTP Problem: ${p.code}: ${p.msg}');
-         }
-         if (e.message.contains('535') || e.message.contains('Invalid login')) {
-           throw Exception("Gmail App Password rejected! Please generate a new 16-character App Password.");
-         }
-      }
-      throw Exception('Failed to send email: ${e.toString().replaceAll('Exception: ', '')}');
+      final err = json?['error']?.toString().trim();
+      if (err != null && err.isNotEmpty) throw Exception(err);
+      throw Exception(
+        'Could not send verification email (${resp.statusCode}).',
+      );
+    } catch (e, st) {
+      debugPrint('[EmailOtp] sendOtp failed: $e\n$st');
+      if (e is Exception) rethrow;
+      throw Exception(e.toString());
     }
   }
 
-  /// Verify OTP code directly from RAM cache
   static Future<bool> verifyOtp(String email, String code) async {
-    final String cleanEmail = email.trim().toLowerCase();
-    final String? storedCode = _otpCache[cleanEmail];
-    
-    if (storedCode == null) {
-      throw Exception('OTP not found. Please request a new code.');
-    }
-    
-    if (storedCode != code.trim()) {
-      throw Exception('Invalid code. Please try again.');
-    }
+    final uri = Uri.parse('$_functionsBaseUrl/verifyEmailOtpV2');
+    try {
+      final resp = await http.post(
+        uri,
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({
+          'email': email.trim(),
+          'code': code.trim(),
+        }),
+      );
 
-    // Reset OTP upon successful verification
-    _otpCache.remove(cleanEmail);
-    return true;
+      Map<String, dynamic>? json;
+      if (resp.body.isNotEmpty) {
+        try {
+          json = jsonDecode(resp.body) as Map<String, dynamic>?;
+        } catch (_) {}
+      }
+
+      final ok = resp.statusCode >= 200 &&
+          resp.statusCode < 300 &&
+          (json?['success'] == true || json?['verified'] == true);
+      if (ok) return true;
+
+      final err = json?['error']?.toString().trim();
+      if (err != null && err.isNotEmpty) throw Exception(err);
+      throw Exception(
+        'Verification failed (${resp.statusCode}).',
+      );
+    } catch (e, st) {
+      debugPrint('[EmailOtp] verifyOtp failed: $e\n$st');
+      if (e is Exception) rethrow;
+      throw Exception(e.toString());
+    }
   }
 }

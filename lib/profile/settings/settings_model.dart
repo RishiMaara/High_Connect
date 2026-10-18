@@ -42,6 +42,8 @@ class SettingsModel extends FlutterFlowModel<SettingsWidget> {
   late TextRightModel textRightModel8;
   // Model for TextRight component.
   late TextRightModel textRightModel9;
+  // Model for TextRight component.
+  late TextRightModel textRightModel10;
 
   @override
   void initState(BuildContext context) {
@@ -62,6 +64,7 @@ class SettingsModel extends FlutterFlowModel<SettingsWidget> {
     textRightModel7 = createModel(context, () => TextRightModel());
     textRightModel8 = createModel(context, () => TextRightModel());
     textRightModel9 = createModel(context, () => TextRightModel());
+    textRightModel10 = createModel(context, () => TextRightModel());
   }
 
   @override
@@ -83,5 +86,6 @@ class SettingsModel extends FlutterFlowModel<SettingsWidget> {
     textRightModel7.dispose();
     textRightModel8.dispose();
     textRightModel9.dispose();
+    textRightModel10.dispose();
   }
 }

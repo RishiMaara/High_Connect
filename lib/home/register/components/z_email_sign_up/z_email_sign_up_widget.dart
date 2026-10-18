@@ -617,7 +617,9 @@ class _ZEmailSignUpWidgetState extends State<ZEmailSignUpWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                   iconPadding:
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  color: FlutterFlowTheme.of(context).primary,
+                  color: widget.provider == true
+                      ? FlutterFlowTheme.of(context).primary
+                      : FlutterFlowTheme.of(context).accent1,
                   textStyle: FlutterFlowTheme.of(context).titleMedium.override(
                         font: GoogleFonts.inter(
                           fontWeight: FlutterFlowTheme.of(context)
@@ -627,7 +629,9 @@ class _ZEmailSignUpWidgetState extends State<ZEmailSignUpWidget> {
                               .titleMedium
                               .fontStyle,
                         ),
-                        color: FlutterFlowTheme.of(context).info,
+                        color: widget.provider == true
+                            ? Colors.white
+                            : FlutterFlowTheme.of(context).primary,
                         letterSpacing: 0.0,
                         fontWeight:
                             FlutterFlowTheme.of(context).titleMedium.fontWeight,
@@ -642,7 +646,9 @@ class _ZEmailSignUpWidgetState extends State<ZEmailSignUpWidget> {
             wrapWithModel(
               model: _model.zContinueWithModel,
               updateCallback: () => safeSetState(() {}),
-              child: ZContinueWithWidget(),
+              child: ZContinueWithWidget(
+                provider: widget.provider,
+              ),
             ),
             Align(
               alignment: AlignmentDirectional(0.0, -1.0),

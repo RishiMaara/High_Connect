@@ -1151,8 +1151,210 @@ class _BookingsDetailsWidgetState extends State<BookingsDetailsWidget>
                     builder: (context) {
                       if (valueOrDefault<bool>(
                           currentUserDocument?.inService, false)) {
+                        final status = widget.bookingDoc?.snapshotData['status'] as String? ?? 'in_progress';
+                        
+                        // ── Message Customer button (provider side) ───────
+                        if ((status == 'accepted' || status == 'in_progress') &&
+                            !widget.bookingDoc!.completed) {
+                          return Column(
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(15.0, 12.0, 15.0, 0.0),
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(12),
+                                  onTap: () => context.pushNamed(
+                                    ChatWidget.routeName,
+                                    queryParameters: {
+                                      'userRef': serializeParam(
+                                        widget.bookingDoc!.user,
+                                        ParamType.DocumentReference,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'userRef': widget.bookingDoc!.user,
+                                    },
+                                  ),
+                                  child: Container(
+                                    width: double.infinity,
+                                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context).primary.withOpacity(0.08),
+                                      borderRadius: BorderRadius.circular(12),
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context).primary.withOpacity(0.3),
+                                        width: 1,
+                                      ),
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.chat_bubble_outline_rounded,
+                                          color: FlutterFlowTheme.of(context).primary,
+                                          size: 20,
+                                        ),
+                                        SizedBox(width: 10),
+                                        Text(
+                                          'Message Customer',
+                                          style: GoogleFonts.inter(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w600,
+                                            color: FlutterFlowTheme.of(context).primary,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ).animate().fadeIn(duration: 300.ms).slideY(begin: 0.2, end: 0, duration: 300.ms),
+                            ],
+                          );
+                        }
+                        
+                        if (status == 'pending_approval') {
+                          return Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                15.0, 12.0, 15.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Expanded(
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      await widget.bookingDoc!.reference
+                                          .update(createMyBookingsRecordData(
+                                        status: 'rejected',
+                                      ));
+                                      await NotificationsRecord.createDoc(
+                                        widget.bookingDoc!.user!,
+                                      ).set(createNotificationsRecordData(
+                                        title: 'Booking Rejected',
+                                        description: 'Sorry, your booking request has been declined.',
+                                        type: 'booking_rejected',
+                                        timeStamp: getCurrentTimestamp,
+                                        read: false,
+                                      ));
+                                      ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                          content: Text('Booking rejected.', style: TextStyle(color: Colors.white)),
+                                          backgroundColor: FlutterFlowTheme.of(context).error,
+                                        ),
+                                      );
+                                      context.safePop();
+                                    },
+                                    text: 'Decline',
+                                    options: FFButtonOptions(
+                                      height: 50.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 0.0, 24.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: FlutterFlowTheme.of(context)
+                                          .errorAccent,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontStyle,
+                                            ),
+                                            color:
+                                                FlutterFlowTheme.of(context)
+                                                    .error,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleMedium
+                                                    .fontStyle,
+                                          ),
+                                      elevation: 0.0,
+                                      borderRadius:
+                                          BorderRadius.circular(10.0),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      await widget.bookingDoc!.reference
+                                          .update(createMyBookingsRecordData(
+                                        status: 'in_progress',
+                                      ));
+                                      await NotificationsRecord.createDoc(
+                                        widget.bookingDoc!.user!,
+                                      ).set(createNotificationsRecordData(
+                                        title: 'Booking Approved',
+                                        description: 'Your booking has been approved! It is now in progress.',
+                                        type: 'booking_accepted',
+                                        timeStamp: getCurrentTimestamp,
+                                        read: false,
+                                      ));
+                                      ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                          content: Text('Booking approved!', style: TextStyle(color: Colors.white)),
+                                          backgroundColor: FlutterFlowTheme.of(context).success,
+                                        ),
+                                      );
+                                      safeSetState(() {});
+                                    },
+                                    text: 'Accept',
+                                    options: FFButtonOptions(
+                                      height: 50.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 0.0, 24.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontStyle,
+                                            ),
+                                            color: FlutterFlowTheme.of(context)
+                                                .info,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleMedium
+                                                    .fontStyle,
+                                          ),
+                                      elevation: 0.0,
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                  ),
+                                ),
+                              ].divide(SizedBox(width: 12.0)),
+                            ),
+                          );
+                        }
+
                         return Visibility(
-                          visible: !widget.bookingDoc!.completed,
+                          visible: !widget.bookingDoc!.completed && status == 'accepted',
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 15.0, 12.0, 15.0, 0.0),
@@ -1292,130 +1494,150 @@ class _BookingsDetailsWidgetState extends State<BookingsDetailsWidget>
                             ),
                           ),
                         );
+                      // ── User side: message + completed/review buttons ─
                       } else {
-                        return Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              15.0, 12.0, 15.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              if (!widget.bookingDoc!.reviewed)
-                                Expanded(
-                                  child: FFButtonWidget(
-                                    onPressed: () async {
-                                      context.pushNamed(
-                                        RateExperienceWidget.routeName,
+                        return Column(
+                          children: [
+                            // Message Provider button — only when booking is active
+                            if (!widget.bookingDoc!.completed)
+                              StreamBuilder<ServicesRecord>(
+                                stream: ServicesRecord.getDocument(widget.bookingDoc!.service!),
+                                builder: (context, snapshot) {
+                                  if (!snapshot.hasData) return const SizedBox.shrink();
+                                  final svc = snapshot.data!;
+                                  return Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(15.0, 12.0, 15.0, 0.0),
+                                    child: InkWell(
+                                      borderRadius: BorderRadius.circular(12),
+                                      onTap: () => context.pushNamed(
+                                        ChatWidget.routeName,
                                         queryParameters: {
-                                          'bookingDoc': serializeParam(
-                                            widget.bookingDoc,
-                                            ParamType.Document,
+                                          'userRef': serializeParam(
+                                            svc.provider,
+                                            ParamType.DocumentReference,
                                           ),
                                         }.withoutNulls,
                                         extra: <String, dynamic>{
-                                          'bookingDoc': widget.bookingDoc,
+                                          'userRef': svc.provider,
                                         },
-                                      );
-                                    },
-                                    text: 'Write a review',
-                                    options: FFButtonOptions(
-                                      height: 50.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 0.0, 24.0, 0.0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color:
-                                          FlutterFlowTheme.of(context).accent1,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleMedium
-                                          .override(
-                                            font: GoogleFonts.inter(
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleMedium
-                                                      .fontStyle,
+                                      ),
+                                      child: Container(
+                                        width: double.infinity,
+                                        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context).primary.withOpacity(0.08),
+                                          borderRadius: BorderRadius.circular(12),
+                                          border: Border.all(
+                                            color: FlutterFlowTheme.of(context).primary.withOpacity(0.3),
+                                            width: 1,
+                                          ),
+                                        ),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Icon(
+                                              Icons.chat_bubble_outline_rounded,
+                                              color: FlutterFlowTheme.of(context).primary,
+                                              size: 20,
                                             ),
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            letterSpacing: 0.0,
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMedium
-                                                    .fontStyle,
-                                          ),
-                                      elevation: 0.0,
-                                      borderRadius: BorderRadius.circular(10.0),
+                                            SizedBox(width: 10),
+                                            Text(
+                                              'Message Provider',
+                                              style: GoogleFonts.inter(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w600,
+                                                color: FlutterFlowTheme.of(context).primary,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
                                     ),
-                                  ).animateOnPageLoad(
-                                      animationsMap['buttonOnPageLoadAnimation']!),
-                                ),
-                              Expanded(
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    context.pushNamed(
-                                      BookingDateTimeWidget.routeName,
-                                      queryParameters: {
-                                        'serviceDoc': serializeParam(
-                                          columnServicesRecord,
-                                          ParamType.Document,
-                                        ),
-                                      }.withoutNulls,
-                                      extra: <String, dynamic>{
-                                        'serviceDoc': columnServicesRecord,
-                                      },
-                                    );
-                                  },
-                                  text: 'Book again',
-                                  options: FFButtonOptions(
-                                    height: 50.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .override(
-                                          font: GoogleFonts.inter(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMedium
-                                                    .fontStyle,
-                                          ),
-                                          color:
-                                              FlutterFlowTheme.of(context).info,
-                                          letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleMedium
-                                                  .fontStyle,
-                                        ),
-                                    elevation: 0.0,
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                ).animateOnPageLoad(
-                                    animationsMap['buttonOnPageLoadAnimation']!),
+                                  ).animate().fadeIn(duration: 300.ms).slideY(begin: 0.2, end: 0, duration: 300.ms);
+                                },
                               ),
-                            ].divide(SizedBox(
-                                width:
-                                    widget.bookingDoc!.reviewed ? 0.0 : 12.0)),
-                          ),
+
+                            // Completed booking actions
+                            if (widget.bookingDoc!.completed)
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(15.0, 12.0, 15.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    if (!widget.bookingDoc!.reviewed)
+                                      Expanded(
+                                        child: FFButtonWidget(
+                                          onPressed: () async {
+                                            context.pushNamed(
+                                              RateExperienceWidget.routeName,
+                                              queryParameters: {
+                                                'bookingDoc': serializeParam(
+                                                  widget.bookingDoc,
+                                                  ParamType.Document,
+                                                ),
+                                              }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                'bookingDoc': widget.bookingDoc,
+                                              },
+                                            );
+                                          },
+                                          text: 'Write a review',
+                                          options: FFButtonOptions(
+                                            height: 50.0,
+                                            padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                                            iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context).accent1,
+                                            textStyle: FlutterFlowTheme.of(context).titleMedium.override(
+                                              font: GoogleFonts.inter(
+                                                fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
+                                                fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                              ),
+                                              color: FlutterFlowTheme.of(context).primary,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
+                                              fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                            ),
+                                            elevation: 0.0,
+                                            borderRadius: BorderRadius.circular(10.0),
+                                          ),
+                                        ).animateOnPageLoad(animationsMap['buttonOnPageLoadAnimation']!),
+                                      ),
+                                    Expanded(
+                                      child: FFButtonWidget(
+                                        onPressed: () async {
+                                          context.pushNamed(
+                                            ServicePageWidget.routeName,
+                                            queryParameters: {
+                                              'serviceDoc': serializeParam(
+                                                widget.bookingDoc?.service,
+                                                ParamType.DocumentReference,
+                                                isList: false,
+                                              ),
+                                            }.withoutNulls,
+                                          );
+                                        },
+                                        text: 'Book again',
+                                        options: FFButtonOptions(
+                                          height: 50.0,
+                                          padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                                          iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context).primary,
+                                          textStyle: FlutterFlowTheme.of(context).titleMedium.override(
+                                            font: GoogleFonts.inter(fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight, fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle),
+                                            color: FlutterFlowTheme.of(context).info,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                          ),
+                                          elevation: 0.0,
+                                          borderRadius: BorderRadius.circular(10.0),
+                                        ),
+                                      ).animateOnPageLoad(animationsMap['buttonOnPageLoadAnimation']!),
+                                    ),
+                                  ].divide(SizedBox(width: widget.bookingDoc!.reviewed ? 0.0 : 12.0)),
+                                ),
+                              ),
+                          ],
                         );
                       }
                     },

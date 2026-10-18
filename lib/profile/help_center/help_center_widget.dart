@@ -186,12 +186,21 @@ class _HelpCenterWidgetState extends State<HelpCenterWidget> {
                 ),
               ),
             ),
-            wrapWithModel(
-              model: _model.textRightModel6,
-              updateCallback: () => safeSetState(() {}),
-              child: TextRightWidget(
-                content: 'Visit our website',
-                showDivider: false,
+            InkWell(
+              splashColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () async {
+                await launchURL('https://high-connect-3.web.app/');
+              },
+              child: wrapWithModel(
+                model: _model.textRightModel6,
+                updateCallback: () => safeSetState(() {}),
+                child: TextRightWidget(
+                  content: 'Visit our website',
+                  showDivider: false,
+                ),
               ),
             ),
           ],

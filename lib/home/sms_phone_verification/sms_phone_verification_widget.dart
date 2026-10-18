@@ -10,6 +10,7 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'sms_phone_verification_model.dart';
 export 'sms_phone_verification_model.dart';
@@ -38,6 +39,11 @@ class _SmsPhoneVerificationWidgetState
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
+  StreamSubscription<User?>? _authSubscription;
+  bool _isNavigating = false;
+  // Whether the user manually submitted the code (vs Firebase auto-verified it)
+  bool _manualVerifyInProgress = false;
+
   @override
   void initState() {
     super.initState();
@@ -50,50 +56,100 @@ class _SmsPhoneVerificationWidgetState
     _model.pinCodeFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
+
+    // This listener handles ONLY the Firebase auto-verification path (Android SMS
+    // retriever / instant verification). When the user manually enters the code,
+    // _manualVerifyInProgress is true so we skip the listener to avoid double-
+    // execution of _handleSuccessfulVerification.
+    _authSubscription =
+        FirebaseAuth.instance.authStateChanges().listen((user) async {
+      if (user != null && mounted && !_manualVerifyInProgress) {
+        if (_isNavigating) return;
+        _isNavigating = true;
+        await _handleSuccessfulVerification(user);
+      }
+    });
   }
 
-  @override
-  void dispose() {
-    _model.dispose();
-
-    super.dispose();
-  }
-
-  Future _verifyAndNavigate(String smsCode) async {
-    if (FFAppState().isAuthLoading) return;
+  Future _handleSuccessfulVerification(User firebaseUser) async {
+    // Guard against re-entry
+    if (!mounted) return;
 
     FFAppState().isAuthLoading = true;
     safeSetState(() {});
 
     try {
       GoRouter.of(context).prepareAuthEvent();
+
+      // Create Firestore user document
+      await maybeCreateUser(firebaseUser);
+
+      // Fetch user data to check provider status
+      final userRef = UsersRecord.collection.doc(currentUserUid);
+      final userDoc = await UsersRecord.getDocumentOnce(userRef);
+      final isAlreadyProvider = userDoc.inService;
+
+      if (context.mounted) {
+        if (widget.provider == true && !isAlreadyProvider) {
+          context.goNamedAuth(BecomeProviderWidget.routeName, true);
+        } else {
+          context.goNamedAuth(HomePageWidget.routeName, true);
+        }
+      }
+    } catch (e) {
+      debugPrint('🔴 Routing Error: $e');
+      _isNavigating = false;
+    } finally {
+      FFAppState().isAuthLoading = false;
+      safeSetState(() {});
+    }
+  }
+
+  @override
+  void dispose() {
+    _authSubscription?.cancel();
+    _model.dispose();
+
+    super.dispose();
+  }
+
+  Future _verifyAndNavigate(String smsCode) async {
+    if (_isNavigating) return;
+    if (FFAppState().isAuthLoading) return;
+
+    // Mark that we are doing a manual verification so the authStateChanges
+    // listener doesn't race us and call _handleSuccessfulVerification twice.
+    _manualVerifyInProgress = true;
+    _isNavigating = true;
+    FFAppState().isAuthLoading = true;
+    safeSetState(() {});
+
+    try {
       final phoneVerifiedUser = await authManager.verifySmsCode(
         context: context,
         smsCode: smsCode,
+        createDocument: false,
       );
 
       if (phoneVerifiedUser == null) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Invalid code. Please try again.'),
-          ),
-        );
+        // verifySmsCode already showed an error snackbar
+        _isNavigating = false;
+        _manualVerifyInProgress = false;
+        FFAppState().isAuthLoading = false;
+        safeSetState(() {});
         return;
       }
 
-      // Ensure user record is updated correctly
-      final userRef = currentUserReference ??
-          UsersRecord.collection.doc(currentUserUid);
-      
-      await userRef.update(createUsersRecordData(
-        inService: widget.provider,
-      ));
-
-      if (context.mounted) {
-        context.goNamedAuth(HomePageWidget.routeName, true);
+      // signInWithCredential succeeded — now navigate
+      final currentUser = FirebaseAuth.instance.currentUser;
+      if (currentUser == null) {
+        throw Exception('No Firebase user after credential sign-in');
       }
+      await _handleSuccessfulVerification(currentUser);
     } catch (e) {
       debugPrint('🔴 Verification Error: $e');
+      _isNavigating = false;
+      _manualVerifyInProgress = false;
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -101,7 +157,6 @@ class _SmsPhoneVerificationWidgetState
           ),
         );
       }
-    } finally {
       FFAppState().isAuthLoading = false;
       safeSetState(() {});
     }
@@ -269,7 +324,7 @@ class _SmsPhoneVerificationWidgetState
                   enableActiveFill: false,
                   autoFocus: true,
                   focusNode: _model.pinCodeFocusNode,
-                  enablePinAutofill: false,
+                  enablePinAutofill: true,
                   errorTextSpace: 16.0,
                   showCursor: true,
                   cursorColor: FlutterFlowTheme.of(context).primary,

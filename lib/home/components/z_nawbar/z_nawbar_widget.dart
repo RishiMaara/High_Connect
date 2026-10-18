@@ -86,7 +86,7 @@ class _ZNawbarWidgetState extends State<ZNawbarWidget> {
                           FFAppState().NavBar = 0;
                           safeSetState(() {});
 
-                          context.goNamed(
+                          context.pushNamed(
                             HomePageWidget.routeName,
                             extra: <String, dynamic>{
                               kTransitionInfoKey: TransitionInfo(
@@ -156,7 +156,7 @@ class _ZNawbarWidgetState extends State<ZNawbarWidget> {
                           FFAppState().lastBookingsViewTime = DateTime.now();
                           safeSetState(() {});
 
-                          context.goNamed(
+                          context.pushNamed(
                             ServiceBookingsWidget.routeName,
                             extra: <String, dynamic>{
                               kTransitionInfoKey: TransitionInfo(
@@ -245,7 +245,7 @@ class _ZNawbarWidgetState extends State<ZNawbarWidget> {
                           FFAppState().NavBar = 3;
                           safeSetState(() {});
 
-                          context.goNamed(
+                          context.pushNamed(
                             MessagesWidget.routeName,
                             extra: <String, dynamic>{
                               kTransitionInfoKey: TransitionInfo(
@@ -312,7 +312,7 @@ class _ZNawbarWidgetState extends State<ZNawbarWidget> {
                           FFAppState().NavBar = 4;
                           safeSetState(() {});
 
-                          context.goNamed(
+                          context.pushNamed(
                             ProfileWidget.routeName,
                             extra: <String, dynamic>{
                               kTransitionInfoKey: TransitionInfo(
@@ -389,7 +389,7 @@ class _ZNawbarWidgetState extends State<ZNawbarWidget> {
                           FFAppState().NavBar = 0;
                           safeSetState(() {});
 
-                          context.goNamed(
+                          context.pushNamed(
                             HomePageWidget.routeName,
                             extra: <String, dynamic>{
                               kTransitionInfoKey: TransitionInfo(
@@ -456,7 +456,7 @@ class _ZNawbarWidgetState extends State<ZNawbarWidget> {
                           FFAppState().NavBar = 1;
                           safeSetState(() {});
 
-                          context.goNamed(
+                          context.pushNamed(
                             Allcatagories2Widget.routeName,
                             extra: <String, dynamic>{
                               kTransitionInfoKey: TransitionInfo(
@@ -526,7 +526,7 @@ class _ZNawbarWidgetState extends State<ZNawbarWidget> {
                           FFAppState().lastBookingsViewTime = DateTime.now();
                           safeSetState(() {});
 
-                          context.goNamed(
+                          context.pushNamed(
                             MyBookingsWidget.routeName,
                             extra: <String, dynamic>{
                               kTransitionInfoKey: TransitionInfo(
@@ -615,7 +615,7 @@ class _ZNawbarWidgetState extends State<ZNawbarWidget> {
                           FFAppState().NavBar = 3;
                           safeSetState(() {});
 
-                          context.goNamed(
+                          context.pushNamed(
                             MessagesWidget.routeName,
                             extra: <String, dynamic>{
                               kTransitionInfoKey: TransitionInfo(
@@ -682,7 +682,7 @@ class _ZNawbarWidgetState extends State<ZNawbarWidget> {
                           FFAppState().NavBar = 4;
                           safeSetState(() {});
 
-                          context.goNamed(
+                          context.pushNamed(
                             ProfileWidget.routeName,
                             extra: <String, dynamic>{
                               kTransitionInfoKey: TransitionInfo(

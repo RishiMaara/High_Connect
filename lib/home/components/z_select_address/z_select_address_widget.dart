@@ -280,11 +280,7 @@ class _ZSelectAddressWidgetState extends State<ZSelectAddressWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 8.0, 0.0, 0.0),
                                             child: Text(
-                                              listViewAddressesRecord.type == 2
-                                                  ? listViewAddressesRecord
-                                                      .cityTown
-                                                  : listViewAddressesRecord
-                                                      .address,
+                                              listViewAddressesRecord.address,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .labelSmall

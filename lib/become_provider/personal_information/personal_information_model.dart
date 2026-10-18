@@ -47,10 +47,13 @@ class PersonalInformationModel
   TextEditingController? emailTextController;
   String? Function(BuildContext, String?)? emailTextControllerValidator;
   String? _emailTextControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Add your email is required';
+    // Email is optional - users may have signed up via phone OTP
+    if (val != null && val.isNotEmpty) {
+      final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+      if (!emailRegex.hasMatch(val.trim())) {
+        return 'Please enter a valid email address';
+      }
     }
-
     return null;
   }
 
@@ -64,13 +67,15 @@ class PersonalInformationModel
     if (val == null || val.isEmpty) {
       return 'Phone number is required';
     }
-    // Remove +91 and spaces to get only digits
+    // Strip everything except digits
     final digitsOnly = val.replaceAll(RegExp(r'[^0-9]'), '');
-    // Should have 12 digits total (91 + 10 digit number)
-    if (digitsOnly.length != 12) {
-      return 'Please enter a valid 10-digit phone number';
+    // Accept: 10 digits (local), 12 digits (91 + 10), 11 digits (0 + 10)
+    if (digitsOnly.length == 10 ||
+        (digitsOnly.length == 12 && digitsOnly.startsWith('91')) ||
+        (digitsOnly.length == 11 && digitsOnly.startsWith('0'))) {
+      return null;
     }
-    return null;
+    return 'Please enter a valid 10-digit phone number';
   }
 
   @override

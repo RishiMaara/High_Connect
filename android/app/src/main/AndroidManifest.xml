@@ -17,7 +17,8 @@
     <application
         android:label="HIGH Connect"
         tools:replace="android:label"
-        android:icon="@mipmap/ic_launcher"
+        tools:node="merge"
+        android:icon="@mipmap/launcher_icon"
         android:requestLegacyExternalStorage="true">
 
         <activity
@@ -49,6 +50,14 @@
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
                 <data android:scheme="highconnect" android:host="highconnect.com"/>
+            </intent-filter>
+
+            <!-- HTTPS App Links for deep linking -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="https" android:host="high-connect-3.web.app"/>
             </intent-filter>
         </activity>
 

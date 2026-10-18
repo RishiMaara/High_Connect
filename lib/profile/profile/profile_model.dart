@@ -13,8 +13,6 @@ class ProfileModel extends FlutterFlowModel<ProfileWidget> {
   late SettingsButtonModel profileInformationModel;
   // Model for ServiceDetail.
   late SettingsButtonModel serviceDetailModel;
-  // Model for Availability.
-  late SettingsButtonModel availabilityModel;
   // Model for ServiceArea.
   late SettingsButtonModel serviceAreaModel;
   // Model for zContinueAsProvider component.
@@ -29,8 +27,7 @@ class ProfileModel extends FlutterFlowModel<ProfileWidget> {
   late SettingsButtonModel myNotificationsModel;
   // Model for Language.
   late SettingsButtonModel languageModel;
-  // Model for AppSecurity.
-  late SettingsButtonModel appSecurityModel;
+
   // Model for Settings.
   late SettingsButtonModel settingsModel;
   // Model for Notifications.
@@ -48,7 +45,6 @@ class ProfileModel extends FlutterFlowModel<ProfileWidget> {
   void initState(BuildContext context) {
     profileInformationModel = createModel(context, () => SettingsButtonModel());
     serviceDetailModel = createModel(context, () => SettingsButtonModel());
-    availabilityModel = createModel(context, () => SettingsButtonModel());
     serviceAreaModel = createModel(context, () => SettingsButtonModel());
     zContinueAsProviderModel =
         createModel(context, () => ZContinueAsProviderModel());
@@ -57,7 +53,7 @@ class ProfileModel extends FlutterFlowModel<ProfileWidget> {
     myReviewModel2 = createModel(context, () => SettingsButtonModel());
     myNotificationsModel = createModel(context, () => SettingsButtonModel());
     languageModel = createModel(context, () => SettingsButtonModel());
-    appSecurityModel = createModel(context, () => SettingsButtonModel());
+
     settingsModel = createModel(context, () => SettingsButtonModel());
     notificationsModel1 = createModel(context, () => SettingsButtonModel());
     notificationsModel2 = createModel(context, () => SettingsButtonModel());
@@ -70,7 +66,6 @@ class ProfileModel extends FlutterFlowModel<ProfileWidget> {
   void dispose() {
     profileInformationModel.dispose();
     serviceDetailModel.dispose();
-    availabilityModel.dispose();
     serviceAreaModel.dispose();
     zContinueAsProviderModel.dispose();
     myAddressesModel.dispose();
@@ -78,7 +73,7 @@ class ProfileModel extends FlutterFlowModel<ProfileWidget> {
     myReviewModel2.dispose();
     myNotificationsModel.dispose();
     languageModel.dispose();
-    appSecurityModel.dispose();
+
     settingsModel.dispose();
     notificationsModel1.dispose();
     notificationsModel2.dispose();

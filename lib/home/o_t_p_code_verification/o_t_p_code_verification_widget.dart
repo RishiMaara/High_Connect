@@ -221,7 +221,7 @@ class _OTPCodeVerificationWidgetState extends State<OTPCodeVerificationWidget> {
                   enableActiveFill: false,
                   autoFocus: true,
                   focusNode: _model.pinCodeFocusNode,
-                  enablePinAutofill: false,
+                  enablePinAutofill: true,
                   errorTextSpace: 16.0,
                   showCursor: true,
                   cursorColor: FlutterFlowTheme.of(context).primary,
@@ -247,30 +247,29 @@ class _OTPCodeVerificationWidgetState extends State<OTPCodeVerificationWidget> {
                   ),
                   controller: _model.pinCodeController,
                   onChanged: (_) async {
+                    final smsCodeVal = _model.pinCodeController!.text;
+                    // Only attempt auto-verification once all 6 digits are entered
+                    if (smsCodeVal.length != 6) return;
+                    // Prevent duplicate calls if already verifying
+                    if (FFAppState().isAuthLoading) return;
+
                     FFAppState().isAuthLoading = true;
+                    safeSetState(() {});
                     try {
                       GoRouter.of(context).prepareAuthEvent();
-                      final smsCodeVal = _model.pinCodeController!.text;
-                      if (smsCodeVal.isEmpty) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text('Enter SMS verification code.'),
-                          ),
-                        );
-                        return;
-                      }
                       final phoneVerifiedUser = await authManager.verifySmsCode(
                         context: context,
                         smsCode: smsCodeVal,
                       );
                       if (phoneVerifiedUser == null) {
+                        // verifySmsCode already showed an error snackbar
                         return;
                       }
-
                       context.goNamedAuth(
                           HomePageWidget.routeName, context.mounted);
                     } finally {
                       FFAppState().isAuthLoading = false;
+                      if (mounted) safeSetState(() {});
                     }
                   },
                   autovalidateMode: AutovalidateMode.disabled,

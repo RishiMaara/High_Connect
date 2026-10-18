@@ -20,8 +20,9 @@ mixin EmailSignInManager on AuthManager {
   Future<BaseAuthUser?> createAccountWithEmail(
     BuildContext context,
     String email,
-    String password,
-  );
+    String password, [
+    bool createDocument = true,
+  ]);
 }
 
 mixin AnonymousSignInManager on AuthManager {
@@ -51,6 +52,12 @@ mixin PhoneSignInManager on AuthManager {
   });
 
   Future verifySmsCode({
+    required BuildContext context,
+    required String smsCode,
+    bool createDocument = true,
+  });
+
+  Future reauthenticateWithPhone({
     required BuildContext context,
     required String smsCode,
   });

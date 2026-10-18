@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/booking/components/z_rooms_card/z_rooms_card_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -12,6 +13,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'booking_rooms_model.dart';
 export 'booking_rooms_model.dart';
+import '/flutter_flow/random_data_util.dart' as random_util;
+import '/flutter_flow/custom_functions.dart' as functions;
+import '/booking/my_bookings/my_bookings_widget.dart';
+import '/services/booking_notification_util.dart';
 
 class BookingRoomsWidget extends StatefulWidget {
   const BookingRoomsWidget({
@@ -460,23 +465,63 @@ class _BookingRoomsWidgetState extends State<BookingRoomsWidget> {
                 child: FFButtonWidget(
                   onPressed: () async {
                     if (FFAppState().roomsQuantity.isNotEmpty) {
-                      context.pushNamed(
-                        BookingDateTimeWidget.routeName,
-                        queryParameters: {
-                          'serviceDoc': serializeParam(
-                            widget.serviceDoc,
-                            ParamType.Document,
-                          ),
-                        }.withoutNulls,
-                        extra: <String, dynamic>{
-                          'serviceDoc': widget.serviceDoc,
-                          kTransitionInfoKey: TransitionInfo(
-                            hasTransition: true,
-                            transitionType: PageTransitionType.fade,
-                            duration: Duration(milliseconds: 0),
-                          ),
-                        },
+                      // Set app state values
+                      FFAppState().selectedService =
+                          widget.serviceDoc?.reference;
+                      FFAppState().bookingStartDate = getCurrentTimestamp;
+                      FFAppState().workingHours = 1;
+                      
+                      final totalPrice = FFAppState().serviceTotalPrice;
+                      final bookingNumber = random_util.randomInteger(100000, 999999);
+                      
+                      // Create booking request with pending status
+                      final bookingRef =
+                          MyBookingsRecord.createDoc(currentUserReference!);
+                      await bookingRef.set({
+                        ...createMyBookingsRecordData(
+                          service: widget.serviceDoc?.reference,
+                          user: currentUserReference,
+                          bookingDate: FFAppState().bookingStartDate,
+                          completed: false,
+                          totalPaid: totalPrice,
+                          reviewed: false,
+                          bookingNumber: bookingNumber,
+                          startTime: FFAppState().bookingStartDate,
+                          pricePerHour: widget.serviceDoc?.pricePerHour,
+                          discount: 1.0,
+                          phoneNumber: currentPhoneNumber,
+                          workingHours: FFAppState().workingHours,
+                        ),
+                        ...mapToFirestore({
+                          'offerings': FFAppState().selectedOfferings.map((e) => getServiceOfferingsFirestoreData(e, true)).toList(),
+                          'status': 'pending_approval',
+                          'roomsQuantity': FFAppState().roomsQuantity,
+                        }),
+                      });
+
+                      if (widget.serviceDoc?.provider != null) {
+                        await BookingNotificationUtil.notifyProviderOfBookingRequest(
+                          providerRef: widget.serviceDoc!.provider!,
+                          serviceDoc: widget.serviceDoc,
+                          bookingWhen: FFAppState().bookingStartDate!,
+                          bookingNumber: bookingNumber,
+                          bookingDocRef: bookingRef,
+                        );
+                      }
+                      
+                      // Show success message
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Booking request sent! Waiting for provider confirmation.'),
+                          backgroundColor: FlutterFlowTheme.of(context).success,
+                          duration: Duration(seconds: 3),
+                        ),
                       );
+                      
+                      // Navigate to bookings page
+                      context.goNamed(MyBookingsWidget.routeName);
+                      
+                      safeSetState(() {});
                     } else {
                       await showDialog(
                         barrierColor:
@@ -505,7 +550,7 @@ class _BookingRoomsWidgetState extends State<BookingRoomsWidget> {
                       );
                     }
                   },
-                  text: 'Next',
+                  text: 'Send Request',
                   options: FFButtonOptions(
                     width: double.infinity,
                     height: 50.0,

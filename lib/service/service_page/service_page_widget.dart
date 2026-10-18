@@ -8,6 +8,9 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/loading/l_text/l_text_widget.dart';
 import '/service/z_service_reviews_list/z_service_reviews_list_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/flutter_flow/random_data_util.dart' as random_util;
+import '/services/booking_notification_util.dart';
+import '/booking/my_bookings/my_bookings_widget.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -861,17 +864,28 @@ class _ServicePageWidgetState extends State<ServicePageWidget>
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                final providerName = widget.serviceDoc?.title ?? 'Unknown Provider';
-                                final providerId = widget.serviceDoc?.provider?.id ?? 'N/A';
-                                final shareMessage = '''Hi! 👋
-I'm using HIGH Connect, a platform to connect with professional civil engineers.
+                                final providerDoc = await UsersRecord.getDocumentOnce(widget.serviceDoc!.provider!);
+                                final providerName = providerDoc.displayName;
+                                final serviceTitle = widget.serviceDoc?.title ?? 'Service';
+                                final category = widget.serviceDoc?.category ?? 'N/A';
+                                final rating = widget.serviceDoc?.rate.toStringAsFixed(1) ?? '0.0';
+                                final description = widget.serviceDoc?.description ?? '';
+                                final serviceId = widget.serviceDoc?.reference.id ?? '';
+                                final shortDesc = description.length > 100 ? '${description.substring(0, 97)}...' : description;
+                                
+                                final shareMessage = '''🔧 $serviceTitle
 
-I'd like to share this engineer's profile with you:
+📋 Category: $category
+👨‍🔧 Provider: $providerName
+⭐ Rating: $rating/5.0
 
-Name: $providerName
-User ID: $providerId
+📝 $shortDesc
 
-You can find and connect with them directly on the HIGH Connect app.''';
+🔗 View Service: https://high-connect-3.web.app/service/$serviceId
+
+📱 Download High Connect App:
+Android: https://play.google.com/store/apps/details?id=com.myhigh.connect
+iOS: https://apps.apple.com/app/high-connect/id123456789''';
                                 await Share.share(
                                   shareMessage,
                                   sharePositionOrigin:
@@ -1282,35 +1296,58 @@ You can find and connect with them directly on the HIGH Connect app.''';
                     padding: EdgeInsets.all(15.0),
                     child: FFButtonWidget(
                           onPressed: () async {
-                            if ((widget.serviceDoc?.category ==
-                                    'Cleaning Services') ||
-                                (widget.serviceDoc?.category ==
-                                    'Home Pest Protection')) {
-                              context.pushNamed(
-                                BookingRoomsWidget.routeName,
-                                queryParameters: {
-                                  'serviceDoc': serializeParam(
-                                    widget.serviceDoc,
-                                    ParamType.Document,
-                                  ),
-                                }.withoutNulls,
-                                extra: <String, dynamic>{
-                                  'serviceDoc': widget.serviceDoc,
-                                },
+                            if (widget.serviceDoc == null) return;
+
+                            // Reset state
+                            FFAppState().selectedService = widget.serviceDoc!.reference;
+                            FFAppState().bookingStartDate = getCurrentTimestamp;
+                            FFAppState().workingHours = 1;
+                            FFAppState().serviceTotalPrice = 0.0;
+                            FFAppState().selectedOfferings = [];
+
+                            final bookingNumber = random_util.randomInteger(100000, 999999);
+                            final bookingRef = MyBookingsRecord.createDoc(currentUserReference!);
+
+                            await bookingRef.set({
+                              ...createMyBookingsRecordData(
+                                service: widget.serviceDoc!.reference,
+                                user: currentUserReference,
+                                bookingDate: FFAppState().bookingStartDate,
+                                completed: false,
+                                totalPaid: 0.0,
+                                reviewed: false,
+                                bookingNumber: bookingNumber,
+                                startTime: FFAppState().bookingStartDate,
+                                pricePerHour: widget.serviceDoc!.pricePerHour,
+                                discount: 1.0,
+                                phoneNumber: currentPhoneNumber,
+                                workingHours: 1,
+                              ),
+                              ...mapToFirestore({
+                                'offerings': <Map<String, dynamic>>[],
+                                'status': 'pending_approval',
+                              }),
+                            });
+
+                            if (widget.serviceDoc!.provider != null) {
+                              await BookingNotificationUtil.notifyProviderOfBookingRequest(
+                                providerRef: widget.serviceDoc!.provider!,
+                                serviceDoc: widget.serviceDoc,
+                                bookingWhen: FFAppState().bookingStartDate!,
+                                bookingNumber: bookingNumber,
+                                bookingDocRef: bookingRef,
                               );
-                            } else {
-                              context.pushNamed(
-                                BookingDateTimeWidget.routeName,
-                                queryParameters: {
-                                  'serviceDoc': serializeParam(
-                                    widget.serviceDoc,
-                                    ParamType.Document,
-                                  ),
-                                }.withoutNulls,
-                                extra: <String, dynamic>{
-                                  'serviceDoc': widget.serviceDoc,
-                                },
+                            }
+
+                            if (context.mounted) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: const Text('Booking request sent! Waiting for provider confirmation.'),
+                                  backgroundColor: FlutterFlowTheme.of(context).success,
+                                  duration: const Duration(seconds: 3),
+                                ),
                               );
+                              context.goNamed(MyBookingsWidget.routeName);
                             }
                           },
                           text: 'Book now',

@@ -1,0 +1,6 @@
+# This file tells Cloud Build what to ignore when uploading.
+# We intentionally do NOT ignore node_modules so Cloud Build
+# uses our pre-installed modules instead of running npm install.
+.git
+.gitignore
+*.log

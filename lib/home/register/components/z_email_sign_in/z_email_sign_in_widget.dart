@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/home/register/components/z_continue_with/z_continue_with_widget.dart';
+import '/backend/backend.dart';
 import '/index.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -336,8 +337,16 @@ class _ZEmailSignInWidgetState extends State<ZEmailSignInWidget> {
                       return;
                     }
 
-                    context.goNamedAuth(
-                        HomePageWidget.routeName, context.mounted);
+                    final userDoc = await UsersRecord.getDocumentOnce(UsersRecord.collection.doc(user.uid));
+                    final isAlreadyProvider = userDoc.inService;
+
+                    if (widget.provider == true && !isAlreadyProvider) {
+                      context.goNamedAuth(
+                          BecomeProviderWidget.routeName, context.mounted);
+                    } else {
+                      context.goNamedAuth(
+                          HomePageWidget.routeName, context.mounted);
+                    }
                   } finally {
                     FFAppState().isAuthLoading = false;
                   }
@@ -350,7 +359,9 @@ class _ZEmailSignInWidgetState extends State<ZEmailSignInWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                   iconPadding:
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  color: FlutterFlowTheme.of(context).primary,
+                  color: widget.provider == true
+                      ? FlutterFlowTheme.of(context).primary
+                      : FlutterFlowTheme.of(context).accent1,
                   textStyle: FlutterFlowTheme.of(context).titleMedium.override(
                         font: GoogleFonts.inter(
                           fontWeight: FlutterFlowTheme.of(context)
@@ -360,7 +371,9 @@ class _ZEmailSignInWidgetState extends State<ZEmailSignInWidget> {
                               .titleMedium
                               .fontStyle,
                         ),
-                        color: FlutterFlowTheme.of(context).info,
+                        color: widget.provider == true
+                            ? Colors.white
+                            : FlutterFlowTheme.of(context).primary,
                         letterSpacing: 0.0,
                         fontWeight:
                             FlutterFlowTheme.of(context).titleMedium.fontWeight,
@@ -375,7 +388,9 @@ class _ZEmailSignInWidgetState extends State<ZEmailSignInWidget> {
             wrapWithModel(
               model: _model.zContinueWithModel,
               updateCallback: () => safeSetState(() {}),
-              child: ZContinueWithWidget(),
+              child: ZContinueWithWidget(
+                provider: widget.provider,
+              ),
             ),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),

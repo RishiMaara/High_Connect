@@ -68,6 +68,12 @@ class _ZNotificationsCardWidgetState extends State<ZNotificationsCardWidget> {
                   widget.notificationDoc!.reference);
               FFAppState().update(() {});
             }
+          } else {
+            if (widget.notificationDoc != null && widget.notificationDoc!.read == false) {
+              await widget.notificationDoc!.reference.update(createNotificationsRecordData(
+                read: true,
+              ));
+            }
           }
         },
         onLongPress: () async {

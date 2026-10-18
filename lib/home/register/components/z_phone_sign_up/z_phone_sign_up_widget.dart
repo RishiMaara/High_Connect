@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -258,6 +259,13 @@ class _ZPhoneSignUpWidgetState extends State<ZPhoneSignUpWidget> {
                                   ? FlutterFlowTheme.of(context).error
                                   : FlutterFlowTheme.of(context).primary,
                             ),
+                            mouseCursor: SystemMouseCursors.click,
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () async {
+                                context.pushNamed(
+                                  PrivacyPolicyWidget.routeName,
+                                );
+                              },
                           )
                         ],
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -309,12 +317,14 @@ class _ZPhoneSignUpWidgetState extends State<ZPhoneSignUpWidget> {
                     return;
                   }
 
+                  // Add +91 country code for India
+                  final String phoneNumberVal = '+91$phoneInput';
+
+
+
                   // Set loading state
                   FFAppState().isAuthLoading = true;
                   safeSetState(() {});
-
-                  // Add +91 country code for India
-                  final String phoneNumberVal = '+91$phoneInput';
 
                   try {
                     // Note: Skip pre-auth user check to avoid Firestore permission errors
@@ -382,7 +392,9 @@ class _ZPhoneSignUpWidgetState extends State<ZPhoneSignUpWidget> {
                 height: 50.0,
                 padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                 iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
-                color: FlutterFlowTheme.of(context).primary,
+                color: widget.provider == true
+                    ? FlutterFlowTheme.of(context).primary
+                    : FlutterFlowTheme.of(context).accent1,
                 textStyle: FlutterFlowTheme.of(context).titleMedium.override(
                       font: GoogleFonts.inter(
                         fontWeight:
@@ -390,7 +402,9 @@ class _ZPhoneSignUpWidgetState extends State<ZPhoneSignUpWidget> {
                         fontStyle:
                             FlutterFlowTheme.of(context).titleMedium.fontStyle,
                       ),
-                      color: FlutterFlowTheme.of(context).info,
+                      color: widget.provider == true
+                          ? Colors.white
+                          : FlutterFlowTheme.of(context).primary,
                       letterSpacing: 0.0,
                       fontWeight:
                           FlutterFlowTheme.of(context).titleMedium.fontWeight,
@@ -405,7 +419,9 @@ class _ZPhoneSignUpWidgetState extends State<ZPhoneSignUpWidget> {
           wrapWithModel(
             model: _model.zContinueWithModel,
             updateCallback: () => safeSetState(() {}),
-            child: ZContinueWithWidget(),
+            child: ZContinueWithWidget(
+              provider: widget.provider,
+            ),
           ),
           Align(
             alignment: AlignmentDirectional(0.0, -1.0),

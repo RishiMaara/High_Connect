@@ -160,7 +160,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                     child: ZNotificationsBellWidget(),
                   ),
                 ],
-              ),
+              ).animate().fadeIn(duration: 400.ms).slideY(begin: -0.2, end: 0, duration: 400.ms, curve: Curves.easeOut),
             ),
             Expanded(
               child: SingleChildScrollView(
@@ -610,10 +610,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                           child: ZServicesCategoriesWidget(),
                         ),
                       ),
-                  ],
+                  ].animate(interval: 60.ms).fadeIn(duration: 400.ms).slideY(begin: 0.05, end: 0, duration: 400.ms, curve: Curves.easeOut),
                 ),
               ),
             ),
+
             wrapWithModel(
               model: _model.zNawbarModel,
               updateCallback: () => safeSetState(() {}),

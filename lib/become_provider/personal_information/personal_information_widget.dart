@@ -783,21 +783,39 @@ class _PersonalInformationWidgetState extends State<PersonalInformationWidget> {
                 padding: EdgeInsets.all(15.0),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    if (_model.formKey.currentState == null ||
-                        !_model.formKey.currentState!.validate()) {
-                      return;
+                    try {
+                      if (_model.formKey.currentState == null) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Form state is null!')));
+                        return;
+                      }
+                      if (!_model.formKey.currentState!.validate()) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Validation failed. Please check the fields above.')));
+                        return;
+                      }
+
+                      if (currentUserReference == null) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('User reference is null. Please log out and log back in.')));
+                        return;
+                      }
+
+                      await currentUserReference!.update(createUsersRecordData(
+                        displayName:
+                            '${_model.firstNameTextController.text.trim()} ${_model.lastNameTextController.text.trim()}',
+                        phoneNumber: _model.phoneNumberTextController.text,
+                        lastName: _model.lastNameTextController.text.trim(),
+                        firstName: _model.firstNameTextController.text.trim(),
+                        email: _model.emailTextController.text.trim().isNotEmpty
+                            ? _model.emailTextController.text.trim()
+                            : null,
+                      ));
+
+                      context.pushNamed(MainInformationWidget.routeName);
+                    } catch (e) {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text('Error: $e'),
+                        duration: Duration(seconds: 5),
+                      ));
                     }
-
-                    await currentUserReference!.update(createUsersRecordData(
-                      email: _model.emailTextController.text,
-                      displayName:
-                          '${_model.firstNameTextController.text} ${_model.lastNameTextController.text}',
-                      phoneNumber: _model.phoneNumberTextController.text,
-                      lastName: _model.lastNameTextController.text,
-                      firstName: _model.firstNameTextController.text,
-                    ));
-
-                    context.pushNamed(MainInformationWidget.routeName);
                   },
                   text: 'Next',
                   options: FFButtonOptions(

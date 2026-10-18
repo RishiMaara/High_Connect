@@ -373,10 +373,13 @@ class _ServiceBookingsWidgetState extends State<ServiceBookingsWidget>
                                         return false;
                                       }
                                       
-                                      // Exclude if booking time has passed (should be in History)
-                                      if (booking.bookingDate != null) {
-                                        if (now.isAfter(booking.bookingDate!) || now.isAtSameMomentAs(booking.bookingDate!)) {
-                                          return false;
+                                      // booking_date is set to "now" when the customer sends a request,
+                                      // not the appointment slot—do not treat that as elapsed service time.
+                                      if (status != 'pending_approval' && status != 'pending') {
+                                        if (booking.bookingDate != null) {
+                                          if (now.isAfter(booking.bookingDate!) || now.isAtSameMomentAs(booking.bookingDate!)) {
+                                            return false;
+                                          }
                                         }
                                       }
                                       

@@ -7,7 +7,11 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_cashfree_pg_sdk/api/cferrorresponse/cferrorresponse.dart';
+import '/services/cashfree_service.dart';
+import '/services/cashfree_config.dart';
 import 'package:provider/provider.dart';
 import 'terms_and_conditions_model.dart';
 export 'terms_and_conditions_model.dart';
@@ -38,7 +42,102 @@ class _TermsAndConditionsWidgetState extends State<TermsAndConditionsWidget> {
     super.initState();
     _model = createModel(context, () => TermsAndConditionsModel());
 
+    _model.cfPaymentGatewayService.setCallback(
+      _onPaymentVerify,
+      _onPaymentError,
+    );
+
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
+  }
+
+  void _onPaymentVerify(String orderId) async {
+    debugPrint('[Cashfree] Payment verified for order: $orderId');
+    // Proceed with service creation
+    await _submitService();
+  }
+
+  void _onPaymentError(CFErrorResponse errorResponse, String orderId) {
+    debugPrint('[Cashfree] Payment failed: ${errorResponse.getMessage()}');
+    safeSetState(() => _model.isProcessingPayment = false);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Payment failed: ${errorResponse.getMessage()}'),
+        backgroundColor: FlutterFlowTheme.of(context).error,
+      ),
+    );
+  }
+
+  Future<void> _submitService() async {
+    // Current submission logic moved here
+    final servicesRecordReference = ServicesRecord.collection.doc();
+    await servicesRecordReference.set({
+      ...createServicesRecordData(
+        rate: 0.0,
+        image: FFAppState().serviceCover,
+        recomendations: true,
+        address: FFAppState().serviceAddress.address,
+        title: FFAppState().serviceHeadline,
+        description: FFAppState().serviceDescription,
+        category: widget.serviceCategory,
+        createdAt: getCurrentTimestamp,
+        geopoint: FFAppState().serviceAddress.geopoint,
+        pricePerHour: FFAppState().serviceHourlyRate,
+        provider: currentUserReference,
+        phoneNumber: currentPhoneNumber,
+        servicePayment: updateServicePaymentStruct(
+          FFAppState().servicePayment,
+          clearUnsetFields: false,
+          create: true,
+        ),
+      ),
+      ...mapToFirestore(
+        {
+          'service_offerings': getServiceOfferingsListFirestoreData(
+            FFAppState().selectedServiceOfferings,
+          ),
+          'available_time': getAvailableTimeListFirestoreData(
+            FFAppState().serviceAvailableTime,
+          ),
+          'gallery': FFAppState().servicePortfolio,
+          'available_days': FFAppState().serviceAvailableDay,
+        },
+      ),
+    });
+
+    _model.newSevice = ServicesRecord.getDocumentFromData({
+      ...createServicesRecordData(
+        rate: 0.0,
+        image: FFAppState().serviceCover,
+        address: FFAppState().serviceAddress.address,
+        title: FFAppState().serviceHeadline,
+        description: FFAppState().serviceDescription,
+        category: widget.serviceCategory,
+        createdAt: getCurrentTimestamp,
+        geopoint: FFAppState().serviceAddress.geopoint,
+        pricePerHour: FFAppState().serviceHourlyRate,
+        provider: currentUserReference,
+        phoneNumber: currentPhoneNumber,
+      ),
+    }, servicesRecordReference);
+
+    await ServiceAddressRecord.createDoc(_model.newSevice!.reference)
+        .set(createServiceAddressRecordData(
+      type: FFAppState().serviceAddress.type,
+      address: FFAppState().serviceAddress.address,
+      addressLine: FFAppState().serviceAddress.addressLine,
+      cityTown: FFAppState().serviceAddress.cityTown,
+      country: FFAppState().serviceAddress.country,
+      geopoint: FFAppState().serviceAddress.geopoint,
+      zipCode: FFAppState().serviceAddress.zipCode,
+    ));
+
+    await currentUserReference!.update(createUsersRecordData(
+      service: _model.newSevice?.reference,
+      inService: true,
+    ));
+
+    safeSetState(() => _model.isProcessingPayment = false);
+    context.pushNamed(SubmittedWidget.routeName);
   }
 
   @override
@@ -461,14 +560,16 @@ class _TermsAndConditionsWidgetState extends State<TermsAndConditionsWidget> {
                                     width: _model.read ? 0.0 : 1.5,
                                   ),
                                 ),
-                                child: Visibility(
-                                  visible: _model.read,
-                                  child: Icon(
-                                    FFIcons.kcheck,
-                                    color: FlutterFlowTheme.of(context).info,
-                                    size: 18.0,
-                                  ),
-                                ),
+                                child: _model.read
+                                    ? Icon(
+                                        FFIcons.kcheck,
+                                        color: FlutterFlowTheme.of(context).info,
+                                        size: 18.0,
+                                      ).animate().scale(
+                                          duration: 180.ms,
+                                          curve: Curves.easeOutBack,
+                                        )
+                                    : null,
                               ),
                               Expanded(
                                 child: Padding(
@@ -511,36 +612,15 @@ class _TermsAndConditionsWidgetState extends State<TermsAndConditionsWidget> {
                             ],
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                        child: Text(
-                          '4. Limitation of Liability and Indemnification',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    font: GoogleFonts.inter(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleLarge
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleLarge
-                                          .fontStyle,
-                                    ),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleLarge
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleLarge
-                                        .fontStyle,
-                                    lineHeight: 1.5,
-                                  ),
-                        ),
-                      ),
+                      ).animate(
+                        target: _model.empty ? 1.0 : 0.0,
+                      ).shake(hz: 8, duration: 400.ms, curve: Curves.easeInOut),
                     ]
                         .addToStart(SizedBox(height: 15.0))
-                        .addToEnd(SizedBox(height: 15.0)),
+                        .addToEnd(SizedBox(height: 15.0))
+                        .animate(interval: 50.ms)
+                        .fadeIn(duration: 400.ms)
+                        .slideY(begin: 0.08, end: 0, duration: 400.ms, curve: Curves.easeOut),
                   ),
                 ),
               ),
@@ -555,107 +635,52 @@ class _TermsAndConditionsWidgetState extends State<TermsAndConditionsWidget> {
                 child: FFButtonWidget(
                   onPressed: () async {
                     if (_model.read) {
-                      var servicesRecordReference =
-                          ServicesRecord.collection.doc();
-                      await servicesRecordReference.set({
-                        ...createServicesRecordData(
-                          description: FFAppState().serviceDescription,
-                          image: FFAppState().serviceCover,
-                          category: widget.serviceCategory,
-                          pricePerHour: FFAppState().serviceHourlyRate,
-                          createdAt: getCurrentTimestamp,
-                          geopoint: FFAppState().serviceAddress.geopoint,
-                          address: FFAppState().serviceAddress.address,
-                          title: FFAppState().serviceHeadline,
-                          provider: currentUserReference,
-                          phoneNumber: currentPhoneNumber,
-                          servicePayment: updateServicePaymentStruct(
-                            FFAppState().servicePayment,
-                            clearUnsetFields: false,
-                            create: true,
-                          ),
-                        ),
-                        ...mapToFirestore(
-                          {
-                            'service_offerings':
-                                getServiceOfferingsListFirestoreData(
-                              FFAppState().selectedServiceOfferings,
-                            ),
-                            'available_time': getAvailableTimeListFirestoreData(
-                              FFAppState().serviceAvailableTime,
-                            ),
-                            'gallery': FFAppState().servicePortfolio,
-                            'available_days': FFAppState().serviceAvailableDay,
-                          },
-                        ),
-                      });
-                      _model.newSevice = ServicesRecord.getDocumentFromData({
-                        ...createServicesRecordData(
-                          description: FFAppState().serviceDescription,
-                          image: FFAppState().serviceCover,
-                          category: widget.serviceCategory,
-                          pricePerHour: FFAppState().serviceHourlyRate,
-                          createdAt: getCurrentTimestamp,
-                          geopoint: FFAppState().serviceAddress.geopoint,
-                          address: FFAppState().serviceAddress.address,
-                          title: FFAppState().serviceHeadline,
-                          provider: currentUserReference,
-                          phoneNumber: currentPhoneNumber,
-                          servicePayment: updateServicePaymentStruct(
-                            FFAppState().servicePayment,
-                            clearUnsetFields: false,
-                            create: true,
-                          ),
-                        ),
-                        ...mapToFirestore(
-                          {
-                            'service_offerings':
-                                getServiceOfferingsListFirestoreData(
-                              FFAppState().selectedServiceOfferings,
-                            ),
-                            'available_time': getAvailableTimeListFirestoreData(
-                              FFAppState().serviceAvailableTime,
-                            ),
-                            'gallery': FFAppState().servicePortfolio,
-                            'available_days': FFAppState().serviceAvailableDay,
-                          },
-                        ),
-                      }, servicesRecordReference);
-                      unawaited(
-                        () async {
-                          await ServiceAddressRecord.createDoc(
-                                  _model.newSevice!.reference)
-                              .set(createServiceAddressRecordData(
-                            type: FFAppState().serviceAddress.type,
-                            address: FFAppState().serviceAddress.address,
-                            addressLine:
-                                FFAppState().serviceAddress.addressLine,
-                            cityTown: FFAppState().serviceAddress.cityTown,
-                            country: FFAppState().serviceAddress.country,
-                            geopoint: FFAppState().serviceAddress.geopoint,
-                            zipCode: FFAppState().serviceAddress.zipCode,
-                          ));
-                        }(),
-                      );
-                      unawaited(
-                        () async {
-                          await currentUserReference!
-                              .update(createUsersRecordData(
-                            service: _model.newSevice?.reference,
-                            inService: true,
-                          ));
-                        }(),
-                      );
+                      if (_model.isProcessingPayment) return;
 
-                      context.pushNamed(SubmittedWidget.routeName);
+                      safeSetState(() => _model.isProcessingPayment = true);
+
+                      debugPrint('[Cashfree] Initiating payment for ₹$kRegistrationFee');
+
+                      try {
+                        final orderData = await CashfreeService.instance.createOrder(
+                          customerId: currentUserUid,
+                          customerName: currentUserDisplayName,
+                          customerEmail: currentUserEmail,
+                          customerPhone: currentPhoneNumber,
+                          serviceCategory: widget.serviceCategory ?? '',
+                        );
+
+                        if (orderData != null) {
+                          CashfreeService.instance.doWebCheckout(
+                            gatewayService: _model.cfPaymentGatewayService,
+                            orderId: orderData['orderId']!,
+                            paymentSessionId: orderData['paymentSessionId']!,
+                          );
+                        } else {
+                          safeSetState(() => _model.isProcessingPayment = false);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Failed to initiate payment. Please try again.'),
+                              backgroundColor: FlutterFlowTheme.of(context).error,
+                            ),
+                          );
+                        }
+                      } catch (e) {
+                        debugPrint('[Cashfree] Error: $e');
+                        safeSetState(() => _model.isProcessingPayment = false);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('An error occurred. Please try again.'),
+                            backgroundColor: FlutterFlowTheme.of(context).error,
+                          ),
+                        );
+                      }
                     } else {
                       _model.empty = true;
                       safeSetState(() {});
                     }
-
-                    safeSetState(() {});
                   },
-                  text: 'Submit for review',
+                  text: _model.isProcessingPayment ? 'Processing...' : 'Pay and Submit',
                   options: FFButtonOptions(
                     height: 50.0,
                     padding:
@@ -687,7 +712,7 @@ class _TermsAndConditionsWidgetState extends State<TermsAndConditionsWidget> {
                   ),
                 ),
               ),
-            ),
+            ).animate().fadeIn(delay: 300.ms, duration: 400.ms).slideY(begin: 0.25, end: 0, delay: 300.ms, duration: 400.ms, curve: Curves.easeOut),
           ],
         ),
       ),

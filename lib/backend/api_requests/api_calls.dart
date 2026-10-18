@@ -57,14 +57,16 @@ class PlacesCall {
   static Future<ApiCallResponse> call({
     String? input = '',
   }) async {
-    // Use Firebase Function endpoint to avoid CORS issues (same as PlacesAutocompleteCall)
+    // Call Google Places Autocomplete API directly
+    const String apiKey = 'AIzaSyCPe7ikUtMoCTVldm5h_7JdCobjRD5FMtc';
     return ApiManager.instance.makeApiCall(
       callName: 'Places',
-      apiUrl: '$_firebaseFunctionsBaseUrl/googlePlacesAutocomplete',
+      apiUrl: 'https://maps.googleapis.com/maps/api/place/autocomplete/json',
       callType: ApiCallType.GET,
       headers: {},
       params: {
         'input': input,
+        'key': apiKey,
       },
       returnBody: true,
       encodeBodyUtf8: false,
@@ -99,14 +101,16 @@ class AddressCall {
   static Future<ApiCallResponse> call({
     String? latlng = '',
   }) async {
-    // Use Firebase Function endpoint to avoid CORS issues
+    // Call Google Geocoding API directly (Firebase Function proxy doesn't exist)
+    const String apiKey = 'AIzaSyCPe7ikUtMoCTVldm5h_7JdCobjRD5FMtc';
     return ApiManager.instance.makeApiCall(
       callName: 'Address',
-      apiUrl: '$_firebaseFunctionsBaseUrl/googleGeocode',
+      apiUrl: 'https://maps.googleapis.com/maps/api/geocode/json',
       callType: ApiCallType.GET,
       headers: {},
       params: {
         'latlng': latlng,
+        'key': apiKey,
       },
       returnBody: true,
       encodeBodyUtf8: false,
@@ -132,14 +136,16 @@ class GetReferenceCall {
   static Future<ApiCallResponse> call({
     String? placeid = '',
   }) async {
-    // Use Firebase Function endpoint to avoid CORS issues
+    // Call Google Place Details API directly
+    const String apiKey = 'AIzaSyCPe7ikUtMoCTVldm5h_7JdCobjRD5FMtc';
     return ApiManager.instance.makeApiCall(
       callName: 'getReference',
-      apiUrl: '$_firebaseFunctionsBaseUrl/googlePlaceDetails',
+      apiUrl: 'https://maps.googleapis.com/maps/api/place/details/json',
       callType: ApiCallType.GET,
       headers: {},
       params: {
         'place_id': placeid,
+        'key': apiKey,
       },
       returnBody: true,
       encodeBodyUtf8: false,

@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -201,6 +202,8 @@ class _ZPhoneSignInWidgetState extends State<ZPhoneSignInWidget> {
                     // Add +91 country code for India
                     final String phoneNumberVal = '+91$phoneInput';
 
+
+
                     FFAppState().isAuthLoading = true;
                     safeSetState(() {});
                     
@@ -269,7 +272,9 @@ class _ZPhoneSignInWidgetState extends State<ZPhoneSignInWidget> {
                         EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     iconPadding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).primary,
+                    color: widget.provider == true
+                        ? FlutterFlowTheme.of(context).primary
+                        : FlutterFlowTheme.of(context).accent1,
                     textStyle:
                         FlutterFlowTheme.of(context).titleMedium.override(
                               font: GoogleFonts.inter(
@@ -280,7 +285,9 @@ class _ZPhoneSignInWidgetState extends State<ZPhoneSignInWidget> {
                                     .titleMedium
                                     .fontStyle,
                               ),
-                              color: FlutterFlowTheme.of(context).info,
+                              color: widget.provider == true
+                                  ? Colors.white
+                                  : FlutterFlowTheme.of(context).primary,
                               letterSpacing: 0.0,
                               fontWeight: FlutterFlowTheme.of(context)
                                   .titleMedium
@@ -297,7 +304,9 @@ class _ZPhoneSignInWidgetState extends State<ZPhoneSignInWidget> {
               wrapWithModel(
                 model: _model.zContinueWithModel,
                 updateCallback: () => safeSetState(() {}),
-                child: ZContinueWithWidget(),
+                child: ZContinueWithWidget(
+                  provider: widget.provider,
+                ),
               ),
               Align(
                 alignment: AlignmentDirectional(0.0, -1.0),

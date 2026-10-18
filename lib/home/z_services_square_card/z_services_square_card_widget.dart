@@ -478,6 +478,6 @@ class _ZServicesSquareCardWidgetState extends State<ZServicesSquareCardWidget>
           ],
         ),
       ),
-    );
+    ).animate().fadeIn(duration: 400.ms).scale(begin: const Offset(0.95, 0.95), end: const Offset(1, 1), duration: 400.ms, curve: Curves.easeOut);
   }
 }

@@ -40,6 +40,11 @@ class ChatMessagesRecord extends FirestoreRecord {
   DocumentReference? get sender => _sender;
   bool hasSender() => _sender != null;
 
+  // "location" field.
+  LatLng? _location;
+  LatLng? get location => _location;
+  bool hasLocation() => _location != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -48,6 +53,7 @@ class ChatMessagesRecord extends FirestoreRecord {
     _image = snapshotData['image'] as String?;
     _seen = snapshotData['seen'] as bool?;
     _sender = snapshotData['sender'] as DocumentReference?;
+    _location = snapshotData['location'] as LatLng?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -95,6 +101,7 @@ Map<String, dynamic> createChatMessagesRecordData({
   String? image,
   bool? seen,
   DocumentReference? sender,
+  LatLng? location,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -103,6 +110,7 @@ Map<String, dynamic> createChatMessagesRecordData({
       'image': image,
       'seen': seen,
       'sender': sender,
+      'location': location,
     }.withoutNulls,
   );
 
@@ -119,12 +127,13 @@ class ChatMessagesRecordDocumentEquality
         e1?.timeStamp == e2?.timeStamp &&
         e1?.image == e2?.image &&
         e1?.seen == e2?.seen &&
-        e1?.sender == e2?.sender;
+        e1?.sender == e2?.sender &&
+        e1?.location == e2?.location;
   }
 
   @override
   int hash(ChatMessagesRecord? e) => const ListEquality()
-      .hash([e?.message, e?.timeStamp, e?.image, e?.seen, e?.sender]);
+      .hash([e?.message, e?.timeStamp, e?.image, e?.seen, e?.sender, e?.location]);
 
   @override
   bool isValidKey(Object? o) => o is ChatMessagesRecord;

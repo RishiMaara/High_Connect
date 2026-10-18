@@ -11,6 +11,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:pointer_interceptor/pointer_interceptor.dart';
 import 'z_service_address_map_model.dart';
 export 'z_service_address_map_model.dart';
@@ -28,6 +29,7 @@ class _ZServiceAddressMapWidgetState extends State<ZServiceAddressMapWidget> {
 
   LatLng? currentUserLocationValue;
   bool textFieldFocusListenerRegistered = false;
+  bool _isLocating = false;
 
   @override
   void setState(VoidCallback callback) {
@@ -42,32 +44,82 @@ class _ZServiceAddressMapWidgetState extends State<ZServiceAddressMapWidget> {
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      currentUserLocationValue =
-          await getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0));
-      _model.addressFirst = await AddressCall.call(
-        latlng: functions.latlngToString(currentUserLocationValue),
-      );
-
-      if ((_model.addressFirst?.succeeded ?? true)) {
-        _model.address = AddressCall.address(
-          (_model.addressFirst?.jsonBody ?? ''),
-        )?.elementAtOrNull(0);
-        _model.city = AddressCall.address(
-          (_model.addressFirst?.jsonBody ?? ''),
-        )?.firstOrNull;
-        _model.geopoint = currentUserLocationValue;
-        safeSetState(() {});
-      }
-      await _model.googleMapsController.future.then(
-        (c) => c.animateCamera(
-          CameraUpdate.newLatLng(currentUserLocationValue!.toGoogleMaps()),
-        ),
-      );
+      await _locateUser();
     });
 
     _model.textController ??= TextEditingController();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
+  }
+
+  /// Requests location permission, fetches current position, reverse-geocodes
+  /// and animates the map. Shows a loading indicator during the operation.
+  Future<void> _locateUser() async {
+    if (_isLocating) return;
+    safeSetState(() => _isLocating = true);
+    try {
+      // Explicitly request permission first
+      var permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+        if (permission == LocationPermission.denied ||
+            permission == LocationPermission.deniedForever) {
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Location permission denied. Please enable it in settings.'),
+                duration: Duration(seconds: 3),
+              ),
+            );
+          }
+          return;
+        }
+      }
+
+      final bool serviceEnabled = isWeb || await Geolocator.isLocationServiceEnabled();
+      if (!serviceEnabled) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Location services are disabled. Please turn on GPS.'),
+              duration: Duration(seconds: 3),
+            ),
+          );
+        }
+        return;
+      }
+
+      currentUserLocationValue =
+          await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
+
+      _model.addressFirst = await AddressCall.call(
+        latlng: functions.latlngToString(currentUserLocationValue),
+      );
+
+      if (_model.addressFirst?.succeeded ?? false) {
+        _model.address = AddressCall.address(
+          _model.addressFirst!.jsonBody,
+        )?.elementAtOrNull(0);
+        _model.city = AddressCall.address(
+          _model.addressFirst!.jsonBody,
+        )?.firstOrNull;
+        _model.geopoint = currentUserLocationValue;
+        safeSetState(() {});
+      }
+
+      if (currentUserLocationValue != null) {
+        await _model.googleMapsController.future.then(
+          (c) => c.animateCamera(
+            CameraUpdate.newLatLngZoom(
+                currentUserLocationValue!.toGoogleMaps(), 15.0),
+          ),
+        );
+      }
+    } catch (e) {
+      debugPrint('Location error: $e');
+    } finally {
+      safeSetState(() => _isLocating = false);
+    }
   }
 
   @override
@@ -722,39 +774,65 @@ class _ZServiceAddressMapWidgetState extends State<ZServiceAddressMapWidget> {
                                 ),
                               ].divide(SizedBox(width: 10.0)),
                             ),
-                            if (_model.address != null && _model.address != '')
+                            if (_isLocating)
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 15.0, 0.0, 0.0),
-                                child: Text(
-                                  valueOrDefault<String>(
-                                    _model.address,
-                                    'null',
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 14.0, vertical: 10.0),
+                                  decoration: BoxDecoration(
+                                    color: Colors.black.withValues(alpha: 0.65),
+                                    borderRadius: BorderRadius.circular(10.0),
                                   ),
-                                  maxLines: 2,
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .override(
-                                        font: GoogleFonts.inter(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineSmall
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineSmall
-                                                  .fontStyle,
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const SizedBox(
+                                        width: 18,
+                                        height: 18,
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 2.0,
+                                          color: Colors.white,
                                         ),
-                                        color: FlutterFlowTheme.of(context)
-                                            .infoBlack,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .headlineSmall
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .headlineSmall
-                                            .fontStyle,
                                       ),
+                                      const SizedBox(width: 10),
+                                      Text(
+                                        'Detecting location...',
+                                        style: GoogleFonts.inter(
+                                          color: Colors.white,
+                                          fontSize: 14.0,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            else if (_model.address != null &&
+                                _model.address != '')
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 15.0, 0.0, 0.0),
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 14.0, vertical: 10.0),
+                                  decoration: BoxDecoration(
+                                    color: Colors.black.withValues(alpha: 0.65),
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  child: Text(
+                                    valueOrDefault<String>(
+                                      _model.address,
+                                      '',
+                                    ),
+                                    maxLines: 2,
+                                    style: GoogleFonts.inter(
+                                      color: Colors.white,
+                                      fontSize: 14.0,
+                                      fontWeight: FontWeight.w500,
+                                      height: 1.4,
+                                    ),
+                                  ),
                                 ),
                               ),
                           ],
@@ -774,32 +852,7 @@ class _ZServiceAddressMapWidgetState extends State<ZServiceAddressMapWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              currentUserLocationValue =
-                                  await getCurrentUserLocation(
-                                      defaultLocation: LatLng(0.0, 0.0));
-                              _model.apiResult1yw = await AddressCall.call(
-                                latlng: functions
-                                    .latlngToString(currentUserLocationValue),
-                              );
-
-                              if ((_model.apiResult1yw?.succeeded ?? true)) {
-                                _model.address = AddressCall.address(
-                                  (_model.apiResult1yw?.jsonBody ?? ''),
-                                )?.elementAtOrNull(0);
-                                _model.city = AddressCall.address(
-                                  (_model.apiResult1yw?.jsonBody ?? ''),
-                                )?.firstOrNull;
-                                _model.geopoint = currentUserLocationValue;
-                                safeSetState(() {});
-                              }
-                              await _model.googleMapsController.future.then(
-                                (c) => c.animateCamera(
-                                  CameraUpdate.newLatLng(
-                                      currentUserLocationValue!.toGoogleMaps()),
-                                ),
-                              );
-
-                              safeSetState(() {});
+                              await _locateUser();
                             },
                             child: Container(
                               width: 50.0,

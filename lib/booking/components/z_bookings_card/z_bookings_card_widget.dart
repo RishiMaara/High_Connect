@@ -69,7 +69,6 @@ class _ZBookingsCardWidgetState extends State<ZBookingsCardWidget>
     );
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      validateAndUpdateStatus();
       if (mounted) safeSetState(() {});
     });
   }
@@ -205,9 +204,7 @@ class _ZBookingsCardWidgetState extends State<ZBookingsCardWidget>
                                       );
                                     } else {
                                       // Trigger background update if mismatch found during render
-                                      if (isPast && status != 'completed' && status != 'cancelled' && status != 'cancelled_by_user' && status != 'rejected') {
-                                        validateAndUpdateStatus();
-                                      }
+                                      // Removed automatic update call
 
                                       return Text(
                                         isCompleted ? 'Completed' : 'In progress',
@@ -484,12 +481,41 @@ class _ZBookingsCardWidgetState extends State<ZBookingsCardWidget>
                   final now = DateTime.now();
                   final bookingDate = widget.bookingDoc?.bookingDate;
                   
-                  // Check if booking is still active (not completed, rejected, cancelled, or past)
-                  bool isActive = status == 'in_progress' || status == 'accepted' || status == 'pending';
-                  bool isPast = bookingDate != null && (now.isAfter(bookingDate) || now.isAtSameMomentAs(bookingDate));
-                  
-                  // Hide button for completed, rejected, cancelled, cancelled_by_user, or past bookings
-                  if (!isActive || isPast || status == 'completed' || status == 'rejected' || status == 'cancelled' || status == 'cancelled_by_user') {
+                  // Show "Mark as Completed" button ONLY for providers when booking is in_progress
+                  if (status == 'in_progress' && currentUserDocument?.service == widget.bookingDoc?.service) {
+                    return FFButtonWidget(
+                      onPressed: () async {
+                        await widget.bookingDoc!.reference.update({
+                          'status': 'completed',
+                          'completed': true,
+                        });
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('Booking marked as completed!'),
+                            backgroundColor: FlutterFlowTheme.of(context).success,
+                          ),
+                        );
+                      },
+                      text: 'Mark as Completed',
+                      options: FFButtonOptions(
+                        width: double.infinity,
+                        height: 50.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                        iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).success,
+                        textStyle: FlutterFlowTheme.of(context).titleMedium.override(
+                          font: GoogleFonts.inter(fontWeight: FontWeight.w600),
+                          color: Colors.white,
+                          letterSpacing: 0.0,
+                        ),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    );
+                  }
+
+                  // Hide "View booking details" button for completed, rejected, cancelled bookings
+                  if (status == 'completed' || status == 'rejected' || status == 'cancelled' || status == 'cancelled_by_user') {
                     return SizedBox.shrink();
                   }
                   

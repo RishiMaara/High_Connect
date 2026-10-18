@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../auth_manager.dart';
 
 import '/backend/backend.dart';
+import '/services/push_notification_service.dart';
 import 'anonymous_auth.dart';
 import 'apple_auth.dart';
 import 'email_auth.dart';
@@ -73,13 +74,12 @@ class FirebaseAuthManager extends AuthManager
       await currentUser?.delete();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'requires-recent-login') {
-        ScaffoldMessenger.of(context).hideCurrentSnackBar();
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-              content: Text(
-                  'Too long since most recent sign in. Sign in again before deleting your account.')),
-        );
+        rethrow;
       }
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: ${e.message!}')),
+      );
     }
   }
 
@@ -96,13 +96,12 @@ class FirebaseAuthManager extends AuthManager
       await updateUserDocument(email: email);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'requires-recent-login') {
-        ScaffoldMessenger.of(context).hideCurrentSnackBar();
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-              content: Text(
-                  'Too long since most recent sign in. Sign in again before updating your email.')),
-        );
+        rethrow;
       }
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: ${e.message!}')),
+      );
     }
   }
 
@@ -117,11 +116,12 @@ class FirebaseAuthManager extends AuthManager
       await currentUser?.updatePassword(newPassword);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'requires-recent-login') {
-        ScaffoldMessenger.of(context).hideCurrentSnackBar();
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: ${e.message!}')),
-        );
+        rethrow;
       }
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: ${e.message!}')),
+      );
     }
   }
 
@@ -160,12 +160,14 @@ class FirebaseAuthManager extends AuthManager
   Future<BaseAuthUser?> createAccountWithEmail(
     BuildContext context,
     String email,
-    String password,
-  ) =>
+    String password, [
+    bool createDocument = true,
+  ]) =>
       _signInOrCreateAccount(
         context,
         () => emailCreateAccountFunc(email, password),
         'EMAIL',
+        createDocument,
       );
 
   @override
@@ -262,7 +264,11 @@ class FirebaseAuthManager extends AuthManager
     phoneAuthManager.update(() => phoneAuthManager.onCodeSent = onCodeSent);
 
     if (kIsWeb) {
-      // Web: use signInWithPhoneNumber (reCAPTCHA-based flow)
+      // Web: use signInWithPhoneNumber (reCAPTCHA-based flow).
+      // Firebase creates an invisible reCAPTCHA automatically.
+      // IMPORTANT: The hosting domain must be added to Firebase Console →
+      // Authentication → Settings → Authorized domains.
+      // Add both: high-connect-3.web.app AND high-connect-3.firebaseapp.com
       try {
         final confirmationResult =
             await FirebaseAuth.instance.signInWithPhoneNumber(phoneNumber);
@@ -273,9 +279,19 @@ class FirebaseAuthManager extends AuthManager
           phoneAuthManager.phoneAuthError = null;
         });
       } on FirebaseAuthException catch (e) {
+        debugPrint('🔴 Web Phone Auth Error: ${e.code} — ${e.message}');
         phoneAuthManager.update(() {
           phoneAuthManager.triggerOnCodeSent = false;
           phoneAuthManager.phoneAuthError = e;
+        });
+      } catch (e) {
+        debugPrint('🔴 Web Phone Auth Unknown Error: $e');
+        phoneAuthManager.update(() {
+          phoneAuthManager.triggerOnCodeSent = false;
+          phoneAuthManager.phoneAuthError = FirebaseAuthException(
+            code: 'web-phone-auth-error',
+            message: 'Phone sign-in failed on web. Please try again.',
+          );
         });
       }
       return;
@@ -293,6 +309,9 @@ class FirebaseAuthManager extends AuthManager
       timeout: Duration(seconds: 60),
       verificationCompleted: (phoneAuthCredential) async {
         await FirebaseAuth.instance.signInWithCredential(phoneAuthCredential);
+        if (!kIsWeb) {
+          unawaited(PushNotificationService.refreshToken());
+        }
         phoneAuthManager.update(() {
           phoneAuthManager.triggerOnCodeSent = false;
           phoneAuthManager.phoneAuthError = null;
@@ -324,6 +343,7 @@ class FirebaseAuthManager extends AuthManager
   Future verifySmsCode({
     required BuildContext context,
     required String smsCode,
+    bool createDocument = true,
   }) {
     if (kIsWeb) {
       // Web: confirm via ConfirmationResult
@@ -342,6 +362,7 @@ class FirebaseAuthManager extends AuthManager
         context,
         () => confirmation.confirm(smsCode),
         'PHONE',
+        createDocument,
       );
     }
     // Mobile: credential-based verification
@@ -353,7 +374,29 @@ class FirebaseAuthManager extends AuthManager
       context,
       () => FirebaseAuth.instance.signInWithCredential(authCredential),
       'PHONE',
+      createDocument,
     );
+  }
+
+  @override
+  Future reauthenticateWithPhone({
+    required BuildContext context,
+    required String smsCode,
+  }) async {
+    final authCredential = PhoneAuthProvider.credential(
+      verificationId: phoneAuthManager.phoneAuthVerificationCode!,
+      smsCode: smsCode,
+    );
+    try {
+      await FirebaseAuth.instance.currentUser
+          ?.reauthenticateWithCredential(authCredential);
+    } on FirebaseAuthException catch (e) {
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: ${e.message!}')),
+      );
+      rethrow;
+    }
   }
 
   /// Tries to sign in or create an account using Firebase Auth.
@@ -361,12 +404,16 @@ class FirebaseAuthManager extends AuthManager
   Future<BaseAuthUser?> _signInOrCreateAccount(
     BuildContext context,
     Future<UserCredential?> Function() signInFunc,
-    String authProvider,
-  ) async {
+    String authProvider, [
+    bool createDocument = true,
+  ]) async {
     try {
       final userCredential = await signInFunc();
-      if (userCredential?.user != null) {
+      if (userCredential?.user != null && createDocument) {
         await maybeCreateUser(userCredential!.user!);
+      }
+      if (!kIsWeb && userCredential?.user != null) {
+        unawaited(PushNotificationService.refreshToken());
       }
       return userCredential == null
           ? null

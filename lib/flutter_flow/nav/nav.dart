@@ -265,6 +265,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
+          name: 'ServicePageDynamic',
+          path: '/service/:serviceDoc',
+          asyncParams: {
+            'serviceDoc': getDoc(['services'], ServicesRecord.fromSnapshot),
+          },
+          builder: (context, params) => ServicePageWidget(
+            serviceDoc: params.getParam(
+              'serviceDoc',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
           name: ReviewsListWidget.routeName,
           path: ReviewsListWidget.routePath,
           builder: (context, params) => ReviewsListWidget(
@@ -543,19 +556,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
           ),
         ),
-        FFRoute(
-          name: BookingDateTimeWidget.routeName,
-          path: BookingDateTimeWidget.routePath,
-          asyncParams: {
-            'serviceDoc': getDoc(['services'], ServicesRecord.fromSnapshot),
-          },
-          builder: (context, params) => BookingDateTimeWidget(
-            serviceDoc: params.getParam(
-              'serviceDoc',
-              ParamType.Document,
-            ),
-          ),
-        ),
+
         FFRoute(
           name: RescheduleBookingWidget.routeName,
           path: RescheduleBookingWidget.routePath,
@@ -689,19 +690,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: SeviceAvailabilityWidget.routeName,
-          path: SeviceAvailabilityWidget.routePath,
-          asyncParams: {
-            'serviceDoc': getDoc(['services'], ServicesRecord.fromSnapshot),
-          },
-          builder: (context, params) => SeviceAvailabilityWidget(
-            serviceDoc: params.getParam(
-              'serviceDoc',
-              ParamType.Document,
-            ),
-          ),
-        ),
-        FFRoute(
           name: PricingPaymentsWidget.routeName,
           path: PricingPaymentsWidget.routePath,
           asyncParams: {
@@ -783,16 +771,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
           ),
         ),
-        FFRoute(
-          name: TermsAndConditionsCopyWidget.routeName,
-          path: TermsAndConditionsCopyWidget.routePath,
-          builder: (context, params) => TermsAndConditionsCopyWidget(
-            serviceCategory: params.getParam(
-              'serviceCategory',
-              ParamType.String,
-            ),
-          ),
-        ),
+
         FFRoute(
           name: RealcategoryWidget.routeName,
           path: RealcategoryWidget.routePath,
@@ -1036,7 +1015,11 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(
+        hasTransition: true,
+        transitionType: PageTransitionType.fade,
+        duration: Duration(milliseconds: 280),
+      );
 }
 
 class RootPageContext {

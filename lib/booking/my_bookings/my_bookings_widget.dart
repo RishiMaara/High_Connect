@@ -356,10 +356,11 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget>
                                       return false;
                                     }
                                     
-                                    // Exclude if booking time has passed (should be in History)
-                                    if (booking.bookingDate != null) {
-                                      if (now.isAfter(booking.bookingDate!) || now.isAtSameMomentAs(booking.bookingDate!)) {
-                                        return false;
+                                    if (status != 'pending_approval' && status != 'pending') {
+                                      if (booking.bookingDate != null) {
+                                        if (now.isAfter(booking.bookingDate!) || now.isAtSameMomentAs(booking.bookingDate!)) {
+                                          return false;
+                                        }
                                       }
                                     }
                                     

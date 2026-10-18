@@ -57,17 +57,9 @@ List<ServicesRecord> getRecommendedServices(
       score += 15.0;
     }
 
-    // 5. Budget fit (10%)
-    if (service.pricePerHour >= appState.PriceByStart &&
-        service.pricePerHour <= appState.PriceByEnd) {
-      score += 10.0;
-    } else {
-      double budgetMid = (appState.PriceByStart + appState.PriceByEnd) / 2;
-      double diff = (service.pricePerHour - budgetMid).abs();
-      double spread = (appState.PriceByEnd - appState.PriceByStart) / 2;
-      if (spread == 0) spread = 1;
-      double budgetScore = max(0.0, (1.0 - (diff / (spread * 2))) * 10.0);
-      score += budgetScore;
+    // 5. Portfolio richness bonus (10%)
+    if (service.gallery.isNotEmpty) {
+      score += min(10.0, service.gallery.length * 2.0);
     }
 
     return ServiceScore(service, score, distance);

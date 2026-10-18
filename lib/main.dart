@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'components/z_auth_loading_overlay.dart';
 
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'auth/firebase_auth/firebase_user_provider.dart';
@@ -15,11 +16,17 @@ import 'flutter_flow/internationalization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'services/push_notification_service.dart';
+import 'services/fcm_background_handler.dart';
 
 import 'components/animated_splash_widget.dart';
+import 'components/in_app_notification_banner.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  if (!kIsWeb) {
+    FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+  }
 
   // Show initial splash screen to avoid gray screen
   runApp(MaterialApp(
@@ -98,8 +105,11 @@ class MyAppScrollBehavior extends MaterialScrollBehavior {
 
 class _MyAppState extends State<MyApp> {
   Locale? _locale;
-
   ThemeMode _themeMode = FlutterFlowTheme.themeMode;
+
+  // In-app notification banner state
+  String? _notifTitle;
+  String? _notifBody;
 
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
@@ -126,19 +136,42 @@ class _MyAppState extends State<MyApp> {
 
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
+
+    String? _lastLoggedInUid;
     userStream = hIGHConnectFirebaseUserStream()
       ..listen((user) {
         _appStateNotifier.update(user);
-        // Refresh FCM token when user logs in
-        if (user.loggedIn && !kIsWeb) {
-          PushNotificationService.refreshToken();
+        if (!kIsWeb && user.loggedIn) {
+          final uid = user.uid;
+          // Only refresh token when a NEW user logs in (not on every stream event)
+          if (uid != _lastLoggedInUid) {
+            _lastLoggedInUid = uid;
+            // Delay slightly to ensure Firestore user doc is ready after login
+            Future.delayed(const Duration(seconds: 2), () {
+              PushNotificationService.refreshToken();
+            });
+          }
+        } else if (!user.loggedIn) {
+          _lastLoggedInUid = null;
         }
       });
     jwtTokenStream.listen((_) {});
-    Future.delayed(
-      Duration(milliseconds: 2000),
-      () => _appStateNotifier.stopShowingSplashImage(),
-    );
+    // Future.delayed(
+    //   const Duration(milliseconds: 2000),
+    //   () => _appStateNotifier.stopShowingSplashImage(),
+    // );
+
+    // Register banner callback for foreground FCM messages
+    if (!kIsWeb) {
+      PushNotificationService.registerBannerCallback((title, body) {
+        if (mounted) {
+          safeSetState(() {
+            _notifTitle = title;
+            _notifBody = body;
+          });
+        }
+      });
+    }
   }
 
   @override
@@ -188,6 +221,37 @@ class _MyAppState extends State<MyApp> {
           children: [
             child!,
             const ZAuthLoadingIndicator(),
+            // Animated Splash Screen overlay
+            if (_appStateNotifier.showSplashImage)
+              Positioned.fill(
+                child: AnimatedSplashWidget(
+                  onFinished: () {
+                    if (mounted) {
+                      _appStateNotifier.stopShowingSplashImage();
+                      setState(() {});
+                    }
+                  },
+                ),
+              ),
+            // In-app notification banner overlay
+            if (_notifTitle != null)
+              Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                child: InAppNotificationBanner(
+                  title: _notifTitle!,
+                  body: _notifBody ?? '',
+                  onDismiss: () {
+                    if (mounted) {
+                      safeSetState(() {
+                        _notifTitle = null;
+                        _notifBody = null;
+                      });
+                    }
+                  },
+                ),
+              ),
           ],
         );
       },

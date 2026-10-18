@@ -8,6 +8,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'z_rate_app_model.dart';
 export 'z_rate_app_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ZRateAppWidget extends StatefulWidget {
   const ZRateAppWidget({super.key});
@@ -155,6 +156,10 @@ class _ZRateAppWidgetState extends State<ZRateAppWidget>
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
+                      launchUrl(
+                        Uri.parse('https://play.google.com/store/apps/details?id=com.myhigh.connect'),
+                        mode: LaunchMode.externalApplication,
+                      );
                       Navigator.pop(context);
                     },
                     text: 'Rate us',

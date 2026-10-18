@@ -4,10 +4,11 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/profile/components/z_logout/z_logout_widget.dart';
-import '/profile/z_feedback/z_feedback_widget.dart';
+import '/profile/components/z_delete_account/z_delete_account_widget.dart';
 import '/profile/z_rate_app/z_rate_app_widget.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
@@ -115,7 +116,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 height: 6.0,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).optionalColor,
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(0.0),
                     bottomRight: Radius.circular(0.0),
                     topLeft: Radius.circular(16.0),
@@ -321,32 +322,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    if (FFAppState().microphone) {
-                      FFAppState().microphone = false;
-                      safeSetState(() {});
-                    } else {
-                      FFAppState().microphone = true;
-                      safeSetState(() {});
-                    }
-                  },
-                  child: wrapWithModel(
-                    model: _model.textSwitchModel5,
-                    updateCallback: () => safeSetState(() {}),
-                    child: TextSwitchWidget(
-                      title: 'Microphone',
-                      switchField: FFAppState().microphone,
-                      showDivider: true,
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
                     if (FFAppState().storageAccess) {
                       FFAppState().storageAccess = false;
                       safeSetState(() {});
@@ -399,32 +374,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             FlutterFlowTheme.of(context).titleSmall.fontStyle,
                         lineHeight: 1.0,
                       ),
-                ),
-              ),
-              Expanded(
-                child: InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    if (FFAppState().clearCache) {
-                      FFAppState().clearCache = false;
-                      safeSetState(() {});
-                    } else {
-                      FFAppState().clearCache = true;
-                      safeSetState(() {});
-                    }
-                  },
-                  child: wrapWithModel(
-                    model: _model.textSwitchModel7,
-                    updateCallback: () => safeSetState(() {}),
-                    child: TextSwitchWidget(
-                      title: 'Auto clear cache',
-                      switchField: FFAppState().clearCache,
-                      showDivider: true,
-                    ),
-                  ),
                 ),
               ),
               Expanded(
@@ -533,32 +482,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                   ),
                 ),
               ),
-              Divider(
-                height: 1.0,
-                thickness: 1.0,
-                indent: 15.0,
-                endIndent: 15.0,
-                color: FlutterFlowTheme.of(context).optionalColor,
-              ),
-              Expanded(
-                child: InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    context.pushNamed(DefaultBrowserWidget.routeName);
-                  },
-                  child: wrapWithModel(
-                    model: _model.textRightModel3,
-                    updateCallback: () => safeSetState(() {}),
-                    child: TextRightWidget(
-                      content: 'Default browser',
-                      showDivider: false,
-                    ),
-                  ),
-                ),
-              ),
               Container(
                 width: double.infinity,
                 height: 6.0,
@@ -592,6 +515,25 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             FlutterFlowTheme.of(context).titleSmall.fontStyle,
                         lineHeight: 1.0,
                       ),
+                ),
+              ),
+              Expanded(
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    context.pushNamed(OurSocialsWidget.routeName);
+                  },
+                  child: wrapWithModel(
+                    model: _model.textRightModel3,
+                    updateCallback: () => safeSetState(() {}),
+                    child: TextRightWidget(
+                      content: 'Our socials',
+                      showDivider: true,
+                    ),
+                  ),
                 ),
               ),
               Expanded(
@@ -660,7 +602,11 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     highlightColor: Colors.transparent,
                     onTap: () async {
                       await Share.share(
-                        'Hello World',
+                        '''Book this service on HIGH Connect:
+https://play.google.com/store/apps/details?id=com.myhigh.connect
+
+📲 Don't have the app? Install it:
+https://play.google.com/store/apps/details?id=com.myhigh.connect''',
                         sharePositionOrigin: getWidgetBoundingBox(context),
                       );
                     },
@@ -671,41 +617,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         content: 'Share the app',
                         showDivider: true,
                       ),
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    await showModalBottomSheet(
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      context: context,
-                      builder: (context) {
-                        return GestureDetector(
-                          onTap: () {
-                            FocusScope.of(context).unfocus();
-                            FocusManager.instance.primaryFocus?.unfocus();
-                          },
-                          child: Padding(
-                            padding: MediaQuery.viewInsetsOf(context),
-                            child: ZFeedbackWidget(),
-                          ),
-                        );
-                      },
-                    ).then((value) => safeSetState(() {}));
-                  },
-                  child: wrapWithModel(
-                    model: _model.textRightModel7,
-                    updateCallback: () => safeSetState(() {}),
-                    child: TextRightWidget(
-                      content: 'Feedback',
-                      showDivider: true,
                     ),
                   ),
                 ),
@@ -746,6 +657,63 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         content: 'Rate the app',
                         showDivider: true,
                       ),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    await launchURL('https://high-connect-3.web.app');
+                  },
+                  child: wrapWithModel(
+                    model: _model.textRightModel7,
+                    updateCallback: () => safeSetState(() {}),
+                    child: TextRightWidget(
+                      content: 'Visit our website',
+                      showDivider: true,
+                    ),
+                  ),
+                ),
+              ),
+              Builder(
+                builder: (context) => InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    await showDialog(
+                      barrierColor: FlutterFlowTheme.of(context).barrier,
+                      context: context,
+                      builder: (dialogContext) {
+                        return Dialog(
+                          elevation: 0,
+                          insetPadding: EdgeInsets.zero,
+                          backgroundColor: Colors.transparent,
+                          alignment: AlignmentDirectional(0.0, 0.0)
+                              .resolve(Directionality.of(context)),
+                          child: GestureDetector(
+                            onTap: () {
+                              FocusScope.of(dialogContext).unfocus();
+                              FocusManager.instance.primaryFocus?.unfocus();
+                            },
+                            child: ZDeleteAccountWidget(),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                  child: wrapWithModel(
+                    model: _model.textRightModel10,
+                    updateCallback: () => safeSetState(() {}),
+                    child: TextRightWidget(
+                      content: 'Delete account',
+                      showDivider: true,
                     ),
                   ),
                 ),
@@ -812,7 +780,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                   ),
                 ),
               ),
-            ].addToEnd(SizedBox(height: 15.0)),
+            ].addToEnd(SizedBox(height: 15.0)).animate(interval: 50.ms).fadeIn(duration: 300.ms).slideY(begin: 0.1, end: 0, duration: 300.ms, curve: Curves.easeOut),
           ),
         ),
       ),

@@ -96,29 +96,7 @@ class _MyNotificationsWidgetState extends State<MyNotificationsWidget> {
                 ),
           ),
           actions: [
-            Visibility(
-              visible: !(FFAppState().selectedNotificationa.isNotEmpty),
-              child: Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 6.0, 6.0),
-                  child: FlutterFlowIconButton(
-                    borderColor: Colors.transparent,
-                    borderRadius: 22.0,
-                    borderWidth: 1.0,
-                    buttonSize: 44.0,
-                    icon: Icon(
-                      FFIcons.ksettings01,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      size: 24.0,
-                    ),
-                    onPressed: () async {
-                      context.pushNamed(NotificationsManagerWidget.routeName);
-                    },
-                  ),
-                ),
-              ),
-            ),
+
             Visibility(
               visible: FFAppState().selectedNotificationa.isNotEmpty,
               child: Row(

@@ -12,6 +12,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/home/components/z_select_address/z_select_address_widget.dart';
 import '/payment_methods/z_add_payment_method/z_add_payment_method_widget.dart';
 import '/flutter_flow/random_data_util.dart' as random_util;
+import '/services/booking_notification_util.dart';
 import '/index.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -412,24 +413,27 @@ class _BookingPayWidgetState extends State<BookingPayWidget>
                                         },
                                       ),
                                     });
+                                    final bookingNumberPay = random_util
+                                        .randomInteger(100000, 999999);
+                                    final bookingWhenPay = getCurrentTimestamp;
                                     if ((widget.serviceDoc?.category ==
                                             'Home Pest Protection') ||
                                         (widget.serviceDoc?.category ==
                                             'Cleaning Services')) {
-                                      await MyBookingsRecord.createDoc(
-                                              currentUserReference!)
-                                          .set({
+                                      final bookingRefPay =
+                                          MyBookingsRecord.createDoc(
+                                              currentUserReference!);
+                                      await bookingRefPay.set({
                                         ...createMyBookingsRecordData(
                                           service:
                                               widget.serviceDoc?.reference,
                                           user: currentUserReference,
-                                          bookingDate: getCurrentTimestamp,
+                                          bookingDate: bookingWhenPay,
                                           completed: false,
                                           totalPaid: (widget.totalPrice!) *
                                               FFAppState().promoCode,
                                           reviewed: false,
-                                          bookingNumber: random_util
-                                              .randomInteger(100000, 999999),
+                                          bookingNumber: bookingNumberPay,
                                           startTime:
                                               FFAppState().bookingStartDate,
                                           pricePerHour:
@@ -484,6 +488,7 @@ class _BookingPayWidgetState extends State<BookingPayWidget>
                                           phoneNumber: currentPhoneNumber,
                                           workingHours:
                                               FFAppState().workingHours,
+                                          status: 'pending_approval',
                                         ),
                                         ...mapToFirestore(
                                           {
@@ -491,15 +496,28 @@ class _BookingPayWidgetState extends State<BookingPayWidget>
                                           },
                                         ),
                                       });
+                                      if (widget.serviceDoc?.provider !=
+                                          null) {
+                                        await BookingNotificationUtil
+                                            .notifyProviderOfBookingRequest(
+                                          providerRef:
+                                              widget.serviceDoc!.provider!,
+                                          serviceDoc: widget.serviceDoc,
+                                          bookingWhen: bookingWhenPay,
+                                          bookingNumber: bookingNumberPay,
+                                          bookingDocRef: bookingRefPay,
+                                        );
+                                      }
                                     } else {
-                                      await MyBookingsRecord.createDoc(
-                                              currentUserReference!)
-                                          .set({
+                                      final bookingRefPayElse =
+                                          MyBookingsRecord.createDoc(
+                                              currentUserReference!);
+                                      await bookingRefPayElse.set({
                                         ...createMyBookingsRecordData(
                                           service:
                                               widget.serviceDoc?.reference,
                                           user: currentUserReference,
-                                          bookingDate: getCurrentTimestamp,
+                                          bookingDate: bookingWhenPay,
                                           completed: false,
                                           totalPaid: (widget.totalPrice!) *
                                               FFAppState().promoCode,
@@ -553,13 +571,13 @@ class _BookingPayWidgetState extends State<BookingPayWidget>
                                             clearUnsetFields: false,
                                             create: true,
                                           ),
-                                          bookingNumber: random_util
-                                              .randomInteger(100000, 999999),
+                                          bookingNumber: bookingNumberPay,
                                           pricePerHour:
                                               widget.serviceDoc?.pricePerHour,
                                           phoneNumber: currentPhoneNumber,
                                           workingHours:
                                               FFAppState().workingHours,
+                                          status: 'pending_approval',
                                         ),
                                         ...mapToFirestore(
                                           {
@@ -570,6 +588,18 @@ class _BookingPayWidgetState extends State<BookingPayWidget>
                                           },
                                         ),
                                       });
+                                      if (widget.serviceDoc?.provider !=
+                                          null) {
+                                        await BookingNotificationUtil
+                                            .notifyProviderOfBookingRequest(
+                                          providerRef:
+                                              widget.serviceDoc!.provider!,
+                                          serviceDoc: widget.serviceDoc,
+                                          bookingWhen: bookingWhenPay,
+                                          bookingNumber: bookingNumberPay,
+                                          bookingDocRef: bookingRefPayElse,
+                                        );
+                                      }
                                     }
 
                                     context.goNamed(

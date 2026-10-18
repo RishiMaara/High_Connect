@@ -97,6 +97,7 @@ class _ZEmailOtpWidgetState extends State<ZEmailOtpWidget> {
           context,
           widget.email,
           widget.password,
+          false, // createDocument: false
         );
 
         if (user == null) {
@@ -104,10 +105,11 @@ class _ZEmailOtpWidgetState extends State<ZEmailOtpWidget> {
           return;
         }
 
-        // Update user record
-        await UsersRecord.collection.doc(user.uid).update(createUsersRecordData(
+        // Explicitly create the document with our custom data
+        await UsersRecord.collection.doc(user.uid).set(createUsersRecordData(
           email: widget.email.trim(),
           emailSignUp: true,
+          createdTime: getCurrentTimestamp,
         ));
 
         // Navigate to home

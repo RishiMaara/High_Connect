@@ -2,13 +2,16 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
+import '/backend/backend.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'z_continue_with_model.dart';
 export 'z_continue_with_model.dart';
 
 class ZContinueWithWidget extends StatefulWidget {
-  const ZContinueWithWidget({super.key});
+  const ZContinueWithWidget({super.key, this.provider});
+
+  final bool? provider;
 
   @override
   State<ZContinueWithWidget> createState() => _ZContinueWithWidgetState();
@@ -112,8 +115,16 @@ class _ZContinueWithWidgetState extends State<ZContinueWithWidget> {
                       return;
                     }
 
-                    context.goNamedAuth(
-                        HomePageWidget.routeName, context.mounted);
+                    final userDoc = await UsersRecord.getDocumentOnce(UsersRecord.collection.doc(user.uid));
+                    final isAlreadyProvider = userDoc.inService;
+
+                    if (widget.provider == true && !isAlreadyProvider) {
+                      context.goNamedAuth(
+                          BecomeProviderWidget.routeName, context.mounted);
+                    } else {
+                      context.goNamedAuth(
+                          HomePageWidget.routeName, context.mounted);
+                    }
                   } finally {
                     FFAppState().isAuthLoading = false;
                   }

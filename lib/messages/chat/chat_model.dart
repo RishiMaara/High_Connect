@@ -17,6 +17,7 @@ class ChatModel extends FlutterFlowModel<ChatWidget> {
   // Stores action output result for [Firestore Query - Query a collection] action in Chat widget.
   ChatMessagesRecord? messageDoc;
   bool isDataUploading_uploadData4ul = false;
+  bool isLocationUploading = false;
   FFUploadedFile uploadedLocalFile_uploadData4ul =
       FFUploadedFile(bytes: Uint8List.fromList([]), originalFilename: '');
   String uploadedFileUrl_uploadData4ul = '';

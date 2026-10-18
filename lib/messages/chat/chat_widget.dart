@@ -60,9 +60,11 @@ class _ChatWidgetState extends State<ChatWidget> {
             (_model.chatDoc!.usersRef.isNotEmpty && 
              _model.chatDoc!.usersRef.first == currentUserReference);
         
-        await _model.chatDoc!.reference.update({
-          if (isUser1) 'unread_count_user1': 0 else 'unread_count_user2': 0,
-        });
+        if (isUser1) {
+          await _model.chatDoc!.reference.update({'unread_count_user1': 0});
+        } else {
+          await _model.chatDoc!.reference.update({'unread_count_user2': 0});
+        }
       }
       
       _model.messageCount = await queryChatMessagesRecordCount(
@@ -668,6 +670,33 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                       ),
                                                     ),
                                                   ),
+                                                if (listViewChatMessagesRecord.location != null)
+                                                  InkWell(
+                                                    onTap: () async {
+                                                      final lat = listViewChatMessagesRecord.location!.latitude;
+                                                      final lng = listViewChatMessagesRecord.location!.longitude;
+                                                      final url = Uri.parse('https://www.google.com/maps/search/?api=1&query=' + lat.toString() + ',' + lng.toString());
+                                                      await launchUrl(url);
+                                                    },
+                                                    child: Padding(
+                                                      padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 4.0),
+                                                      child: Container(
+                                                        decoration: BoxDecoration(
+                                                          color: FlutterFlowTheme.of(context).primary.withOpacity(0.2),
+                                                          borderRadius: BorderRadius.circular(8.0),
+                                                        ),
+                                                        padding: EdgeInsets.all(10.0),
+                                                        child: Row(
+                                                          mainAxisSize: MainAxisSize.min,
+                                                          children: [
+                                                            Icon(Icons.location_on, color: FlutterFlowTheme.of(context).info, size: 20.0),
+                                                            SizedBox(width: 6.0),
+                                                            Text('Tap to open map', style: FlutterFlowTheme.of(context).bodySmall.override(font: GoogleFonts.inter(), color: FlutterFlowTheme.of(context).info, letterSpacing: 0.0)),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
                                                 if (listViewChatMessagesRecord
                                                             .message !=
                                                         '')
@@ -1049,6 +1078,34 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                       ),
                                                     ),
                                                   ),
+                                                if (listViewChatMessagesRecord.location != null)
+                                                  InkWell(
+                                                    onTap: () async {
+                                                      final lat = listViewChatMessagesRecord.location!.latitude;
+                                                      final lng = listViewChatMessagesRecord.location!.longitude;
+                                                      final url = Uri.parse('https://www.google.com/maps/search/?api=1&query=' + lat.toString() + ',' + lng.toString());
+                                                      await launchUrl(url);
+                                                    },
+                                                    child: Padding(
+                                                      padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 4.0),
+                                                      child: Container(
+                                                        decoration: BoxDecoration(
+                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                          borderRadius: BorderRadius.circular(8.0),
+                                                          border: Border.all(color: FlutterFlowTheme.of(context).primary.withOpacity(0.3)),
+                                                        ),
+                                                        padding: EdgeInsets.all(10.0),
+                                                        child: Row(
+                                                          mainAxisSize: MainAxisSize.min,
+                                                          children: [
+                                                            Icon(Icons.location_on, color: FlutterFlowTheme.of(context).primary, size: 20.0),
+                                                            SizedBox(width: 6.0),
+                                                            Text('Tap to open map', style: FlutterFlowTheme.of(context).bodySmall.override(font: GoogleFonts.inter(), color: FlutterFlowTheme.of(context).primaryText, letterSpacing: 0.0)),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
                                                 if (listViewChatMessagesRecord
                                                             .message !=
                                                         '')
@@ -1276,6 +1333,80 @@ class _ChatWidgetState extends State<ChatWidget> {
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
+                            if (_model.isLocationUploading)
+                              Padding(
+                                padding: EdgeInsets.all(12.0),
+                                child: SizedBox(
+                                  width: 24.0,
+                                  height: 24.0,
+                                  child: CircularProgressIndicator(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    strokeWidth: 2.0,
+                                  ),
+                                ),
+                              )
+                            else
+                              FlutterFlowIconButton(
+                                borderRadius: 10.0,
+                                borderWidth: 1.0,
+                                buttonSize: 48.0,
+                                fillColor: FlutterFlowTheme.of(context).secondary,
+                                icon: Icon(
+                                  Icons.location_on_outlined,
+                                  color: FlutterFlowTheme.of(context).icons,
+                                  size: 24.0,
+                                ),
+                                onPressed: () async {
+                                  safeSetState(() {
+                                    _model.isLocationUploading = true;
+                                  });
+                                  final pos = await getCurrentUserLocation(
+                                      defaultLocation: const LatLng(0.0, 0.0));
+                                  if (pos.latitude == 0.0 && pos.longitude == 0.0) {
+                                    safeSetState(() { _model.isLocationUploading = false; });
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                      content: const Text('Could not get location. Enable location permissions and try again.'),
+                                      backgroundColor: FlutterFlowTheme.of(context).error,
+                                    ));
+                                    return;
+                                  }
+                                  final chatDoc = await queryChatsRecordOnce(
+                                    queryBuilder: (q) => q.where('users_ref', arrayContains: currentUserReference),
+                                  ).then((s) => s.firstWhereOrNull((c) => c.usersRef.contains(widget.userRef)));
+                                  if (chatDoc != null) {
+                                    final msgRef = ChatMessagesRecord.createDoc(chatDoc.reference);
+                                    await msgRef.set(createChatMessagesRecordData(
+                                      message: '',
+                                      timeStamp: getCurrentTimestamp,
+                                      seen: false,
+                                      image: '',
+                                      sender: currentUserReference,
+                                      location: pos,
+                                    ));
+                                    final isRecv1 = chatDoc.user1 == widget.userRef ||
+                                        (chatDoc.usersRef.isNotEmpty && chatDoc.usersRef.first == widget.userRef);
+                                    await chatDoc.reference.update({
+                                      'last_message': msgRef,
+                                      'last_message_text': 'Shared a location',
+                                      'last_message_time': getCurrentTimestamp,
+                                    });
+                                    if (isRecv1) {
+                                      await chatDoc.reference.update({'unread_count_user1': FieldValue.increment(1)});
+                                    } else {
+                                      await chatDoc.reference.update({'unread_count_user2': FieldValue.increment(1)});
+                                    }
+                                    await NotificationsRecord.createDoc(widget.userRef!).set(createNotificationsRecordData(
+                                      title: 'New Message',
+                                      description: 'Shared a location',
+                                      type: 'chat_message',
+                                      timeStamp: getCurrentTimestamp,
+                                      read: false,
+                                    ));
+                                  }
+                                  safeSetState(() { _model.isLocationUploading = false; });
+                                },
+                              ),
+                            SizedBox(width: 8.0),
                             FlutterFlowIconButton(
                               borderRadius: 10.0,
                               borderWidth: 1.0,
@@ -1630,11 +1761,12 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                     'last_message': _model.lastMessage?.reference,
                                                     'last_message_text': messageText,
                                                     'last_message_time': getCurrentTimestamp,
-                                                    if (isReceiverUser1) 
-                                                      'unread_count_user1': FieldValue.increment(1)
-                                                    else 
-                                                      'unread_count_user2': FieldValue.increment(1),
                                                   });
+                                                  if (isReceiverUser1) {
+                                                    await iconButtonChatsRecord.reference.update({'unread_count_user1': FieldValue.increment(1)});
+                                                  } else {
+                                                    await iconButtonChatsRecord.reference.update({'unread_count_user2': FieldValue.increment(1)});
+                                                  }
 
                                                   // Send notification to receiver
                                                   await NotificationsRecord.createDoc(
